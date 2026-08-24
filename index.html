@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Ayesha</title>
+    <title>For Ayesha & Sadik 100 Weeks</title>
     <style>
         * {
             margin: 0;
@@ -15,14 +15,14 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #05000a;
+            background-color: #020005;
             font-family: 'Consolas', 'Courier New', monospace;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Landscape Warning Screen */
+        /* Landscape Warning */
         #landscape-warning {
             position: fixed;
             top: 0;
@@ -52,16 +52,70 @@
             100% { transform: rotate(0deg); }
         }
 
-        /* Welcome Screen with Flowers */
+        /* Pull Cord Switch Overlay */
+        #pull-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #05000a;
+            z-index: 9000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            transition: opacity 1s ease;
+        }
+
+        .cord-wrapper {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: swing 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes swing {
+            0% { transform: rotate(-3deg); }
+            100% { transform: rotate(3deg); }
+        }
+
+        .cord-line {
+            width: 4px;
+            height: 180px;
+            background: linear-gradient(to bottom, #ff69b4, #fff);
+            box-shadow: 0 0 10px #ff69b4;
+        }
+
+        .cord-handle {
+            width: 30px;
+            height: 30px;
+            background: #ff1493;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ff1493, 0 0 25px #fff;
+            border: 2px solid #fff;
+        }
+
+        .pull-hint {
+            color: #ffb6c1;
+            margin-top: 40px;
+            font-size: 20px;
+            text-align: center;
+            animation: pulseText 1.5s infinite alternate;
+        }
+
+        /* Welcome Text Screen */
         #welcome-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle, #2a0033, #05000a);
+            background: transparent;
             z-index: 8000;
-            display: flex;
+            display: none;
             justify-content: space-between;
             align-items: center;
             padding: 0 50px;
@@ -81,11 +135,12 @@
 
         .welcome-title {
             color: #ff69b4;
-            font-size: 42px;
+            font-size: 32px;
             font-weight: bold;
             text-align: center;
             letter-spacing: 2px;
             text-shadow: 0 0 25px #ff1493, 0 0 50px #ff69b4;
+            line-height: 1.5;
             animation: pulseText 2s infinite alternate;
         }
 
@@ -103,16 +158,33 @@
             height: 100%;
         }
 
+        /* Dancing Couple Silhouette Element */
+        .dancing-couple {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 60px;
+            z-index: 5;
+            opacity: 0.6;
+            animation: dance 2s infinite ease-in-out alternate;
+            display: none;
+        }
+
+        @keyframes dance {
+            0% { transform: scale(1) rotate(-5deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+
         /* Interactive Letter Card */
         .card-container {
             position: relative;
             z-index: 10;
-            background: rgba(15, 5, 25, 0.9);
+            background: rgba(15, 5, 25, 0.92);
             border: 2px solid #ff69b4;
             border-radius: 20px;
             padding: 25px;
             width: 90%;
-            max-width: 500px;
+            max-width: 520px;
             text-align: center;
             box-shadow: 0 0 35px rgba(255, 105, 180, 0.7);
             backdrop-filter: blur(10px);
@@ -132,18 +204,33 @@
         }
 
         .card-desc {
-            font-size: 16px;
+            font-size: 17px;
             color: #fff;
             line-height: 1.6;
             margin-bottom: 20px;
+        }
+
+        /* Proposal Cartoon SVG */
+        .cartoon-box {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px auto;
+            display: none;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn-custom {
             background: linear-gradient(45deg, #ff1493, #ff69b4);
             color: white;
             border: none;
-            padding: 10px 25px;
-            font-size: 16px;
+            padding: 10px 20px;
+            font-size: 15px;
             border-radius: 20px;
             cursor: pointer;
             box-shadow: 0 0 15px #ff1493;
@@ -152,6 +239,11 @@
 
         .btn-custom:active {
             transform: scale(0.95);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #00b09b, #96c93d);
+            box-shadow: 0 0 15px #00b09b;
         }
 
         @media screen and (orientation: landscape) {
@@ -163,48 +255,221 @@
 </head>
 <body>
 
+    <!-- Landscape Warning -->
     <div id="landscape-warning">
         <div class="phone-icon">📱</div>
         <h2>দয়া করে ফোনটি Landscape (আড়াআড়ি) মোডে ঘুরিয়ে নিন ✨</h2>
     </div>
 
+    <!-- Interactive Light Cord Switch -->
+    <div id="pull-screen">
+        <div class="cord-wrapper" onclick="turnOnLight()">
+            <div class="cord-line"></div>
+            <div class="cord-handle"></div>
+        </div>
+        <div class="pull-hint">দড়িটি টানুন (Tap the Cord) 💡</div>
+    </div>
+
+    <!-- Welcome Entry Screen -->
     <div id="welcome-screen">
         <div class="flower-side">🌸🌷</div>
-        <div class="welcome-title">WELCOME<br>AYESHA 💕</div>
+        <div class="welcome-title">
+            Hey Ayesha, My Love 💕<br>
+            <span style="font-size: 24px; color: #fff;">Welcome. This is for you ✨</span>
+        </div>
         <div class="flower-side">🌷🌸</div>
     </div>
 
+    <!-- Fireworks & Matrix Canvases -->
+    <canvas id="fireworksCanvas"></canvas>
     <canvas id="matrixCanvas"></canvas>
     <canvas id="textCanvas"></canvas>
 
+    <!-- Romantic Dancing Couple Icon -->
+    <div id="dancingCouple" class="dancing-couple">💃🕺</div>
+
+    <!-- Proposal Card -->
     <div id="mainCard" class="card-container">
+        <!-- Cute Kneeling Proposal Cartoon SVG -->
+        <div id="cartoonBox" class="cartoon-box">
+            <svg viewBox="0 0 100 100" width="100%" height="100%">
+                <circle cx="50" cy="30" r="15" fill="#ffb6c1"/>
+                <path d="M 50 45 L 50 70 L 35 90 M 50 70 L 65 85" stroke="#ff1493" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <path d="M 50 55 L 70 50 M 50 55 L 35 60" stroke="#ff1493" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <circle cx="73" cy="49" r="4" fill="none" stroke="#ffd700" stroke-width="2"/>
+                <polygon points="73,43 75,46 71,46" fill="#00ffff"/>
+            </svg>
+        </div>
         <h2 id="cardTitle" class="card-title"></h2>
         <p id="cardDesc" class="card-desc"></p>
-        <button id="nextBtn" class="btn-custom" onclick="nextSlide()">Tap to Continue 💕</button>
+        
+        <div class="btn-group" id="btnContainer">
+            <button id="nextBtn" class="btn-custom" onclick="nextSlide()">Tap to Continue 💕</button>
+        </div>
     </div>
+
+    <!-- Background Audio -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sun-683.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         const matrixCanvas = document.getElementById('matrixCanvas');
         const mCtx = matrixCanvas.getContext('2d');
         const textCanvas = document.getElementById('textCanvas');
         const tCtx = textCanvas.getContext('2d');
+        const fwCanvas = document.getElementById('fireworksCanvas');
+        const fwCtx = fwCanvas.getContext('2d');
+
+        const pullScreen = document.getElementById('pull-screen');
         const welcomeScreen = document.getElementById('welcome-screen');
+        const bgMusic = document.getElementById('bgMusic');
+        const dancingCouple = document.getElementById('dancingCouple');
+
+        let mediaRecorder;
+        let recordedChunks = [];
 
         function resize() {
-            matrixCanvas.width = textCanvas.width = window.innerWidth;
-            matrixCanvas.height = textCanvas.height = window.innerHeight;
+            matrixCanvas.width = textCanvas.width = fwCanvas.width = window.innerWidth;
+            matrixCanvas.height = textCanvas.height = fwCanvas.height = window.innerHeight;
         }
         resize();
         window.addEventListener('resize', resize);
 
-        // Matrix Background setup
+        // Auto Fullscreen Trigger
+        window.addEventListener("orientationchange", () => {
+            if (window.innerWidth > window.innerHeight) {
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen().catch(()=>{});
+                }
+            }
+        });
+
+        // Canvas Recording Setup
+        function startRecording() {
+            try {
+                const stream = matrixCanvas.captureStream(30);
+                recordedChunks = [];
+                mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+                
+                mediaRecorder.ondataavailable = (e) => {
+                    if (e.data.size > 0) recordedChunks.push(e.data);
+                };
+                mediaRecorder.start();
+            } catch (err) {
+                console.log("Recorder error", err);
+            }
+        }
+
+        function downloadVideo() {
+            if (mediaRecorder && mediaRecorder.state !== "inactive") {
+                mediaRecorder.stop();
+            }
+            setTimeout(() => {
+                const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'Ayesha_Sadik_Love_Story.webm';
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 100);
+            }, 500);
+        }
+
+        // Pull Cord Light Action
+        function turnOnLight() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch(()=>{});
+            }
+            bgMusic.play().catch(()=>{});
+            pullScreen.style.opacity = '0';
+            
+            startRecording();
+
+            setTimeout(() => {
+                pullScreen.style.display = 'none';
+                welcomeScreen.style.display = 'flex';
+                startFireworks();
+                
+                setTimeout(() => {
+                    welcomeScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        welcomeScreen.style.display = 'none';
+                        stopFireworks();
+                        dancingCouple.style.display = 'block';
+                        playSequence();
+                    }, 1500);
+                }, 4000);
+            }, 1000);
+        }
+
+        // Fireworks Effect
+        let fwInterval;
+        let particles = [];
+
+        function startFireworks() {
+            fwInterval = setInterval(() => {
+                createFirework(Math.random() * fwCanvas.width, Math.random() * fwCanvas.height * 0.5);
+            }, 400);
+            animateFireworks();
+        }
+
+        function createFirework(x, y) {
+            const count = 30;
+            for (let i = 0; i < count; i++) {
+                const angle = (Math.PI * 2 / count) * i;
+                const speed = Math.random() * 3 + 2;
+                particles.push({
+                    x: x, y: y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    alpha: 1,
+                    color: `hsl(${Math.random() * 60 + 300}, 100%, 65%)`
+                });
+            }
+        }
+
+        function animateFireworks() {
+            fwCtx.fillStyle = 'rgba(2, 0, 5, 0.2)';
+            fwCtx.fillRect(0, 0, fwCanvas.width, fwCanvas.height);
+
+            particles.forEach((p, index) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= 0.02;
+
+                fwCtx.beginPath();
+                fwCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                fwCtx.fillStyle = p.color;
+                fwCtx.globalAlpha = p.alpha;
+                fwCtx.fill();
+
+                if (p.alpha <= 0) particles.splice(index, 1);
+            });
+            fwCtx.globalAlpha = 1;
+            if (welcomeScreen.style.display !== 'none') {
+                requestAnimationFrame(animateFireworks);
+            }
+        }
+
+        function stopFireworks() {
+            clearInterval(fwInterval);
+            fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
+        }
+
+        // Matrix Background
         const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*';
         const fontSize = 14;
         let columns = Math.floor(window.innerWidth / fontSize);
         let drops = Array(columns).fill(1);
 
         function drawMatrixBG() {
-            mCtx.fillStyle = 'rgba(5, 0, 10, 0.15)';
+            mCtx.fillStyle = 'rgba(2, 0, 5, 0.15)';
             mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
 
             mCtx.fillStyle = '#ff3388';
@@ -222,7 +487,7 @@
         }
         setInterval(drawMatrixBG, 35);
 
-        // Sequence List
+        // Sequence
         const sequence = [
             "3",
             "2",
@@ -274,15 +539,6 @@
             }
         }
 
-        // Flow controller
-        setTimeout(() => {
-            welcomeScreen.style.opacity = '0';
-            setTimeout(() => {
-                welcomeScreen.style.display = 'none';
-                playSequence();
-            }, 1500);
-        }, 3000);
-
         function playSequence() {
             if (currentSeq < sequence.length) {
                 renderTextPixel(sequence[currentSeq]);
@@ -298,7 +554,8 @@
         const cardEl = document.getElementById('mainCard');
         const titleEl = document.getElementById('cardTitle');
         const descEl = document.getElementById('cardDesc');
-        const btnEl = document.getElementById('nextBtn');
+        const btnContainer = document.getElementById('btnContainer');
+        const cartoonBox = document.getElementById('cartoonBox');
 
         let currentSlide = 0;
         const slides = [
@@ -307,12 +564,17 @@
                 desc: "আয়েশা সাদিক (AHUBATI, AHUBI), ১০০ টি সপ্তাহ এবং ৭০০ টি দিন ধরে আমার পাশে থাকার জন্য অনেক ধন্যবাদ।" 
             },
             { 
+                title: "💖 Special Note 💖", 
+                desc: "You are my JAPAN without P! 🥰 (You are my JAAN ❤️)" 
+            },
+            { 
                 title: "💖 My Special One 💖", 
                 desc: "জীবনের প্রতিটি মুহূর্ত তোমার ভালোবাসা দিয়ে সুন্দর করার জন্য আমি চিরকৃতজ্ঞ।" 
             },
             { 
                 title: "💍 Will You Marry Me? 💍", 
-                desc: "সারাটা জীবন কি এভাবেই আমার পাশে থাকবে? ❤️" 
+                desc: "সারাটা জীবন কি এভাবেই আমার আহবাতি আহবাবি হয়ে পাশে থাকবে? ❤️",
+                showCartoon: true 
             }
         ];
 
@@ -324,9 +586,16 @@
         function updateCard() {
             titleEl.innerText = slides[currentSlide].title;
             descEl.innerText = slides[currentSlide].desc;
+            
+            if (slides[currentSlide].showCartoon) {
+                cartoonBox.style.display = 'block';
+            } else {
+                cartoonBox.style.display = 'none';
+            }
+
             if (currentSlide === slides.length - 1) {
-                btnEl.innerText = "YES, I WILL! 💖";
-                btnEl.style.background = "linear-gradient(45deg, #00b09b, #96c93d)";
+                document.getElementById('nextBtn').innerText = "YES, I WILL! 💖";
+                document.getElementById('nextBtn').style.background = "linear-gradient(45deg, #00b09b, #96c93d)";
             }
         }
 
@@ -335,10 +604,22 @@
                 currentSlide++;
                 updateCard();
             } else {
+                // Final End Screen
+                cartoonBox.style.display = 'none';
                 titleEl.innerText = "Yayyy! 🎉❤️";
                 descEl.innerText = "Welcome to our forever journey, Ayesha Sadik! 🥰✨";
-                btnEl.style.display = "none";
+                
+                // Show Home & Download Buttons
+                btnContainer.innerHTML = `
+                    <button class="btn-custom btn-secondary" onclick="downloadVideo()">🎥 Download Video</button>
+                    <button class="btn-custom" onclick="resetToHome()">🔄 Replay / Home</button>
+                `;
             }
+        }
+
+        // Reset to Home Screen
+        function resetToHome() {
+            location.reload();
         }
     </script>
 </body>
