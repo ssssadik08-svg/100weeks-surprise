@@ -17,7 +17,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #030814;
+            background-color: #030408;
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
@@ -31,7 +31,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle at center, #081d33, #020710);
+            background: radial-gradient(circle at center, #0a1329, #020408);
             z-index: 9000;
             display: flex;
             flex-direction: column;
@@ -52,17 +52,17 @@
         .cord-line {
             width: 4px;
             height: 280px;
-            background: linear-gradient(to bottom, #ffd700, #00f2fe, #fff);
+            background: linear-gradient(to bottom, #ffd700, #ff2a85, #00f2fe);
             box-shadow: 0 0 15px #00f2fe, 0 0 25px #ffd700;
             transition: height 0.1s ease;
         }
 
         .cord-handle {
-            width: 46px;
-            height: 46px;
-            background: radial-gradient(circle, #ffffff, #00c6ff);
+            width: 48px;
+            height: 48px;
+            background: radial-gradient(circle, #ffffff, #ff2a85);
             border-radius: 50%;
-            box-shadow: 0 0 25px #00f2fe, 0 0 35px #ffffff;
+            box-shadow: 0 0 25px #ff2a85, 0 0 35px #ffffff;
             border: 2px solid #ffd700;
         }
 
@@ -82,7 +82,7 @@
             100% { opacity: 1; transform: scale(1.04); }
         }
 
-        /* Welcome Screen with Classy Font */
+        /* Welcome Screen */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -97,7 +97,7 @@
             align-items: center;
             padding: 20px;
             opacity: 1;
-            transition: opacity 1.8s ease-in-out;
+            transition: opacity 1.5s ease-in-out;
             text-align: center;
         }
 
@@ -115,9 +115,9 @@
         .welcome-title {
             font-family: 'Great Vibes', cursive;
             color: #ffffff;
-            font-size: 54px;
+            font-size: 55px;
             letter-spacing: 2px;
-            text-shadow: 0 0 20px #00f2fe, 0 0 40px #0088ff, 0 0 60px #ffffff;
+            text-shadow: 0 0 20px #ff2a85, 0 0 40px #00f2fe, 0 0 60px #ffffff;
             line-height: 1.4;
         }
 
@@ -139,17 +139,17 @@
         }
 
         #matrixCanvas { z-index: 10; }
-        #fireworksCanvas { z-index: 20; pointer-events: none; }
-        #textCanvas { z-index: 30; pointer-events: none; }
+        #textCanvas { z-index: 20; pointer-events: none; }
+        #fireworksCanvas { z-index: 30; pointer-events: none; }
 
-        /* Floating Circular Tap Button */
+        /* Floating Tap Button */
         .right-tap-btn {
             position: fixed;
             right: 25px;
-            bottom: 40%;
-            width: 65px;
-            height: 65px;
-            background: radial-gradient(circle, #00f2fe, #0052d4);
+            bottom: 35%;
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, #ff2a85, #9a0046);
             border: 2px solid #ffffff;
             border-radius: 50%;
             color: #fff;
@@ -160,9 +160,9 @@
             font-weight: bold;
             font-size: 14px;
             letter-spacing: 1.5px;
-            box-shadow: 0 0 30px rgba(0, 242, 254, 0.9);
+            box-shadow: 0 0 30px rgba(255, 42, 133, 0.9);
             cursor: pointer;
-            z-index: 100;
+            z-index: 500;
             display: none;
             animation: floatBtn 2s infinite alternate ease-in-out;
         }
@@ -172,12 +172,12 @@
             100% { transform: translateY(-12px); }
         }
 
-        /* Glass Mirror Box Card */
+        /* Glass Mirror Card */
         .card-container {
             position: relative;
-            z-index: 200;
-            background: rgba(3, 14, 26, 0.94);
-            border: 2px solid #00f2fe;
+            z-index: 600;
+            background: rgba(8, 12, 24, 0.93);
+            border: 2px solid #ff2a85;
             outline: 2px solid #ffd700;
             outline-offset: -7px;
             border-radius: 16px;
@@ -185,9 +185,10 @@
             width: 88%;
             max-width: 480px;
             text-align: center;
-            box-shadow: 0 0 50px rgba(0, 242, 254, 0.35), inset 0 0 30px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 50px rgba(255, 42, 133, 0.4), inset 0 0 30px rgba(0, 242, 254, 0.2);
             backdrop-filter: blur(15px);
             display: none;
+            cursor: pointer;
             animation: popup 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
@@ -224,24 +225,27 @@
             font-weight: 300;
         }
 
-        .swipe-hint {
-            font-size: 12px;
+        .tap-card-hint {
+            font-size: 13px;
             color: #ffd700;
             margin-top: 15px;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             font-family: 'Cinzel', serif;
+            animation: pulseGlow 1.5s infinite alternate;
         }
 
-        .btn-custom {
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
+        .btn-replay {
+            background: linear-gradient(45deg, #ff2a85, #00f2fe);
             color: white;
             border: 1px solid #ffffff;
-            padding: 12px 30px;
+            padding: 12px 35px;
             font-size: 15px;
             font-family: 'Cinzel', serif;
+            font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(0, 198, 255, 0.8);
+            box-shadow: 0 0 25px rgba(255, 42, 133, 0.8);
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -268,14 +272,14 @@
 
     <!-- Canvases -->
     <canvas id="matrixCanvas"></canvas>
-    <canvas id="fireworksCanvas"></canvas>
     <canvas id="textCanvas"></canvas>
+    <canvas id="fireworksCanvas"></canvas>
 
     <!-- Floating Circular Tap Button -->
     <div id="rightTapBtn" class="right-tap-btn" onclick="nextSequenceStep()">TAP</div>
 
-    <!-- Decorated Mirror Glass Card -->
-    <div id="mainCard" class="card-container">
+    <!-- Mirror Glass Card (Whole Box Tappable) -->
+    <div id="mainCard" class="card-container" onclick="handleCardClick()">
         <svg class="corner-ornament top-left" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
         <svg class="corner-ornament top-right" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
         <svg class="corner-ornament bottom-left" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
@@ -284,10 +288,9 @@
         <h2 id="cardTitle" class="card-title"></h2>
         <p id="cardDesc" class="card-desc"></p>
 
-        <div id="btnContainer">
-            <button id="nextBtn" class="btn-custom" onclick="nextSlide()">NEXT ✨</button>
+        <div id="actionArea">
+            <div class="tap-card-hint">👉 TAP ANYWHERE TO CONTINUE</div>
         </div>
-        <div class="swipe-hint">👈 SWIPE LEFT OR TAP TO FLIP</div>
     </div>
 
     <audio id="bgMusic" loop preload="auto">
@@ -317,19 +320,17 @@
             initMatrixColumns();
         }
 
-        // True Vertical Rain Matrix Effect
-        const matrixWords = ['100 WEEKS', '700 DAYS', 'AYESHA + SADIK', 'AHUBATI + AHUBI', 'LOVE YOU'];
+        // Full Dense Matrix Character Rain (Like Screenshot 1)
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789AYESHASADIK';
+        let fontSize = 16;
         let columns = 0;
         let drops = [];
-        let colWords = [];
 
         function initMatrixColumns() {
-            columns = Math.floor(window.innerWidth / 45);
+            columns = Math.floor(window.innerWidth / fontSize);
             drops = [];
-            colWords = [];
             for (let i = 0; i < columns; i++) {
-                drops[i] = Math.floor(Math.random() * -30);
-                colWords[i] = matrixWords[Math.floor(Math.random() * matrixWords.length)];
+                drops[i] = Math.random() * -50;
             }
         }
         resize();
@@ -338,40 +339,32 @@
         let matrixInterval;
         function startMatrixRain() {
             if (matrixInterval) clearInterval(matrixInterval);
-            matrixInterval = setInterval(drawMatrixBG, 55);
+            matrixInterval = setInterval(drawMatrixBG, 35);
         }
 
         function drawMatrixBG() {
-            mCtx.fillStyle = 'rgba(3, 8, 20, 0.2)';
+            mCtx.fillStyle = 'rgba(3, 4, 8, 0.15)';
             mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            mCtx.font = 'bold 15px monospace';
+            mCtx.font = '15px monospace';
 
             for (let i = 0; i < drops.length; i++) {
-                const word = colWords[i];
-                const x = i * 45 + 5;
-                const y = drops[i] * 22;
+                const char = chars[Math.floor(Math.random() * chars.length)];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
 
-                for (let j = 0; j < word.length; j++) {
-                    const char = word[j];
-                    const charY = y - (j * 18);
-                    if (charY > 0 && charY < matrixCanvas.height) {
-                        // Soft Glow Colors for Falling Rain
-                        mCtx.fillStyle = (j === 0) ? '#ffffff' : 'rgba(0, 242, 254, 0.35)';
-                        mCtx.shadowColor = '#00f2fe';
-                        mCtx.shadowBlur = (j === 0) ? 8 : 0;
-                        mCtx.fillText(char, x, charY);
-                    }
-                }
+                mCtx.fillStyle = (Math.random() > 0.92) ? '#ffffff' : '#ff2a85';
+                mCtx.shadowColor = '#ff2a85';
+                mCtx.shadowBlur = 5;
+                mCtx.fillText(char, x, y);
 
-                if (y - (word.length * 18) > matrixCanvas.height && Math.random() > 0.94) {
+                if (y > matrixCanvas.height && Math.random() > 0.975) {
                     drops[i] = 0;
-                    colWords[i] = matrixWords[Math.floor(Math.random() * matrixWords.length)];
                 }
                 drops[i]++;
             }
         }
 
-        // Cord Mechanics
+        // Pull Mechanics
         let startY = 0, currentDrag = 0;
         const maxDrag = 170;
 
@@ -389,67 +382,61 @@
             bgMusic.play().catch(()=>{});
             pullScreen.style.opacity = '0';
 
-            // Rain Matrix Starts BEFORE Welcome
             startMatrixRain();
 
             setTimeout(() => {
                 pullScreen.style.display = 'none';
                 welcomeScreen.style.display = 'flex';
-                startFireworks();
+                triggerBurstFireworks();
 
-                setTimeout(() => { welRow1.classList.add('show'); createFirework(window.innerWidth/2, window.innerHeight*0.38); }, 400);
-                setTimeout(() => { welRow2.classList.add('show'); createFirework(window.innerWidth/2, window.innerHeight*0.58); }, 2200);
+                setTimeout(() => { welRow1.classList.add('show'); triggerBurstFireworks(); }, 400);
+                setTimeout(() => { welRow2.classList.add('show'); triggerBurstFireworks(); }, 2000);
 
                 setTimeout(() => {
                     welcomeScreen.style.opacity = '0';
                     setTimeout(() => {
                         welcomeScreen.style.display = 'none';
-                        stopFireworks();
                         startCountdownSequence();
-                    }, 1800);
-                }, 5800);
+                    }, 1500);
+                }, 5200);
             }, 800);
         }
 
-        // Slow & Colorful Fireworks Engine
-        let fwInterval, particles = [];
-        function startFireworks() {
-            fwInterval = setInterval(() => { createFirework(Math.random() * fwCanvas.width, Math.random() * fwCanvas.height * 0.5); }, 800);
-            animateFireworks();
-        }
-        function createFirework(x, y) {
-            const count = 30;
-            // Mixed Colors: Gold, Pink, Purple
-            const colors = ['#ffd700', '#ff007f', '#a855f7', '#00f2fe', '#ffffff'];
-            const chosenColor = colors[Math.floor(Math.random() * colors.length)];
+        // Burst Fireworks on Click/Change Only
+        let particles = [];
+        function triggerBurstFireworks() {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight * 0.4;
+            const colors = ['#ffd700', '#ff2a85', '#00f2fe', '#ffffff'];
 
-            for (let i = 0; i < count; i++) {
-                const angle = (Math.PI * 2 / count) * i;
-                const speed = Math.random() * 2.5 + 1.2; // Slower velocity
+            for (let i = 0; i < 45; i++) {
+                const angle = (Math.PI * 2 / 45) * i;
+                const speed = Math.random() * 5 + 2;
                 particles.push({ 
-                    x: x, y: y, 
+                    x: centerX, y: centerY, 
                     vx: Math.cos(angle) * speed, 
                     vy: Math.sin(angle) * speed, 
                     alpha: 1, 
-                    color: chosenColor 
+                    color: colors[Math.floor(Math.random() * colors.length)] 
                 });
             }
+            animateFireworks();
         }
+
         function animateFireworks() {
-            fwCtx.fillStyle = 'rgba(3, 8, 20, 0.15)';
-            fwCtx.fillRect(0, 0, fwCanvas.width, fwCanvas.height);
+            if (particles.length === 0) return;
+            fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
             particles.forEach((p, index) => {
-                p.x += p.vx; p.y += p.vy; p.alpha -= 0.012; // Slow fade
-                fwCtx.beginPath(); fwCtx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
+                p.x += p.vx; p.y += p.vy; p.alpha -= 0.02;
+                fwCtx.beginPath(); fwCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
                 fwCtx.fillStyle = p.color; fwCtx.globalAlpha = p.alpha; fwCtx.fill();
                 if (p.alpha <= 0) particles.splice(index, 1);
             });
             fwCtx.globalAlpha = 1;
-            requestAnimationFrame(animateFireworks);
+            if (particles.length > 0) requestAnimationFrame(animateFireworks);
         }
-        function stopFireworks() { clearInterval(fwInterval); fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height); }
 
-        // Solid Pixel Text Canvas
+        // Bold Dot/Decimal Text Canvas (Like Screenshot 2)
         function renderTextPixel(text) {
             tCtx.clearRect(0, 0, textCanvas.width, textCanvas.height);
             if (!text) return;
@@ -460,10 +447,10 @@
             tempCanvas.height = textCanvas.height;
 
             let dynamicFontSize = Math.min(textCanvas.width / (text.length * 0.65), textCanvas.height * 0.22);
-            if (dynamicFontSize > 80) dynamicFontSize = 80;
+            if (dynamicFontSize > 90) dynamicFontSize = 90;
 
             tempCtx.fillStyle = '#fff';
-            tempCtx.font = `bold ${dynamicFontSize}px sans-serif`;
+            tempCtx.font = `900 ${dynamicFontSize}px sans-serif`;
             tempCtx.textAlign = 'center';
             tempCtx.textBaseline = 'middle';
             tempCtx.fillText(text, tempCanvas.width / 2, tempCanvas.height / 2);
@@ -471,22 +458,25 @@
             const imgData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
             const data = imgData.data;
 
-            const pixelSize = 5;
-            tCtx.fillStyle = '#00f2fe';
-            tCtx.shadowColor = '#ffffff';
+            const dotGap = 6;
+            const dotRadius = 2.5;
+            tCtx.fillStyle = '#ff2a85';
+            tCtx.shadowColor = '#ff2a85';
             tCtx.shadowBlur = 12;
 
-            for (let y = 0; y < tempCanvas.height; y += pixelSize) {
-                for (let x = 0; x < tempCanvas.width; x += pixelSize) {
+            for (let y = 0; y < tempCanvas.height; y += dotGap) {
+                for (let x = 0; x < tempCanvas.width; x += dotGap) {
                     const index = (y * tempCanvas.width + x) * 4;
-                    if (data[index + 3] > 100) {
-                        tCtx.fillRect(x, y, pixelSize, pixelSize);
+                    if (data[index + 3] > 128) {
+                        tCtx.beginPath();
+                        tCtx.arc(x, y, dotRadius, 0, Math.PI * 2);
+                        tCtx.fill();
                     }
                 }
             }
         }
 
-        // Fixed Countdown & Main Sequence Logic
+        // Sequences
         const mainSequence = [
             "100 WEEKS",
             "700 DAYS",
@@ -498,26 +488,30 @@
         let seqIndex = 0;
 
         function startCountdownSequence() {
-            rightTapBtn.style.display = 'none'; // Lock TAP during 3-2-1
+            rightTapBtn.style.display = 'none';
             
             renderTextPixel("3");
+            triggerBurstFireworks();
+
             setTimeout(() => {
                 renderTextPixel("2");
+                triggerBurstFireworks();
                 setTimeout(() => {
                     renderTextPixel("1");
+                    triggerBurstFireworks();
                     setTimeout(() => {
                         seqIndex = 0;
-                        rightTapBtn.style.display = 'flex'; // Unlock TAP for Main Sequence
+                        rightTapBtn.style.display = 'flex';
                         playNextMainSequence();
-                    }, 800);
-                }, 800);
-            }, 800);
+                    }, 850);
+                }, 850);
+            }, 850);
         }
 
         function playNextMainSequence() {
             if (seqIndex < mainSequence.length) {
                 renderTextPixel(mainSequence[seqIndex]);
-                createFirework(window.innerWidth / 2, window.innerHeight / 2);
+                triggerBurstFireworks();
             } else {
                 renderTextPixel("");
                 rightTapBtn.style.display = 'none';
@@ -546,51 +540,53 @@
                 desc: "জীবনের প্রতিটি মুহূর্ত তোমার ভালোবাসা দিয়ে সুন্দর করার জন্য আমি চিরকৃতজ্ঞ।" 
             },
             { 
-                title: "✨ Custom Slot 1 ✨", 
-                desc: "এখানে আপনার নিজের মতো যেকোনো লাইন কোড থেকে লিখে নিতে পারবেন।" 
-            },
-            { 
-                title: "💍 Forever & Always 💍", 
-                desc: "সারাটা জীবন কি এভাবেই পাশে থাকবে? ❤️"
+                title: "✨ Forever & Always ✨", 
+                desc: "সারাটা জীবন কি এভাবেই পাশে থাকবে? ❤️" 
             }
         ];
 
         const cardEl = document.getElementById('mainCard');
         const titleEl = document.getElementById('cardTitle');
         const descEl = document.getElementById('cardDesc');
+        const actionArea = document.getElementById('actionArea');
 
         function showCard() {
             cardEl.style.display = 'block';
+            currentSlide = 0;
             updateCard();
         }
 
         function updateCard() {
             titleEl.innerText = slides[currentSlide].title;
             descEl.innerText = slides[currentSlide].desc;
+            triggerBurstFireworks();
 
             if (currentSlide === slides.length - 1) {
-                document.getElementById('nextBtn').innerText = "YES, ALWAYS! 💖";
+                actionArea.innerHTML = `
+                    <div class="tap-card-hint">✨ YES, ALWAYS! 💖</div>
+                    <button class="btn-replay" onclick="replayProject(event)">REPLAY 🔄</button>
+                `;
+            } else {
+                actionArea.innerHTML = `<div class="tap-card-hint">👉 TAP ANYWHERE TO CONTINUE</div>`;
             }
         }
 
-        function nextSlide() {
+        function handleCardClick() {
             if (currentSlide < slides.length - 1) {
                 currentSlide++;
                 updateCard();
-            } else {
-                titleEl.innerText = "Yayyy! 🎉❤️";
-                descEl.innerText = "Welcome to our forever journey, Ayesha + Sadik! 🥰✨";
-                document.getElementById('btnContainer').innerHTML = `<button class="btn-custom">FOREVER TOGETHER ❤️</button>`;
             }
         }
 
-        // Touch Swipe Left Gesture
-        let touchStartX = 0;
-        cardEl.addEventListener('touchstart', (e) => touchStartX = e.touches[0].clientX);
-        cardEl.addEventListener('touchend', (e) => {
-            let touchEndX = e.changedTouches[0].clientX;
-            if (touchStartX - touchEndX > 50) nextSlide();
-        });
+        function replayProject(e) {
+            e.stopPropagation();
+            cardEl.style.display = 'none';
+            pullScreen.style.display = 'flex';
+            pullScreen.style.opacity = '1';
+            cordLine.style.height = '280px';
+            welRow1.classList.remove('show');
+            welRow2.classList.remove('show');
+        }
     </script>
 </body>
 </html>
