@@ -17,21 +17,21 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #000000;
+            background-color: #000000 !important;
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Pull Screen Unchanged */
+        /* Pull Screen with Pitch Black BG */
         #pull-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #000000;
+            background: rgba(0, 0, 0, 0.65); /* Matrix rain visible behind */
             z-index: 9000;
             display: flex;
             flex-direction: column;
@@ -82,7 +82,7 @@
             100% { opacity: 1; transform: scale(1.04); }
         }
 
-        /* Welcome Screen */
+        /* Welcome Screen with Pitch Black BG */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -138,7 +138,7 @@
             height: 100%;
         }
 
-        #matrixCanvas { z-index: 10; }
+        #matrixCanvas { z-index: 10; background-color: #000000; }
         #textCanvas { z-index: 20; pointer-events: none; }
         #fireworksCanvas { z-index: 30; pointer-events: none; }
 
@@ -314,7 +314,7 @@
     <!-- Tap Button -->
     <div id="rightTapBtn" class="right-tap-btn" onclick="nextSequenceStep()">TAP</div>
 
-    <!-- Mirror Card -->
+    <!-- Card Container -->
     <div id="mainCard" class="card-container" onclick="handleCardClick()">
         <svg class="corner-ornament top-left" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
         <svg class="corner-ornament top-right" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
@@ -356,9 +356,17 @@
             initMatrixColumns();
         }
 
-        // Custom Character Rain with specified words
-        const rainWords = "I LOVE YOU 100 WEEKS 700 DAYS AYESHA SADIK ";
-        let fontSize = 20;
+        // Exact Request Words for Rain
+        const rainPhrases = [
+            "100 WEEKS ",
+            "700 DAYS ",
+            "AYESHA ",
+            "AHUBATI ",
+            "I LOVE YOU ",
+            "SADIK "
+        ];
+
+        let fontSize = 16; // Smaller font for denser columns
         let columns = 0;
         let drops = [];
 
@@ -366,43 +374,64 @@
             columns = Math.floor(window.innerWidth / fontSize);
             drops = [];
             for (let i = 0; i < columns; i++) {
+                const phrase = rainPhrases[i % rainPhrases.length];
                 drops[i] = {
-                    y: Math.random() * -50,
-                    charIndex: Math.floor(Math.random() * rainWords.length)
+                    y: Math.random() * -60,
+                    speed: 0.25 + Math.random() * 0.25, // SLOW Speed
+                    phrase: phrase,
+                    charIndex: Math.floor(Math.random() * phrase.length)
                 };
             }
         }
+
         resize();
         window.addEventListener('resize', resize);
 
-        let matrixInterval;
-        function startMatrixRain() {
-            if (matrixInterval) clearInterval(matrixInterval);
-            matrixInterval = setInterval(drawMatrixBG, 50);
-        }
+        // Start Rain IMMEDIATELY on load
+        let matrixInterval = setInterval(drawMatrixBG, 40);
 
         function drawMatrixBG() {
-            // Strictly Solid Pure Black Background clearing (No Color Accumulation)
-            mCtx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+            // Strictly Solid Pure Black Refresh (#000000)
+            mCtx.fillStyle = '#000000';
             mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            mCtx.font = 'bold 20px monospace';
+
+            mCtx.font = 'bold 15px monospace';
 
             for (let i = 0; i < drops.length; i++) {
-                const char = rainWords[drops[i].charIndex % rainWords.length];
-                drops[i].charIndex++;
+                const drop = drops[i];
+                
+                // Draw trailing letters for dense rain look
+                const trailLength = 8;
+                for (let j = 0; j < trailLength; j++) {
+                    const charY = (drop.y - j) * fontSize;
+                    if (charY < 0 || charY > matrixCanvas.height) continue;
 
-                const x = i * fontSize;
-                const y = drops[i].y * fontSize;
+                    const idx = (drop.charIndex - j + drop.phrase.length * 100) % drop.phrase.length;
+                    const char = drop.phrase[idx];
 
-                mCtx.fillStyle = (Math.random() > 0.88) ? '#ffffff' : '#ff2a85';
-                mCtx.shadowColor = '#ff2a85';
-                mCtx.shadowBlur = 4;
-                mCtx.fillText(char, x, y);
+                    if (j === 0) {
+                        // Head character: Bright White Glow
+                        mCtx.fillStyle = '#ffffff';
+                        mCtx.shadowColor = '#00f2fe';
+                        mCtx.shadowBlur = 8;
+                    } else {
+                        // Body character: Pink
+                        const alpha = 1 - (j / trailLength);
+                        mCtx.fillStyle = `rgba(255, 42, 133, ${alpha})`;
+                        mCtx.shadowBlur = 0;
+                    }
 
-                if (y > matrixCanvas.height && Math.random() > 0.975) {
-                    drops[i].y = 0;
+                    const x = i * fontSize;
+                    mCtx.fillText(char, x, charY);
                 }
-                drops[i].y++;
+
+                drop.y += drop.speed; // Slow movement
+                drop.charIndex++;
+
+                if (drop.y * fontSize > matrixCanvas.height + 150) {
+                    drop.y = Math.random() * -20;
+                    drop.speed = 0.25 + Math.random() * 0.25;
+                }
             }
         }
 
@@ -423,8 +452,6 @@
         function triggerSystemStart() {
             bgMusic.play().catch(()=>{});
             pullScreen.style.opacity = '0';
-
-            startMatrixRain();
 
             setTimeout(() => {
                 pullScreen.style.display = 'none';
@@ -489,7 +516,7 @@
             tempCanvas.height = textCanvas.height;
 
             let dynamicFontSize = Math.min(textCanvas.width / (text.length * 0.65), textCanvas.height * 0.22);
-            if (dynamicFontSize > 90) dynamicFontSize = 90;
+            if (dynamicFontSize > 85) dynamicFontSize = 85;
 
             tempCtx.fillStyle = '#fff';
             tempCtx.font = `900 ${dynamicFontSize}px sans-serif`;
@@ -567,7 +594,7 @@
             playNextMainSequence();
         }
 
-        // Slide Dialogues
+        // Card Dialogues
         let currentSlide = 0;
         const slides = [
             { 
@@ -628,7 +655,7 @@
         function handleYesClick(e) {
             e.stopPropagation();
             titleEl.innerText = "🎉 FOREVER & ALWAYS 🎉";
-            descEl.innerText = "I Love You So Much 𝔸𝕪𝕖𝕤htt! ❤️ আপনার সাথে সারা জীবন কাটানোর জন্য অপেক্ষায় রইলাম।";
+            descEl.innerText = "I Love You So Much 𝔸𝕪𝕖𝕤𝕙𝕒! ❤️ আপনার সাথে সারা জীবন কাটানোর জন্য অপেক্ষায় রইলাম।";
             triggerBurstFireworks();
 
             actionArea.innerHTML = `
