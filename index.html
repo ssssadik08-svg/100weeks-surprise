@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Ayesha + Sadik</title>
+    <title>Ayesha + Sadik</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Poppins:wght@400;600&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -15,21 +17,21 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #04010a;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #020912;
+            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Pull Cord Screen */
+        /* Luxury Pull Screen */
         #pull-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #070212;
+            background: radial-gradient(circle at center, #06182a, #01060e);
             z-index: 9000;
             display: flex;
             flex-direction: column;
@@ -45,41 +47,43 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 10px;
+            margin-top: 0px;
         }
 
         .cord-line {
             width: 4px;
-            height: 240px;
-            background: linear-gradient(to bottom, #ff3366, #ff8c00, #fff);
-            box-shadow: 0 0 15px #ff3366;
+            height: 280px;
+            background: linear-gradient(to bottom, #d4af37, #00f2fe, #fff);
+            box-shadow: 0 0 18px #00f2fe, 0 0 30px #d4af37;
             transition: height 0.1s ease;
         }
 
         .cord-handle {
-            width: 38px;
-            height: 38px;
-            background: radial-gradient(circle, #ff1493, #8b008b);
+            width: 45px;
+            height: 45px;
+            background: radial-gradient(circle, #ffffff, #00c6ff);
             border-radius: 50%;
-            box-shadow: 0 0 20px #ff1493, 0 0 35px #fff;
-            border: 2px solid #fff;
+            box-shadow: 0 0 25px #00f2fe, 0 0 40px #ffffff;
+            border: 2px solid #d4af37;
         }
 
         .pull-hint {
-            color: #ff69b4;
-            margin-top: 35px;
-            font-size: 17px;
+            color: #4facfe;
+            margin-top: 45px;
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            letter-spacing: 3px;
             text-align: center;
-            letter-spacing: 1px;
-            animation: pulseText 1.5s infinite alternate;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.8);
+            animation: pulseGlow 1.8s infinite alternate ease-in-out;
         }
 
-        @keyframes pulseText {
-            0% { opacity: 0.5; transform: scale(0.95); }
-            100% { opacity: 1; transform: scale(1.05); }
+        @keyframes pulseGlow {
+            0% { opacity: 0.6; transform: scale(0.96); }
+            100% { opacity: 1; transform: scale(1.04); }
         }
 
-        /* Welcome Screen */
+        /* Welcome Screen with Elegant Font */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -94,39 +98,38 @@
             align-items: center;
             padding: 20px;
             opacity: 1;
-            transition: opacity 2s ease-in-out;
+            transition: opacity 1.8s ease-in-out;
             text-align: center;
         }
 
         .welcome-content {
             opacity: 0;
-            transform: scale(0.8);
+            transform: translateY(20px) scale(0.9);
             transition: opacity 1.5s ease, transform 1.5s ease;
         }
 
         .welcome-content.show {
             opacity: 1;
-            transform: scale(1);
-        }
-
-        .flower-side {
-            font-size: 50px;
-            margin: 0 15px;
-            animation: floatFlower 2.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes floatFlower {
-            0% { transform: translateY(-10px); }
-            100% { transform: translateY(10px); }
+            transform: translateY(0) scale(1);
         }
 
         .welcome-title {
-            color: #ff3366;
-            font-size: 32px;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            text-shadow: 0 0 25px #ff1493, 0 0 50px #ff69b4;
-            line-height: 1.6;
+            font-family: 'Great Vibes', cursive;
+            color: #e0f7fa;
+            font-size: 52px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px #00f2fe, 0 0 40px #00c6ff, 0 0 60px #ffffff;
+            line-height: 1.4;
+        }
+
+        .welcome-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            color: #80deea;
+            margin-top: 20px;
+            letter-spacing: 4px;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.7);
         }
 
         canvas {
@@ -138,116 +141,107 @@
             pointer-events: none;
         }
 
-        /* Circular Floating Tap Button on Right */
+        /* Floating Tap Button */
         .right-tap-btn {
             position: fixed;
-            right: 20px;
+            right: 25px;
             bottom: 40%;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, #ff1493, #4b0082);
-            border: 2px solid #ffb6c1;
+            width: 65px;
+            height: 65px;
+            background: radial-gradient(circle, #00f2fe, #0052d4);
+            border: 2px solid #e0f7fa;
             border-radius: 50%;
             color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'Cinzel', serif;
             font-weight: bold;
-            font-size: 15px;
-            letter-spacing: 1px;
-            box-shadow: 0 0 25px rgba(255, 20, 147, 0.8);
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.9);
             cursor: pointer;
             z-index: 100;
             display: none;
             animation: floatBtn 2s infinite alternate ease-in-out;
         }
 
-        .right-tap-btn:active {
-            transform: scale(0.9);
-        }
-
         @keyframes floatBtn {
             0% { transform: translateY(0px); }
-            100% { transform: translateY(-10px); }
+            100% { transform: translateY(-12px); }
         }
 
-        /* Vintage Decorative Mirror-Frame Card Box */
+        /* Mirror Frame Card */
         .card-container {
             position: relative;
             z-index: 30;
-            background: rgba(12, 3, 20, 0.94);
-            /* Ornamented Border Design */
-            border: 3px solid #d4af37;
-            outline: 2px solid #ff3366;
-            outline-offset: -8px;
-            border-radius: 12px;
-            padding: 35px 25px;
+            background: rgba(3, 15, 28, 0.92);
+            border: 2px solid #00f2fe;
+            outline: 2px solid #d4af37;
+            outline-offset: -7px;
+            border-radius: 16px;
+            padding: 40px 30px;
             width: 88%;
             max-width: 480px;
             text-align: center;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.4), inset 0 0 25px rgba(255, 51, 102, 0.3);
-            backdrop-filter: blur(12px);
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.35), inset 0 0 30px rgba(0, 198, 255, 0.2);
+            backdrop-filter: blur(15px);
             display: none;
-            animation: popup 0.8s ease-out forwards;
+            animation: popup 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
-        /* Corner Floral SVG Flourish Decorations */
         .corner-ornament {
             position: absolute;
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             fill: #d4af37;
         }
-        .top-left { top: 5px; left: 5px; }
-        .top-right { top: 5px; right: 5px; transform: scaleX(-1); }
-        .bottom-left { bottom: 5px; left: 5px; transform: scaleY(-1); }
-        .bottom-right { bottom: 5px; right: 5px; transform: scale(-1); }
+        .top-left { top: 6px; left: 6px; }
+        .top-right { top: 6px; right: 6px; transform: scaleX(-1); }
+        .bottom-left { bottom: 6px; left: 6px; transform: scaleY(-1); }
+        .bottom-right { bottom: 6px; right: 6px; transform: scale(-1); }
 
         @keyframes popup {
-            from { opacity: 0; transform: scale(0.85); }
+            from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
 
         .card-title {
+            font-family: 'Cinzel', serif;
             font-size: 24px;
-            color: #ff69b4;
-            margin-bottom: 18px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+            color: #80deea;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.7);
         }
 
         .card-desc {
             font-size: 16px;
-            color: #fff;
-            line-height: 1.7;
+            color: #e0f7fa;
+            line-height: 1.8;
             margin-bottom: 25px;
-        }
-
-        .cartoon-box {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 15px auto;
-            display: none;
+            font-weight: 300;
         }
 
         .swipe-hint {
             font-size: 12px;
-            color: #d4af37;
-            margin-top: 10px;
-            letter-spacing: 1px;
+            color: #80deea;
+            margin-top: 15px;
+            letter-spacing: 1.5px;
+            font-family: 'Cinzel', serif;
         }
 
         .btn-custom {
-            background: linear-gradient(45deg, #ff1493, #d4af37);
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
             color: white;
-            border: none;
-            padding: 11px 25px;
+            border: 1px solid #e0f7fa;
+            padding: 12px 30px;
             font-size: 15px;
-            border-radius: 25px;
+            font-family: 'Cinzel', serif;
+            border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 0 20px #ff1493;
-            transition: 0.2s;
+            box-shadow: 0 0 25px rgba(0, 198, 255, 0.8);
+            transition: 0.3s;
         }
     </style>
 </head>
@@ -259,24 +253,22 @@
             <div class="cord-line" id="cordLine"></div>
             <div class="cord-handle"></div>
         </div>
-        <div class="pull-hint">দড়িটি নিচের দিকে টানুন 💡<br><span style="font-size: 12px; color: #ff8c00;">(Drag Down)</span></div>
+        <div class="pull-hint">PULL DOWN TO BEGIN ✨</div>
     </div>
 
     <!-- Welcome Entry Screen -->
     <div id="welcome-screen">
-        <div style="display: flex; align-items: center;" id="welRow1">
-            <div class="flower-side">🌸</div>
-            <div class="welcome-title">Hey Ayesha, My Love 💕</div>
-            <div class="flower-side">🌸</div>
+        <div class="welcome-content" id="welRow1">
+            <div class="welcome-title">Hey Ayesha, My Love</div>
         </div>
-        <div class="welcome-title" style="font-size: 22px; color: #ffaa00; margin-top: 18px;" id="welRow2">
-            Welcome. This is for you ✨
+        <div class="welcome-content" id="welRow2">
+            <div class="welcome-subtitle">WELCOME. THIS IS FOR YOU ✨</div>
         </div>
     </div>
 
     <!-- Canvases -->
-    <canvas id="fireworksCanvas"></canvas>
     <canvas id="matrixCanvas"></canvas>
+    <canvas id="fireworksCanvas"></canvas>
     <canvas id="textCanvas"></canvas>
 
     <!-- Floating Circular Tap Button -->
@@ -284,26 +276,18 @@
 
     <!-- Decorated Vintage Glass Card -->
     <div id="mainCard" class="card-container">
-        <!-- Corner Ornaments -->
         <svg class="corner-ornament top-left" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
         <svg class="corner-ornament top-right" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
         <svg class="corner-ornament bottom-left" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
         <svg class="corner-ornament bottom-right" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
 
-        <div id="cartoonBox" class="cartoon-box">
-            <svg viewBox="0 0 100 100" width="100%" height="100%">
-                <circle cx="50" cy="30" r="15" fill="#ffb6c1"/>
-                <path d="M 50 45 L 50 70 L 35 90 M 50 70 L 65 85" stroke="#ff3366" stroke-width="5" stroke-linecap="round" fill="none"/>
-                <circle cx="73" cy="49" r="4" fill="none" stroke="#ffd700" stroke-width="2"/>
-            </svg>
-        </div>
         <h2 id="cardTitle" class="card-title"></h2>
         <p id="cardDesc" class="card-desc"></p>
 
         <div id="btnContainer">
-            <button id="nextBtn" class="btn-custom" onclick="nextSlide()">Next ✨</button>
+            <button id="nextBtn" class="btn-custom" onclick="nextSlide()">NEXT ✨</button>
         </div>
-        <div class="swipe-hint">👈 Swipe Left or Tap to Flip Page</div>
+        <div class="swipe-hint">👈 SWIPE LEFT OR TAP TO FLIP</div>
     </div>
 
     <audio id="bgMusic" loop preload="auto">
@@ -327,42 +311,95 @@
         const bgMusic = document.getElementById('bgMusic');
         const rightTapBtn = document.getElementById('rightTapBtn');
 
-        let mediaRecorder;
-        let recordedChunks = [];
-
         function resize() {
             matrixCanvas.width = textCanvas.width = fwCanvas.width = window.innerWidth;
             matrixCanvas.height = textCanvas.height = fwCanvas.height = window.innerHeight;
+            initMatrixColumns();
+        }
+
+        // Vertical Matrix Rain Logic
+        const matrixWords = ['100 WEEKS', '700 DAYS', 'AYESHA + SADIK', 'AHUBATI + AHUBI', 'LOVE YOU'];
+        let columns = 0;
+        let drops = [];
+        let colWords = [];
+
+        function initMatrixColumns() {
+            columns = Math.floor(window.innerWidth / 70);
+            drops = [];
+            colWords = [];
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.random() * -20;
+                colWords[i] = matrixWords[Math.floor(Math.random() * matrixWords.length)];
+            }
         }
         resize();
         window.addEventListener('resize', resize);
 
-        // Cord Drag Logic
+        let matrixInterval;
+        function startMatrixRain() {
+            if (matrixInterval) clearInterval(matrixInterval);
+            matrixInterval = setInterval(drawMatrixBG, 50);
+        }
+
+        function drawMatrixBG() {
+            mCtx.fillStyle = 'rgba(2, 9, 18, 0.15)';
+            mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            mCtx.font = 'bold 16px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const word = colWords[i];
+                const x = i * 70 + 15;
+                const y = drops[i] * 22;
+
+                // Vertical Character Dropping
+                for (let j = 0; j < word.length; j++) {
+                    const char = word[j];
+                    const charY = y - (j * 20);
+                    if (charY > 0 && charY < matrixCanvas.height) {
+                        mCtx.fillStyle = (j === 0) ? '#ffffff' : 'rgba(0, 242, 254, 0.45)';
+                        mCtx.shadowColor = '#00f2fe';
+                        mCtx.shadowBlur = (j === 0) ? 10 : 0;
+                        mCtx.fillText(char, x, charY);
+                    }
+                }
+
+                if (y - (word.length * 20) > matrixCanvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                    colWords[i] = matrixWords[Math.floor(Math.random() * matrixWords.length)];
+                }
+                drops[i]++;
+            }
+        }
+
+        // Pull Cord Drag Mechanics
         let startY = 0, currentDrag = 0;
-        const maxDrag = 150;
+        const maxDrag = 180;
 
         cordWrapper.addEventListener('touchstart', (e) => startY = e.touches[0].clientY);
         cordWrapper.addEventListener('touchmove', (e) => {
             let y = e.touches[0].clientY;
             currentDrag = Math.max(0, Math.min(maxDrag, y - startY));
-            cordLine.style.height = (240 + currentDrag) + 'px';
+            cordLine.style.height = (280 + currentDrag) + 'px';
             if (currentDrag >= maxDrag) triggerSystemStart();
         });
-        cordWrapper.addEventListener('touchend', () => { if (currentDrag < maxDrag) cordLine.style.height = '240px'; });
+        cordWrapper.addEventListener('touchend', () => { if (currentDrag < maxDrag) cordLine.style.height = '280px'; });
         cordWrapper.addEventListener('click', () => triggerSystemStart());
 
         function triggerSystemStart() {
             bgMusic.play().catch(()=>{});
             pullScreen.style.opacity = '0';
-            startRecording();
+
+            // Start Matrix Vertical Rain BEFORE Welcome Text
+            startMatrixRain();
 
             setTimeout(() => {
                 pullScreen.style.display = 'none';
                 welcomeScreen.style.display = 'flex';
                 startFireworks();
 
-                setTimeout(() => { welRow1.classList.add('show'); createFirework(window.innerWidth/2, window.innerHeight*0.4); }, 400);
-                setTimeout(() => { welRow2.classList.add('show'); createFirework(window.innerWidth/2, window.innerHeight*0.6); }, 2200);
+                // Smooth Welcome Fade-in Sequence with Sparkles
+                setTimeout(() => { welRow1.classList.add('show'); createFirework(window.innerWidth/2, window.innerHeight*0.38); }, 500);
+                setTimeout(() => { welRow2.classList.add('show'); createFirework(window.innerWidth/2, window.innerHeight*0.58); }, 2200);
 
                 setTimeout(() => {
                     welcomeScreen.style.opacity = '0';
@@ -370,56 +407,37 @@
                         welcomeScreen.style.display = 'none';
                         stopFireworks();
                         startCountdownSequence();
-                    }, 1500);
-                }, 5500);
-            }, 1000);
-        }
-
-        function startRecording() {
-            try {
-                const stream = matrixCanvas.captureStream(30);
-                recordedChunks = [];
-                mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
-                mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) recordedChunks.push(e.data); };
-                mediaRecorder.start();
-            } catch (err) {}
-        }
-
-        function downloadVideo() {
-            if (mediaRecorder && mediaRecorder.state !== "inactive") mediaRecorder.stop();
-            setTimeout(() => {
-                const blob = new Blob(recordedChunks, { type: 'video/webm' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                a.download = 'Ayesha_Sadik_Love_Story.webm';
-                document.body.appendChild(a);
-                a.click();
-                setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
-            }, 500);
+                    }, 1800);
+                }, 5800);
+            }, 800);
         }
 
         // Fireworks Engine
         let fwInterval, particles = [];
         function startFireworks() {
-            fwInterval = setInterval(() => { createFirework(Math.random() * fwCanvas.width, Math.random() * fwCanvas.height * 0.5); }, 500);
+            fwInterval = setInterval(() => { createFirework(Math.random() * fwCanvas.width, Math.random() * fwCanvas.height * 0.5); }, 450);
             animateFireworks();
         }
         function createFirework(x, y) {
-            const count = 30;
+            const count = 35;
             for (let i = 0; i < count; i++) {
                 const angle = (Math.PI * 2 / count) * i;
                 const speed = Math.random() * 4 + 2;
-                particles.push({ x: x, y: y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, alpha: 1, color: `hsl(${Math.random() * 60 + 320}, 100%, 65%)` });
+                particles.push({ 
+                    x: x, y: y, 
+                    vx: Math.cos(angle) * speed, 
+                    vy: Math.sin(angle) * speed, 
+                    alpha: 1, 
+                    color: `hsl(${Math.random() * 40 + 180}, 100%, 70%)` 
+                });
             }
         }
         function animateFireworks() {
-            fwCtx.fillStyle = 'rgba(4, 1, 10, 0.2)';
+            fwCtx.fillStyle = 'rgba(2, 9, 18, 0.2)';
             fwCtx.fillRect(0, 0, fwCanvas.width, fwCanvas.height);
             particles.forEach((p, index) => {
-                p.x += p.vx; p.y += p.vy; p.alpha -= 0.02;
-                fwCtx.beginPath(); fwCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                p.x += p.vx; p.y += p.vy; p.alpha -= 0.018;
+                fwCtx.beginPath(); fwCtx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
                 fwCtx.fillStyle = p.color; fwCtx.globalAlpha = p.alpha; fwCtx.fill();
                 if (p.alpha <= 0) particles.splice(index, 1);
             });
@@ -428,27 +446,7 @@
         }
         function stopFireworks() { clearInterval(fwInterval); fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height); }
 
-        // Custom Matrix Background with Correct Plus Names
-        const matrixWords = ['100 WEEKS', '700 DAYS', 'AYESHA + SADIK', 'AHUBATI + AHUBI', 'LOVE YOU'];
-        let columns = Math.floor(window.innerWidth / 150);
-        let drops = Array(columns).fill(1);
-
-        function drawMatrixBG() {
-            mCtx.fillStyle = 'rgba(4, 1, 10, 0.18)';
-            mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            mCtx.fillStyle = 'rgba(255, 105, 180, 0.22)';
-            mCtx.font = 'bold 15px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = matrixWords[Math.floor(Math.random() * matrixWords.length)];
-                mCtx.fillText(text, i * 150, drops[i] * 40);
-                if (drops[i] * 40 > matrixCanvas.height && Math.random() > 0.95) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(drawMatrixBG, 80);
-
-        // Solid Pixel Renderer
+        // Solid Pixel Text Canvas (Cyan & Soft White Glow)
         function renderTextPixel(text) {
             tCtx.clearRect(0, 0, textCanvas.width, textCanvas.height);
             if (!text) return;
@@ -458,8 +456,8 @@
             tempCanvas.width = textCanvas.width;
             tempCanvas.height = textCanvas.height;
 
-            let dynamicFontSize = Math.min(textCanvas.width / (text.length * 0.6), textCanvas.height * 0.25);
-            if (dynamicFontSize > 85) dynamicFontSize = 85;
+            let dynamicFontSize = Math.min(textCanvas.width / (text.length * 0.65), textCanvas.height * 0.22);
+            if (dynamicFontSize > 80) dynamicFontSize = 80;
 
             tempCtx.fillStyle = '#fff';
             tempCtx.font = `bold ${dynamicFontSize}px sans-serif`;
@@ -471,9 +469,9 @@
             const data = imgData.data;
 
             const pixelSize = 5;
-            tCtx.fillStyle = '#ff3366';
-            tCtx.shadowColor = '#ff1493';
-            tCtx.shadowBlur = 12;
+            tCtx.fillStyle = '#00f2fe';
+            tCtx.shadowColor = '#ffffff';
+            tCtx.shadowBlur = 15;
 
             for (let y = 0; y < tempCanvas.height; y += pixelSize) {
                 for (let x = 0; x < tempCanvas.width; x += pixelSize) {
@@ -485,7 +483,7 @@
             }
         }
 
-        // Sequence List
+        // Sequences
         const countdownSeq = ["3", "2", "1"];
         const mainSequence = [
             "100 WEEKS",
@@ -501,7 +499,7 @@
             if (seqIndex < countdownSeq.length) {
                 renderTextPixel(countdownSeq[seqIndex]);
                 seqIndex++;
-                setTimeout(startCountdownSequence, 750);
+                setTimeout(startCountdownSequence, 700);
             } else {
                 seqIndex = 0;
                 playNextMainSequence();
@@ -525,7 +523,7 @@
             playNextMainSequence();
         }
 
-        // Editable Slide Slots (নিজের মতো ডায়ালগ বসিয়ে নেওয়ার অপশন)
+        // Slide Dialogs
         let currentSlide = 0;
         const slides = [
             { 
@@ -540,22 +538,19 @@
                 title: "🌸 Pure Happiness 🌸", 
                 desc: "জীবনের প্রতিটি মুহূর্ত তোমার ভালোবাসা দিয়ে সুন্দর করার জন্য আমি চিরকৃতজ্ঞ।" 
             },
-            /* নিচে আপনার ইচ্ছেমতো বাড়তি স্লাইড যোগ করার খালি স্লট দেওয়া হলো */
             { 
                 title: "✨ Custom Slot 1 ✨", 
-                desc: "এখানে আপনার নিজের মতো যেকোনো রোমান্টিক লাইন কোড থেকে লিখে নিতে পারবেন।" 
+                desc: "এখানে আপনার নিজের মতো যেকোনো লাইন কোড থেকে লিখে নিতে পারবেন।" 
             },
             { 
                 title: "💍 Forever & Always 💍", 
-                desc: "সারাটা জীবন কি এভাবেই পাশে থাকবে? ❤️",
-                showCartoon: true 
+                desc: "সারাটা জীবন কি এভাবেই পাশে থাকবে? ❤️"
             }
         ];
 
         const cardEl = document.getElementById('mainCard');
         const titleEl = document.getElementById('cardTitle');
         const descEl = document.getElementById('cardDesc');
-        const cartoonBox = document.getElementById('cartoonBox');
 
         function showCard() {
             cardEl.style.display = 'block';
@@ -565,8 +560,6 @@
         function updateCard() {
             titleEl.innerText = slides[currentSlide].title;
             descEl.innerText = slides[currentSlide].desc;
-            
-            cartoonBox.style.display = slides[currentSlide].showCartoon ? 'block' : 'none';
 
             if (currentSlide === slides.length - 1) {
                 document.getElementById('nextBtn').innerText = "YES, ALWAYS! 💖";
@@ -578,22 +571,18 @@
                 currentSlide++;
                 updateCard();
             } else {
-                cartoonBox.style.display = 'none';
                 titleEl.innerText = "Yayyy! 🎉❤️";
                 descEl.innerText = "Welcome to our forever journey, Ayesha + Sadik! 🥰✨";
-                
-                document.getElementById('btnContainer').innerHTML = `
-                    <button class="btn-custom" onclick="downloadVideo()">🎥 Download Video</button>
-                `;
+                document.getElementById('btnContainer').innerHTML = `<button class="btn-custom">FOREVER TOGETHER ❤️</button>`;
             }
         }
 
-        // Touch Swipe Left Gesture for flipping card pages
+        // Swipe Left Gesture
         let touchStartX = 0;
         cardEl.addEventListener('touchstart', (e) => touchStartX = e.touches[0].clientX);
         cardEl.addEventListener('touchend', (e) => {
             let touchEndX = e.changedTouches[0].clientX;
-            if (touchStartX - touchEndX > 50) nextSlide(); // Swipe Left Action
+            if (touchStartX - touchEndX > 50) nextSlide();
         });
     </script>
 </body>
