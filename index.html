@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayesha + Sadik</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Ayesha + Sadik ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@1,700&family=Poppins:wght@300;400;600&display=swap');
 
@@ -13,25 +13,28 @@
             box-sizing: border-box;
         }
 
-        body, html {
+        html,
+        body {
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #000000 !important;
+            background: #000000;
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
-        /* Pull Screen with Pitch Black BG */
+        /* ---------- PULL SCREEN ---------- */
         #pull-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.65); /* Matrix rain visible behind */
+            background: rgba(0, 0, 0, 0.70);
             z-index: 9000;
             display: flex;
             flex-direction: column;
@@ -47,14 +50,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: 55px;
         }
 
         .cord-line {
             width: 4px;
-            height: 280px;
+            height: 260px;
             background: linear-gradient(to bottom, #ffd700, #00f2fe, #ff2a85);
             box-shadow: 0 0 15px #00f2fe, 0 0 25px #ffd700;
-            transition: height 0.1s ease;
+            transition: height 0.08s ease;
         }
 
         .cord-handle {
@@ -68,9 +72,9 @@
 
         .pull-hint {
             color: #ffd700;
-            margin-top: 45px;
+            margin-top: 40px;
             font-family: 'Cinzel', serif;
-            font-size: 19px;
+            font-size: 18px;
             letter-spacing: 3px;
             text-align: center;
             text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
@@ -78,11 +82,17 @@
         }
 
         @keyframes pulseGlow {
-            0% { opacity: 0.6; transform: scale(0.96); }
-            100% { opacity: 1; transform: scale(1.04); }
+            0% {
+                opacity: 0.6;
+                transform: scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.04);
+            }
         }
 
-        /* Welcome Screen with Pitch Black BG */
+        /* ---------- WELCOME SCREEN ---------- */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -106,14 +116,13 @@
             transform: translateY(20px);
             transition: opacity 1.5s ease, transform 1.5s ease;
         }
-
         .welcome-content.show {
             opacity: 1;
             transform: translateY(0);
         }
 
         .welcome-title {
-            font-size: 42px;
+            font-size: 38px;
             color: #ffffff;
             letter-spacing: 2px;
             text-shadow: 0 0 20px #00f2fe, 0 0 40px #ff2a85;
@@ -123,13 +132,14 @@
 
         .welcome-subtitle {
             font-family: 'Cinzel', serif;
-            font-size: 18px;
+            font-size: 17px;
             color: #ffd700;
             margin-top: 20px;
             letter-spacing: 3px;
             text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
         }
 
+        /* ---------- CANVASES ---------- */
         canvas {
             position: absolute;
             top: 0;
@@ -137,53 +147,71 @@
             width: 100%;
             height: 100%;
         }
+        #matrixCanvas {
+            z-index: 10;
+            background: #000000;
+        }
+        #textCanvas {
+            z-index: 20;
+            pointer-events: none;
+        }
+        #fireworksCanvas {
+            z-index: 30;
+            pointer-events: none;
+        }
+        /* hearts canvas on top of matrix but under text */
+        #heartsCanvas {
+            z-index: 15;
+            pointer-events: none;
+        }
 
-        #matrixCanvas { z-index: 10; background-color: #000000; }
-        #textCanvas { z-index: 20; pointer-events: none; }
-        #fireworksCanvas { z-index: 30; pointer-events: none; }
-
-        /* Floating Tap Button */
+        /* ---------- RIGHT TAP BUTTON ---------- */
         .right-tap-btn {
             position: fixed;
-            right: 25px;
-            bottom: 35%;
-            width: 70px;
-            height: 70px;
+            right: 22px;
+            bottom: 38%;
+            width: 68px;
+            height: 68px;
             background: radial-gradient(circle, #00f2fe, #007799);
             border: 2px solid #ffffff;
             border-radius: 50%;
             color: #fff;
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
             font-family: 'Cinzel', serif;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 1.5px;
             box-shadow: 0 0 30px rgba(0, 242, 254, 0.9);
             cursor: pointer;
             z-index: 500;
-            display: none;
             animation: floatBtn 2s infinite alternate ease-in-out;
+            text-align: center;
+            line-height: 1.2;
         }
 
         @keyframes floatBtn {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-12px); }
+            0% {
+                transform: translateY(0px);
+            }
+            100% {
+                transform: translateY(-12px);
+            }
         }
 
-        /* Card Container */
+        /* ---------- CARD CONTAINER ---------- */
         .card-container {
             position: relative;
             z-index: 600;
-            background: rgba(4, 8, 16, 0.95);
+            background: rgba(4, 8, 16, 0.92);
             border: 2px solid #00f2fe;
             outline: 2px solid #ffd700;
             outline-offset: -7px;
-            border-radius: 16px;
-            padding: 40px 30px;
+            border-radius: 18px;
+            padding: 34px 26px 30px;
             width: 88%;
-            max-width: 480px;
+            max-width: 500px;
             text-align: center;
             box-shadow: 0 0 50px rgba(0, 242, 254, 0.5), inset 0 0 30px rgba(255, 42, 133, 0.2);
             backdrop-filter: blur(15px);
@@ -194,49 +222,111 @@
 
         .corner-ornament {
             position: absolute;
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             fill: #ffd700;
         }
-        .top-left { top: 6px; left: 6px; }
-        .top-right { top: 6px; right: 6px; transform: scaleX(-1); }
-        .bottom-left { bottom: 6px; left: 6px; transform: scaleY(-1); }
-        .bottom-right { bottom: 6px; right: 6px; transform: scale(-1); }
+        .top-left {
+            top: 6px;
+            left: 6px;
+        }
+        .top-right {
+            top: 6px;
+            right: 6px;
+            transform: scaleX(-1);
+        }
+        .bottom-left {
+            bottom: 6px;
+            left: 6px;
+            transform: scaleY(-1);
+        }
+        .bottom-right {
+            bottom: 6px;
+            right: 6px;
+            transform: scale(-1);
+        }
 
         @keyframes popup {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .card-title {
             font-family: 'Cinzel', serif;
-            font-size: 24px;
+            font-size: 22px;
             color: #00f2fe;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
             letter-spacing: 2px;
             text-shadow: 0 0 15px rgba(0, 242, 254, 0.7);
+            min-height: 50px;
         }
 
         .marry-me-title {
             font-family: 'Playfair Display', serif !important;
             font-style: italic;
-            font-size: 32px !important;
+            font-size: 30px !important;
             color: #ffd700 !important;
             text-shadow: 0 0 20px #ffd700, 0 0 30px #ff2a85 !important;
         }
 
         .card-desc {
-            font-size: 16px;
+            font-size: 15px;
             color: #e0f7fa;
             line-height: 1.8;
-            margin-bottom: 25px;
+            margin-bottom: 18px;
             font-weight: 300;
+            min-height: 60px;
+        }
+
+        /* ----- Image Slide inside Card ----- */
+        .card-image-wrap {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 12px 0 16px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
+            position: relative;
+            background: #111;
+        }
+
+        .card-image-wrap img {
+            width: 100%;
+            height: auto;
+            max-height: 260px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .card-image-wrap img:hover {
+            transform: scale(1.02);
+        }
+
+        .img-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 20px 12px 12px;
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px #000;
         }
 
         .tap-card-hint {
             font-size: 13px;
             color: #ffd700;
-            margin-top: 15px;
+            margin-top: 12px;
             letter-spacing: 2px;
             font-family: 'Cinzel', serif;
             animation: pulseGlow 1.5s infinite alternate;
@@ -245,8 +335,8 @@
         .btn-group {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 14px;
+            margin-top: 18px;
             flex-wrap: wrap;
         }
 
@@ -254,7 +344,7 @@
             background: linear-gradient(45deg, #00f2fe, #ffd700);
             color: #000;
             border: none;
-            padding: 14px 35px;
+            padding: 14px 34px;
             font-size: 16px;
             font-family: 'Cinzel', serif;
             font-weight: 900;
@@ -263,8 +353,9 @@
             box-shadow: 0 0 25px rgba(0, 242, 254, 0.8);
             transition: transform 0.2s;
         }
-
-        .btn-yes:active { transform: scale(0.95); }
+        .btn-yes:active {
+            transform: scale(0.94);
+        }
 
         .btn-action {
             background: linear-gradient(45deg, #00f2fe, #4facfe);
@@ -277,51 +368,118 @@
             border-radius: 25px;
             cursor: pointer;
             box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+            transition: transform 0.2s;
+        }
+        .btn-action:active {
+            transform: scale(0.94);
         }
 
         .btn-exit {
             background: linear-gradient(45deg, #ff416c, #ff4b2b);
             color: #fff;
         }
+
+        /* ---------- FLOATING HEARTS (DOM) ---------- */
+        .floating-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 50;
+            font-size: 22px;
+            animation: floatUp 4s ease-in forwards;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.4) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(-20px) scale(1.2) rotate(10deg);
+            }
+            100% {
+                transform: translateY(-400px) scale(0.6) rotate(-20deg);
+                opacity: 0;
+            }
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 480px) {
+            .welcome-title {
+                font-size: 28px;
+            }
+            .card-title {
+                font-size: 19px;
+            }
+            .marry-me-title {
+                font-size: 24px !important;
+            }
+            .card-desc {
+                font-size: 14px;
+            }
+            .right-tap-btn {
+                width: 58px;
+                height: 58px;
+                font-size: 11px;
+                right: 14px;
+            }
+            .cord-line {
+                height: 200px;
+            }
+            .pull-hint {
+                font-size: 15px;
+                margin-top: 30px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Pull Screen -->
+    <!-- ===== PULL SCREEN ===== -->
     <div id="pull-screen">
         <div class="cord-wrapper" id="cordWrapper">
             <div class="cord-line" id="cordLine"></div>
             <div class="cord-handle"></div>
         </div>
-        <div class="pull-hint">PULL DOWN TO BEGIN ✨</div>
+        <div class="pull-hint">⬇ PULL DOWN TO BEGIN ✨</div>
     </div>
 
-    <!-- Welcome Screen -->
+    <!-- ===== WELCOME SCREEN ===== -->
     <div id="welcome-screen">
         <div class="welcome-content" id="welRow1">
-            <div class="welcome-title">Hey 𝔸𝕪𝕖𝕤𝕙𝕒, My Love</div>
+            <div class="welcome-title">Hey 𝔸𝕪𝕖𝕤𝕙𝕒, My Love ❤️</div>
         </div>
         <div class="welcome-content" id="welRow2">
-            <div class="welcome-subtitle">WELCOME 𝔸𝕪𝕖𝕤𝕙𝕒, THIS IS FOR YOU ✨</div>
+            <div class="welcome-subtitle">✨ WELCOME, THIS IS FOR YOU ✨</div>
         </div>
     </div>
 
-    <!-- Canvases -->
+    <!-- ===== CANVASES ===== -->
     <canvas id="matrixCanvas"></canvas>
+    <canvas id="heartsCanvas"></canvas>
     <canvas id="textCanvas"></canvas>
     <canvas id="fireworksCanvas"></canvas>
 
-    <!-- Tap Button -->
-    <div id="rightTapBtn" class="right-tap-btn" onclick="nextSequenceStep()">TAP</div>
+    <!-- ===== TAP BUTTON ===== -->
+    <div id="rightTapBtn" class="right-tap-btn" onclick="nextSequenceStep()">TAP<br/>❤️</div>
 
-    <!-- Card Container -->
+    <!-- ===== MAIN CARD ===== -->
     <div id="mainCard" class="card-container" onclick="handleCardClick()">
+        <!-- Corner ornaments -->
         <svg class="corner-ornament top-left" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
         <svg class="corner-ornament top-right" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
         <svg class="corner-ornament bottom-left" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
         <svg class="corner-ornament bottom-right" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
 
         <h2 id="cardTitle" class="card-title"></h2>
+
+        <!-- Image placeholder (hidden by default, shown on image slides) -->
+        <div id="cardImageWrap" class="card-image-wrap" style="display:none;">
+            <img id="cardImage" src="" alt="Ayesha & Sadik" />
+            <div class="img-caption" id="imgCaption">💕</div>
+        </div>
+
         <p id="cardDesc" class="card-desc"></p>
 
         <div id="actionArea">
@@ -329,17 +487,25 @@
         </div>
     </div>
 
+    <!-- ===== AUDIO ===== -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="song.mp3" type="audio/mpeg">
+        <source src="song.mp3" type="audio/mpeg" />
     </audio>
 
+    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
+        // ============================================================
+        //  1. CANVAS SETUP
+        // ============================================================
         const matrixCanvas = document.getElementById('matrixCanvas');
         const mCtx = matrixCanvas.getContext('2d');
         const textCanvas = document.getElementById('textCanvas');
         const tCtx = textCanvas.getContext('2d');
         const fwCanvas = document.getElementById('fireworksCanvas');
         const fwCtx = fwCanvas.getContext('2d');
+        const heartsCanvas = document.getElementById('heartsCanvas');
+        const hCtx = heartsCanvas.getContext('2d');
 
         const pullScreen = document.getElementById('pull-screen');
         const cordWrapper = document.getElementById('cordWrapper');
@@ -350,117 +516,233 @@
         const bgMusic = document.getElementById('bgMusic');
         const rightTapBtn = document.getElementById('rightTapBtn');
 
-        function resize() {
-            matrixCanvas.width = textCanvas.width = fwCanvas.width = window.innerWidth;
-            matrixCanvas.height = textCanvas.height = fwCanvas.height = window.innerHeight;
+        let W, H;
+
+        function resizeAll() {
+            W = window.innerWidth;
+            H = window.innerHeight;
+            matrixCanvas.width = textCanvas.width = fwCanvas.width = heartsCanvas.width = W;
+            matrixCanvas.height = textCanvas.height = fwCanvas.height = heartsCanvas.height = H;
             initMatrixColumns();
         }
+        window.addEventListener('resize', resizeAll);
 
-        // Exact Request Words for Rain
+        // ============================================================
+        //  2. MATRIX RAIN (with custom phrases)
+        // ============================================================
         const rainPhrases = [
-            "100 WEEKS ",
-            "700 DAYS ",
-            "AYESHA ",
-            "AHUBATI ",
-            "I LOVE YOU ",
-            "SADIK "
+            "100 WEEKS ", "700 DAYS ", "AYESHA ",
+            "AHUBATI ", "I LOVE YOU ", "SADIK "
         ];
-
-        let fontSize = 16; // Smaller font for denser columns
+        let fontSize = 16;
         let columns = 0;
         let drops = [];
 
         function initMatrixColumns() {
-            columns = Math.floor(window.innerWidth / fontSize);
+            columns = Math.floor(W / fontSize);
             drops = [];
             for (let i = 0; i < columns; i++) {
                 const phrase = rainPhrases[i % rainPhrases.length];
                 drops[i] = {
                     y: Math.random() * -60,
-                    speed: 0.25 + Math.random() * 0.25, // SLOW Speed
+                    speed: 0.20 + Math.random() * 0.25,
                     phrase: phrase,
                     charIndex: Math.floor(Math.random() * phrase.length)
                 };
             }
         }
-
-        resize();
-        window.addEventListener('resize', resize);
-
-        // Start Rain IMMEDIATELY on load
-        let matrixInterval = setInterval(drawMatrixBG, 40);
+        resizeAll();
 
         function drawMatrixBG() {
-            // Strictly Solid Pure Black Refresh (#000000)
             mCtx.fillStyle = '#000000';
-            mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-
+            mCtx.fillRect(0, 0, W, H);
             mCtx.font = 'bold 15px monospace';
 
             for (let i = 0; i < drops.length; i++) {
                 const drop = drops[i];
-                
-                // Draw trailing letters for dense rain look
-                const trailLength = 8;
-                for (let j = 0; j < trailLength; j++) {
+                const trailLen = 8;
+                for (let j = 0; j < trailLen; j++) {
                     const charY = (drop.y - j) * fontSize;
-                    if (charY < 0 || charY > matrixCanvas.height) continue;
-
+                    if (charY < 0 || charY > H) continue;
                     const idx = (drop.charIndex - j + drop.phrase.length * 100) % drop.phrase.length;
                     const char = drop.phrase[idx];
-
                     if (j === 0) {
-                        // Head character: Bright White Glow
                         mCtx.fillStyle = '#ffffff';
                         mCtx.shadowColor = '#00f2fe';
                         mCtx.shadowBlur = 8;
                     } else {
-                        // Body character: Pink
-                        const alpha = 1 - (j / trailLength);
+                        const alpha = 1 - (j / trailLen);
                         mCtx.fillStyle = `rgba(255, 42, 133, ${alpha})`;
                         mCtx.shadowBlur = 0;
                     }
-
                     const x = i * fontSize;
                     mCtx.fillText(char, x, charY);
                 }
-
-                drop.y += drop.speed; // Slow movement
+                drop.y += drop.speed;
                 drop.charIndex++;
-
-                if (drop.y * fontSize > matrixCanvas.height + 150) {
+                if (drop.y * fontSize > H + 150) {
                     drop.y = Math.random() * -20;
-                    drop.speed = 0.25 + Math.random() * 0.25;
+                    drop.speed = 0.20 + Math.random() * 0.25;
                 }
             }
         }
+        let matrixInterval = setInterval(drawMatrixBG, 40);
 
-        // Pull Mechanism
-        let startY = 0, currentDrag = 0;
+        // ============================================================
+        //  3. FLOATING HEARTS CANVAS
+        // ============================================================
+        let heartParticles = [];
+
+        function spawnHeartBurst(cx, cy, count) {
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 1 + Math.random() * 3;
+                heartParticles.push({
+                    x: cx,
+                    y: cy,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed - 1.5,
+                    size: 10 + Math.random() * 18,
+                    alpha: 0.9 + Math.random() * 0.1,
+                    life: 1,
+                    decay: 0.005 + Math.random() * 0.008,
+                    color: `hsl(${330 + Math.random() * 40}, 90%, 60%)`
+                });
+            }
+        }
+
+        function drawHeartsCanvas() {
+            hCtx.clearRect(0, 0, W, H);
+            for (let i = heartParticles.length - 1; i >= 0; i--) {
+                const p = heartParticles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.04;
+                p.life -= p.decay;
+                p.alpha = p.life * 0.9;
+                if (p.life <= 0) { heartParticles.splice(i, 1); continue; }
+                hCtx.globalAlpha = p.alpha;
+                hCtx.font = `${p.size}px serif`;
+                hCtx.textAlign = 'center';
+                hCtx.textBaseline = 'middle';
+                hCtx.fillStyle = p.color || '#ff2a85';
+                hCtx.shadowColor = '#ff2a85';
+                hCtx.shadowBlur = 15;
+                hCtx.fillText('♥', p.x, p.y);
+            }
+            hCtx.globalAlpha = 1;
+            hCtx.shadowBlur = 0;
+            if (heartParticles.length > 0) requestAnimationFrame(drawHeartsCanvas);
+        }
+
+        function triggerHeartBurst(x, y) {
+            spawnHeartBurst(x || W / 2, y || H / 2, 25);
+            if (heartParticles.length > 0) drawHeartsCanvas();
+        }
+
+        // Also spawn hearts from random positions periodically
+        setInterval(() => {
+            if (document.getElementById('pull-screen').style.display === 'none') {
+                const x = Math.random() * W;
+                const y = Math.random() * H * 0.6 + 50;
+                spawnHeartBurst(x, y, 8 + Math.random() * 12);
+                if (heartParticles.length > 0) drawHeartsCanvas();
+            }
+        }, 2800);
+
+        // ============================================================
+        //  4. FIREWORKS
+        // ============================================================
+        let particles = [];
+
+        function triggerBurstFireworks(cx, cy) {
+            const centerX = cx || W / 2;
+            const centerY = cy || H * 0.4;
+            const colors = ['#ffd700', '#00f2fe', '#ff2a85', '#ffffff', '#ff6b6b', '#feca57'];
+            for (let i = 0; i < 50; i++) {
+                const angle = (Math.PI * 2 / 50) * i + Math.random() * 0.2;
+                const speed = Math.random() * 5 + 2.5;
+                particles.push({
+                    x: centerX,
+                    y: centerY,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    alpha: 1,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    size: 2 + Math.random() * 3
+                });
+            }
+            animateFireworks();
+        }
+
+        function animateFireworks() {
+            if (particles.length === 0) return;
+            fwCtx.clearRect(0, 0, W, H);
+            particles.forEach((p, idx) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.03;
+                p.alpha -= 0.018;
+                fwCtx.beginPath();
+                fwCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                fwCtx.fillStyle = p.color;
+                fwCtx.globalAlpha = p.alpha;
+                fwCtx.shadowColor = p.color;
+                fwCtx.shadowBlur = 12;
+                fwCtx.fill();
+                if (p.alpha <= 0) particles.splice(idx, 1);
+            });
+            fwCtx.globalAlpha = 1;
+            fwCtx.shadowBlur = 0;
+            if (particles.length > 0) requestAnimationFrame(animateFireworks);
+        }
+
+        // ============================================================
+        //  5. PULL MECHANISM
+        // ============================================================
+        let startY = 0,
+            currentDrag = 0;
         const maxDrag = 170;
 
-        cordWrapper.addEventListener('touchstart', (e) => startY = e.touches[0].clientY);
+        cordWrapper.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+        });
         cordWrapper.addEventListener('touchmove', (e) => {
-            let y = e.touches[0].clientY;
+            const y = e.touches[0].clientY;
             currentDrag = Math.max(0, Math.min(maxDrag, y - startY));
-            cordLine.style.height = (280 + currentDrag) + 'px';
+            cordLine.style.height = (260 + currentDrag) + 'px';
             if (currentDrag >= maxDrag) triggerSystemStart();
         });
-        cordWrapper.addEventListener('touchend', () => { if (currentDrag < maxDrag) cordLine.style.height = '280px'; });
+        cordWrapper.addEventListener('touchend', () => {
+            if (currentDrag < maxDrag) cordLine.style.height = '260px';
+        });
         cordWrapper.addEventListener('click', () => triggerSystemStart());
 
-        function triggerSystemStart() {
-            bgMusic.play().catch(()=>{});
-            pullScreen.style.opacity = '0';
+        // ============================================================
+        //  6. SYSTEM START
+        // ============================================================
+        let isStarted = false;
 
+        function triggerSystemStart() {
+            if (isStarted) return;
+            isStarted = true;
+            bgMusic.play().catch(() => {});
+            pullScreen.style.opacity = '0';
             setTimeout(() => {
                 pullScreen.style.display = 'none';
                 welcomeScreen.style.display = 'flex';
                 triggerBurstFireworks();
-
-                setTimeout(() => { welRow1.classList.add('show'); triggerBurstFireworks(); }, 400);
-                setTimeout(() => { welRow2.classList.add('show'); triggerBurstFireworks(); }, 2000);
-
+                triggerHeartBurst(W / 2, H * 0.5);
+                setTimeout(() => {
+                    welRow1.classList.add('show');
+                    triggerBurstFireworks();
+                    triggerHeartBurst(W / 2, H * 0.3);
+                }, 400);
+                setTimeout(() => {
+                    welRow2.classList.add('show');
+                    triggerBurstFireworks();
+                    triggerHeartBurst(W / 2, H * 0.6);
+                }, 2000);
                 setTimeout(() => {
                     welcomeScreen.style.opacity = '0';
                     setTimeout(() => {
@@ -471,82 +753,47 @@
             }, 800);
         }
 
-        // Burst Fireworks
-        let particles = [];
-        function triggerBurstFireworks() {
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight * 0.4;
-            const colors = ['#ffd700', '#00f2fe', '#ff2a85', '#ffffff'];
-
-            for (let i = 0; i < 45; i++) {
-                const angle = (Math.PI * 2 / 45) * i;
-                const speed = Math.random() * 5 + 2;
-                particles.push({ 
-                    x: centerX, y: centerY, 
-                    vx: Math.cos(angle) * speed, 
-                    vy: Math.sin(angle) * speed, 
-                    alpha: 1, 
-                    color: colors[Math.floor(Math.random() * colors.length)] 
-                });
-            }
-            animateFireworks();
-        }
-
-        function animateFireworks() {
-            if (particles.length === 0) return;
-            fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
-            particles.forEach((p, index) => {
-                p.x += p.vx; p.y += p.vy; p.alpha -= 0.02;
-                fwCtx.beginPath(); fwCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
-                fwCtx.fillStyle = p.color; fwCtx.globalAlpha = p.alpha; fwCtx.fill();
-                if (p.alpha <= 0) particles.splice(index, 1);
-            });
-            fwCtx.globalAlpha = 1;
-            if (particles.length > 0) requestAnimationFrame(animateFireworks);
-        }
-
-        // Sky Blue / Cyan Color for Main Center Dot Text
+        // ============================================================
+        //  7. TEXT RENDER (Pixel Dot)
+        // ============================================================
         function renderTextPixel(text) {
-            tCtx.clearRect(0, 0, textCanvas.width, textCanvas.height);
+            tCtx.clearRect(0, 0, W, H);
             if (!text) return;
-
             const tempCanvas = document.createElement('canvas');
             const tempCtx = tempCanvas.getContext('2d');
-            tempCanvas.width = textCanvas.width;
-            tempCanvas.height = textCanvas.height;
-
-            let dynamicFontSize = Math.min(textCanvas.width / (text.length * 0.65), textCanvas.height * 0.22);
-            if (dynamicFontSize > 85) dynamicFontSize = 85;
-
+            tempCanvas.width = W;
+            tempCanvas.height = H;
+            let dynSize = Math.min(W / (text.length * 0.65), H * 0.22);
+            if (dynSize > 85) dynSize = 85;
+            if (dynSize < 24) dynSize = 24;
             tempCtx.fillStyle = '#fff';
-            tempCtx.font = `900 ${dynamicFontSize}px sans-serif`;
+            tempCtx.font = `900 ${dynSize}px sans-serif`;
             tempCtx.textAlign = 'center';
             tempCtx.textBaseline = 'middle';
-            tempCtx.fillText(text, tempCanvas.width / 2, tempCanvas.height / 2);
-
-            const imgData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+            tempCtx.fillText(text, W / 2, H / 2);
+            const imgData = tempCtx.getImageData(0, 0, W, H);
             const data = imgData.data;
-
-            const dotGap = 6;
-            const dotRadius = 2.5;
-
-            // Sky Blue Color Glow (#00f2fe)
+            const dotGap = 7;
+            const dotRadius = 2.8;
             tCtx.fillStyle = '#00f2fe';
             tCtx.shadowColor = '#00f2fe';
-            tCtx.shadowBlur = 14;
-
-            for (let y = 0; y < tempCanvas.height; y += dotGap) {
-                for (let x = 0; x < tempCanvas.width; x += dotGap) {
-                    const index = (y * tempCanvas.width + x) * 4;
-                    if (data[index + 3] > 128) {
+            tCtx.shadowBlur = 16;
+            for (let y = 0; y < H; y += dotGap) {
+                for (let x = 0; x < W; x += dotGap) {
+                    const idx = (y * W + x) * 4;
+                    if (data[idx + 3] > 128) {
                         tCtx.beginPath();
                         tCtx.arc(x, y, dotRadius, 0, Math.PI * 2);
                         tCtx.fill();
                     }
                 }
             }
+            tCtx.shadowBlur = 0;
         }
 
+        // ============================================================
+        //  8. SEQUENCE (Countdown + Main)
+        // ============================================================
         const mainSequence = [
             "100 WEEKS",
             "700 DAYS",
@@ -554,21 +801,21 @@
             "AHUBATI + AHUBI",
             "I LOVE YOU"
         ];
-
         let seqIndex = 0;
 
         function startCountdownSequence() {
             rightTapBtn.style.display = 'none';
-            
-            renderTextPixel("3");
+            renderTextPixel('3');
             triggerBurstFireworks();
-
+            triggerHeartBurst(W / 2, H / 2);
             setTimeout(() => {
-                renderTextPixel("2");
+                renderTextPixel('2');
                 triggerBurstFireworks();
+                triggerHeartBurst(W / 2, H / 2);
                 setTimeout(() => {
-                    renderTextPixel("1");
+                    renderTextPixel('1');
                     triggerBurstFireworks();
+                    triggerHeartBurst(W / 2, H / 2);
                     setTimeout(() => {
                         seqIndex = 0;
                         rightTapBtn.style.display = 'flex';
@@ -582,8 +829,9 @@
             if (seqIndex < mainSequence.length) {
                 renderTextPixel(mainSequence[seqIndex]);
                 triggerBurstFireworks();
+                triggerHeartBurst(W / 2, H / 2);
             } else {
-                renderTextPixel("");
+                renderTextPixel('');
                 rightTapBtn.style.display = 'none';
                 showCard();
             }
@@ -594,69 +842,122 @@
             playNextMainSequence();
         }
 
-        // Card Dialogues
-        let currentSlide = 0;
-        const slides = [
-            { 
-                title: "✨ 100 Weeks & 700 Days ✨", 
-                desc: "আয়েশা (AHUBATI), ১০০ টি সপ্তাহ এবং ৭০০ টি দিন ধরে আমার পাশে থাকার জন্য অনেক ধন্যবাদ।" 
-            },
-            { 
-                title: "💖 For My Special One 💖", 
-                desc: "You are my JAPAN without P! 🥰 (You are my JAAN ❤️)" 
-            },
-            { 
-                title: "🌸 Pure Happiness 🌸", 
-                desc: "জীবনের প্রতিটি মুহূর্ত তোমার ভালোবাসা দিয়ে সুন্দর করার জন্য আমি চিরকৃতজ্ঞ।" 
-            },
-            { 
-                title: "💍 Will You Marry Me? 💍", 
-                desc: "আমার জীবনের বাকিটা সময় কি এভাবেই নিজের করে নিবে? Will you marry me, my love? ❤️",
-                isMarryPage: true
-            }
-        ];
+        // ============================================================
+        //  9. CARD with IMAGE SLIDES
+        // ============================================================
+        // ─── 🔽 REPLACE THESE URLs WITH YOUR TWO IMAGES ───
+        // Place your image URLs here (use JPG/PNG, preferably 800x600 or similar)
+        const IMAGE_1 =
+            'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop'; // romantic couple
+        const IMAGE_2 =
+            'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=600&fit=crop'; // couple sunset
+        // ─── 🔼 REPLACE ABOVE WITH YOUR OWN IMAGE URLs ───
 
+        const slides = [{
+            title: '✨ 100 Weeks & 700 Days ✨',
+            desc: 'আয়েশা (AHUBATI), ১০০ টি সপ্তাহ এবং ৭০০ টি দিন ধরে আমার পাশে থাকার জন্য অনেক ধন্যবাদ।',
+            hasImage: false
+        }, {
+            title: '💖 For My Special One 💖',
+            desc: 'You are my JAPAN without P! 🥰 (You are my JAAN ❤️)',
+            hasImage: false
+        }, {
+            title: '🌸 Our Beautiful Moments 🌸',
+            desc: 'তোমার সাথে কাটানো প্রতিটি মুহূর্ত আমার কাছে অমূল্য। 💕',
+            hasImage: true,
+            imgSrc: IMAGE_1,
+            imgCaption: '💕 তোমার হাসি আমার পৃথিবী 💕'
+        }, {
+            title: '🌅 Forever Together 🌅',
+            desc: 'জীবনের পথে তুমি আমার সবচেয়ে সুন্দর গন্তব্য।',
+            hasImage: true,
+            imgSrc: IMAGE_2,
+            imgCaption: '🌹 চিরকাল তোমার সাথেই 🌹'
+        }, {
+            title: '💍 Will You Marry Me? 💍',
+            desc: 'আমার জীবনের বাকিটা সময় কি এভাবেই নিজের করে নিবে? Will you marry me, my love? ❤️',
+            hasImage: false,
+            isMarryPage: true
+        }];
+
+        let currentSlide = 0;
         const cardEl = document.getElementById('mainCard');
         const titleEl = document.getElementById('cardTitle');
         const descEl = document.getElementById('cardDesc');
         const actionArea = document.getElementById('actionArea');
+        const cardImageWrap = document.getElementById('cardImageWrap');
+        const cardImage = document.getElementById('cardImage');
+        const imgCaption = document.getElementById('imgCaption');
 
         function showCard() {
             cardEl.style.display = 'block';
             currentSlide = 0;
             updateCard();
+            // burst hearts & fireworks on card open
+            triggerBurstFireworks();
+            triggerHeartBurst(W / 2, H / 2);
+            setTimeout(() => triggerHeartBurst(W / 2, H / 2 + 80), 400);
         }
 
         function updateCard() {
-            titleEl.innerText = slides[currentSlide].title;
-            descEl.innerText = slides[currentSlide].desc;
-            triggerBurstFireworks();
+            const slide = slides[currentSlide];
+            titleEl.innerText = slide.title;
+            descEl.innerText = slide.desc;
 
-            if (slides[currentSlide].isMarryPage) {
+            // Handle image
+            if (slide.hasImage && slide.imgSrc) {
+                cardImageWrap.style.display = 'block';
+                cardImage.src = slide.imgSrc;
+                cardImage.alt = 'Ayesha & Sadik';
+                imgCaption.innerText = slide.imgCaption || '💕';
+            } else {
+                cardImageWrap.style.display = 'none';
+            }
+
+            // Marry page special
+            if (slide.isMarryPage) {
                 titleEl.classList.add('marry-me-title');
                 actionArea.innerHTML = `
                     <div class="btn-group">
                         <button class="btn-yes" onclick="handleYesClick(event)">Yes, I Will! 💍💖</button>
                     </div>
                 `;
+                // burst extra on marry page
+                setTimeout(() => triggerBurstFireworks(), 300);
+                setTimeout(() => triggerHeartBurst(W / 2, H / 2), 500);
             } else {
                 titleEl.classList.remove('marry-me-title');
                 actionArea.innerHTML = `<div class="tap-card-hint">👉 TAP ANYWHERE TO CONTINUE</div>`;
             }
+
+            // trigger small heart burst on each slide change
+            triggerHeartBurst(W / 2, H / 2);
         }
 
         function handleCardClick() {
             if (!slides[currentSlide].isMarryPage) {
-                currentSlide++;
-                updateCard();
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateCard();
+                    // fireworks on slide change
+                    triggerBurstFireworks();
+                } else {
+                    // if last slide but not marry (shouldn't happen)
+                }
             }
         }
 
         function handleYesClick(e) {
             e.stopPropagation();
-            titleEl.innerText = "🎉 FOREVER & ALWAYS 🎉";
-            descEl.innerText = "I Love You So Much 𝔸𝕪𝕖𝕤𝕙𝕒! ❤️ আপনার সাথে সারা জীবন কাটানোর জন্য অপেক্ষায় রইলাম।";
+            titleEl.innerText = '🎉 FOREVER & ALWAYS 🎉';
+            descEl.innerText =
+            'I Love You So Much 𝔸𝕪𝕖𝕤𝕙𝕒! ❤️ আপনার সাথে সারা জীবন কাটানোর জন্য অপেক্ষায় রইলাম।';
+            cardImageWrap.style.display = 'none';
+            titleEl.classList.add('marry-me-title');
             triggerBurstFireworks();
+            triggerHeartBurst(W / 2, H / 2);
+            setTimeout(() => triggerBurstFireworks(), 500);
+            setTimeout(() => triggerHeartBurst(W / 2, H / 2 + 100), 700);
 
             actionArea.innerHTML = `
                 <div class="btn-group">
@@ -671,16 +972,58 @@
             cardEl.style.display = 'none';
             pullScreen.style.display = 'flex';
             pullScreen.style.opacity = '1';
-            cordLine.style.height = '280px';
+            cordLine.style.height = '260px';
             welRow1.classList.remove('show');
             welRow2.classList.remove('show');
+            isStarted = false;
+            currentDrag = 0;
+            seqIndex = 0;
+            heartParticles = [];
+            particles = [];
+            // reset matrix
+            initMatrixColumns();
+            // clear canvases
+            tCtx.clearRect(0, 0, W, H);
+            fwCtx.clearRect(0, 0, W, H);
+            hCtx.clearRect(0, 0, W, H);
+            rightTapBtn.style.display = 'none';
+            bgMusic.pause();
+            bgMusic.currentTime = 0;
+            // restart music on next start
         }
 
         function exitProject(e) {
             e.stopPropagation();
-            alert("Thank you for being in my life! ❤️");
+            alert('Thank you for being in my life! ❤️ Stay forever blessed.');
             window.close();
         }
+
+        // ============================================================
+        //  10. AUTO START HEARTS BACKGROUND
+        // ============================================================
+        // Spawn occasional hearts in background even before start
+        setInterval(() => {
+            if (pullScreen.style.display !== 'none') {
+                const x = Math.random() * W;
+                const y = 100 + Math.random() * 200;
+                spawnHeartBurst(x, y, 5 + Math.random() * 8);
+                if (heartParticles.length > 0) drawHeartsCanvas();
+            }
+        }, 4000);
+
+        // ============================================================
+        //  11. KEYBOARD SHORTCUT (for desktop testing)
+        // ============================================================
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (pullScreen.style.display !== 'none') triggerSystemStart();
+                else if (rightTapBtn.style.display === 'flex') nextSequenceStep();
+                else if (cardEl.style.display === 'block') handleCardClick();
+            }
+        });
+
+        console.log('❤️ Ayesha + Sadik ❤️');
+        console.log('Replace IMAGE_1 and IMAGE_2 with your own photos!');
     </script>
 </body>
 </html>
