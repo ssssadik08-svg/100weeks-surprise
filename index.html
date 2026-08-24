@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Ayesha & Sadik 100 Weeks</title>
+    <title>For Ayesha Sadik</title>
     <style>
         * {
             margin: 0;
@@ -20,36 +20,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        /* Landscape Warning */
-        #landscape-warning {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #0d001a;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #ffb6c1;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .phone-icon {
-            font-size: 60px;
-            animation: rotatePhone 2s infinite ease-in-out;
-            margin-bottom: 20px;
-        }
-
-        @keyframes rotatePhone {
-            0% { transform: rotate(0deg); }
-            50% { transform: rotate(-90deg); }
-            100% { transform: rotate(0deg); }
         }
 
         /* Pull Cord Switch Overlay */
@@ -106,7 +76,7 @@
             animation: pulseText 1.5s infinite alternate;
         }
 
-        /* Welcome Text Screen */
+        /* Welcome Screen */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -116,29 +86,30 @@
             background: transparent;
             z-index: 8000;
             display: none;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 0 50px;
+            padding: 20px;
             opacity: 1;
             transition: opacity 1.5s ease-in-out;
+            text-align: center;
         }
 
         .flower-side {
-            font-size: 75px;
+            font-size: 50px;
+            margin: 0 15px;
             animation: floatFlower 2.5s ease-in-out infinite alternate;
         }
 
         @keyframes floatFlower {
-            0% { transform: translateY(-15px) scale(1); }
-            100% { transform: translateY(15px) scale(1.1); }
+            0% { transform: translateY(-10px) scale(1); }
+            100% { transform: translateY(10px) scale(1.1); }
         }
 
         .welcome-title {
             color: #ff69b4;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: bold;
-            text-align: center;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-shadow: 0 0 25px #ff1493, 0 0 50px #ff69b4;
             line-height: 1.5;
             animation: pulseText 2s infinite alternate;
@@ -158,14 +129,14 @@
             height: 100%;
         }
 
-        /* Dancing Couple Silhouette Element */
+        /* Dancing Couple Silhouette */
         .dancing-couple {
             position: absolute;
             bottom: 20px;
-            right: 30px;
-            font-size: 60px;
+            right: 20px;
+            font-size: 50px;
             z-index: 5;
-            opacity: 0.6;
+            opacity: 0.7;
             animation: dance 2s infinite ease-in-out alternate;
             display: none;
         }
@@ -179,12 +150,12 @@
         .card-container {
             position: relative;
             z-index: 10;
-            background: rgba(15, 5, 25, 0.92);
+            background: rgba(15, 5, 25, 0.94);
             border: 2px solid #ff69b4;
             border-radius: 20px;
             padding: 25px;
             width: 90%;
-            max-width: 520px;
+            max-width: 480px;
             text-align: center;
             box-shadow: 0 0 35px rgba(255, 105, 180, 0.7);
             backdrop-filter: blur(10px);
@@ -198,13 +169,13 @@
         }
 
         .card-title {
-            font-size: 24px;
+            font-size: 22px;
             color: #ff69b4;
             margin-bottom: 15px;
         }
 
         .card-desc {
-            font-size: 17px;
+            font-size: 16px;
             color: #fff;
             line-height: 1.6;
             margin-bottom: 20px;
@@ -212,8 +183,8 @@
 
         /* Proposal Cartoon SVG */
         .cartoon-box {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             margin: 0 auto 15px auto;
             display: none;
         }
@@ -229,7 +200,7 @@
             background: linear-gradient(45deg, #ff1493, #ff69b4);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 22px;
             font-size: 15px;
             border-radius: 20px;
             cursor: pointer;
@@ -245,21 +216,9 @@
             background: linear-gradient(45deg, #00b09b, #96c93d);
             box-shadow: 0 0 15px #00b09b;
         }
-
-        @media screen and (orientation: landscape) {
-            #landscape-warning {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
-
-    <!-- Landscape Warning -->
-    <div id="landscape-warning">
-        <div class="phone-icon">📱</div>
-        <h2>দয়া করে ফোনটি Landscape (আড়াআড়ি) মোডে ঘুরিয়ে নিন ✨</h2>
-    </div>
 
     <!-- Interactive Light Cord Switch -->
     <div id="pull-screen">
@@ -272,12 +231,12 @@
 
     <!-- Welcome Entry Screen -->
     <div id="welcome-screen">
-        <div class="flower-side">🌸🌷</div>
+        <div class="flower-side">🌸</div>
         <div class="welcome-title">
             Hey Ayesha, My Love 💕<br>
-            <span style="font-size: 24px; color: #fff;">Welcome. This is for you ✨</span>
+            <span style="font-size: 20px; color: #fff;">Welcome. This is for you ✨</span>
         </div>
-        <div class="flower-side">🌷🌸</div>
+        <div class="flower-side">🌸</div>
     </div>
 
     <!-- Fireworks & Matrix Canvases -->
@@ -290,7 +249,6 @@
 
     <!-- Proposal Card -->
     <div id="mainCard" class="card-container">
-        <!-- Cute Kneeling Proposal Cartoon SVG -->
         <div id="cartoonBox" class="cartoon-box">
             <svg viewBox="0 0 100 100" width="100%" height="100%">
                 <circle cx="50" cy="30" r="15" fill="#ffb6c1"/>
@@ -310,7 +268,7 @@
 
     <!-- Background Audio -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sun-683.mp3" type="audio/mpeg">
+        <source src="song.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -335,15 +293,6 @@
         }
         resize();
         window.addEventListener('resize', resize);
-
-        // Auto Fullscreen Trigger
-        window.addEventListener("orientationchange", () => {
-            if (window.innerWidth > window.innerHeight) {
-                if (document.documentElement.requestFullscreen) {
-                    document.documentElement.requestFullscreen().catch(()=>{});
-                }
-            }
-        });
 
         // Canvas Recording Setup
         function startRecording() {
@@ -383,9 +332,6 @@
 
         // Pull Cord Light Action
         function turnOnLight() {
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen().catch(()=>{});
-            }
             bgMusic.play().catch(()=>{});
             pullScreen.style.opacity = '0';
             
@@ -462,7 +408,7 @@
             fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
         }
 
-        // Matrix Background
+        // Matrix Background setup
         const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*';
         const fontSize = 14;
         let columns = Math.floor(window.innerWidth / fontSize);
@@ -487,7 +433,7 @@
         }
         setInterval(drawMatrixBG, 35);
 
-        // Sequence
+        // Sequence List
         const sequence = [
             "3",
             "2",
@@ -502,6 +448,7 @@
 
         let currentSeq = 0;
 
+        // Solid Pixel Block Renderer (No confusing letters)
         function renderTextPixel(text) {
             tCtx.clearRect(0, 0, textCanvas.width, textCanvas.height);
             if (!text) return;
@@ -511,11 +458,11 @@
             tempCanvas.width = textCanvas.width;
             tempCanvas.height = textCanvas.height;
 
-            let dynamicFontSize = Math.min(textCanvas.width / (text.length * 0.75), textCanvas.height * 0.35);
-            if (dynamicFontSize > 110) dynamicFontSize = 110;
+            let dynamicFontSize = Math.min(textCanvas.width / (text.length * 0.75), textCanvas.height * 0.25);
+            if (dynamicFontSize > 80) dynamicFontSize = 80;
 
             tempCtx.fillStyle = '#fff';
-            tempCtx.font = `bold ${dynamicFontSize}px monospace`;
+            tempCtx.font = `bold ${dynamicFontSize}px sans-serif`;
             tempCtx.textAlign = 'center';
             tempCtx.textBaseline = 'middle';
             tempCtx.fillText(text, tempCanvas.width / 2, tempCanvas.height / 2);
@@ -523,17 +470,16 @@
             const imgData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
             const data = imgData.data;
 
-            tCtx.font = `bold ${fontSize}px monospace`;
+            const pixelSize = 6;
             tCtx.fillStyle = '#ffb6c1';
             tCtx.shadowColor = '#ff1493';
-            tCtx.shadowBlur = 12;
+            tCtx.shadowBlur = 10;
 
-            for (let y = 0; y < tempCanvas.height; y += fontSize) {
-                for (let x = 0; x < tempCanvas.width; x += fontSize) {
+            for (let y = 0; y < tempCanvas.height; y += pixelSize) {
+                for (let x = 0; x < tempCanvas.width; x += pixelSize) {
                     const index = (y * tempCanvas.width + x) * 4;
                     if (data[index + 3] > 128) {
-                        const randomChar = chars.charAt(Math.floor(Math.random() * chars.length));
-                        tCtx.fillText(randomChar, x, y);
+                        tCtx.fillRect(x, y, pixelSize - 1, pixelSize - 1);
                     }
                 }
             }
@@ -543,7 +489,7 @@
             if (currentSeq < sequence.length) {
                 renderTextPixel(sequence[currentSeq]);
                 currentSeq++;
-                setTimeout(playSequence, 1600);
+                setTimeout(playSequence, 1800);
             } else {
                 renderTextPixel("");
                 showCard();
@@ -604,12 +550,10 @@
                 currentSlide++;
                 updateCard();
             } else {
-                // Final End Screen
                 cartoonBox.style.display = 'none';
                 titleEl.innerText = "Yayyy! 🎉❤️";
                 descEl.innerText = "Welcome to our forever journey, Ayesha Sadik! 🥰✨";
                 
-                // Show Home & Download Buttons
                 btnContainer.innerHTML = `
                     <button class="btn-custom btn-secondary" onclick="downloadVideo()">🎥 Download Video</button>
                     <button class="btn-custom" onclick="resetToHome()">🔄 Replay / Home</button>
@@ -617,7 +561,6 @@
             }
         }
 
-        // Reset to Home Screen
         function resetToHome() {
             location.reload();
         }
