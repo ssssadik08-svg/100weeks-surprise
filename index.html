@@ -17,7 +17,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #020912;
+            background-color: #030814;
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
@@ -31,7 +31,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle at center, #06182a, #01060e);
+            background: radial-gradient(circle at center, #081d33, #020710);
             z-index: 9000;
             display: flex;
             flex-direction: column;
@@ -47,34 +47,33 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 0px;
         }
 
         .cord-line {
             width: 4px;
             height: 280px;
-            background: linear-gradient(to bottom, #d4af37, #00f2fe, #fff);
-            box-shadow: 0 0 18px #00f2fe, 0 0 30px #d4af37;
+            background: linear-gradient(to bottom, #ffd700, #00f2fe, #fff);
+            box-shadow: 0 0 15px #00f2fe, 0 0 25px #ffd700;
             transition: height 0.1s ease;
         }
 
         .cord-handle {
-            width: 45px;
-            height: 45px;
+            width: 46px;
+            height: 46px;
             background: radial-gradient(circle, #ffffff, #00c6ff);
             border-radius: 50%;
-            box-shadow: 0 0 25px #00f2fe, 0 0 40px #ffffff;
-            border: 2px solid #d4af37;
+            box-shadow: 0 0 25px #00f2fe, 0 0 35px #ffffff;
+            border: 2px solid #ffd700;
         }
 
         .pull-hint {
-            color: #4facfe;
+            color: #ffd700;
             margin-top: 45px;
             font-family: 'Cinzel', serif;
-            font-size: 20px;
+            font-size: 19px;
             letter-spacing: 3px;
             text-align: center;
-            text-shadow: 0 0 15px rgba(0, 242, 254, 0.8);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
             animation: pulseGlow 1.8s infinite alternate ease-in-out;
         }
 
@@ -83,7 +82,7 @@
             100% { opacity: 1; transform: scale(1.04); }
         }
 
-        /* Welcome Screen with Elegant Font */
+        /* Welcome Screen with Classy Font */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -104,32 +103,31 @@
 
         .welcome-content {
             opacity: 0;
-            transform: translateY(20px) scale(0.9);
+            transform: translateY(20px);
             transition: opacity 1.5s ease, transform 1.5s ease;
         }
 
         .welcome-content.show {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
 
         .welcome-title {
             font-family: 'Great Vibes', cursive;
-            color: #e0f7fa;
-            font-size: 52px;
-            font-weight: normal;
+            color: #ffffff;
+            font-size: 54px;
             letter-spacing: 2px;
-            text-shadow: 0 0 20px #00f2fe, 0 0 40px #00c6ff, 0 0 60px #ffffff;
+            text-shadow: 0 0 20px #00f2fe, 0 0 40px #0088ff, 0 0 60px #ffffff;
             line-height: 1.4;
         }
 
         .welcome-subtitle {
             font-family: 'Cinzel', serif;
-            font-size: 22px;
-            color: #80deea;
+            font-size: 20px;
+            color: #ffd700;
             margin-top: 20px;
             letter-spacing: 4px;
-            text-shadow: 0 0 15px rgba(0, 242, 254, 0.7);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
         }
 
         canvas {
@@ -138,10 +136,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
         }
 
-        /* Floating Tap Button */
+        #matrixCanvas { z-index: 10; }
+        #fireworksCanvas { z-index: 20; pointer-events: none; }
+        #textCanvas { z-index: 30; pointer-events: none; }
+
+        /* Floating Circular Tap Button */
         .right-tap-btn {
             position: fixed;
             right: 25px;
@@ -149,7 +150,7 @@
             width: 65px;
             height: 65px;
             background: radial-gradient(circle, #00f2fe, #0052d4);
-            border: 2px solid #e0f7fa;
+            border: 2px solid #ffffff;
             border-radius: 50%;
             color: #fff;
             display: flex;
@@ -171,20 +172,20 @@
             100% { transform: translateY(-12px); }
         }
 
-        /* Mirror Frame Card */
+        /* Glass Mirror Box Card */
         .card-container {
             position: relative;
-            z-index: 30;
-            background: rgba(3, 15, 28, 0.92);
+            z-index: 200;
+            background: rgba(3, 14, 26, 0.94);
             border: 2px solid #00f2fe;
-            outline: 2px solid #d4af37;
+            outline: 2px solid #ffd700;
             outline-offset: -7px;
             border-radius: 16px;
             padding: 40px 30px;
             width: 88%;
             max-width: 480px;
             text-align: center;
-            box-shadow: 0 0 50px rgba(0, 242, 254, 0.35), inset 0 0 30px rgba(0, 198, 255, 0.2);
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.35), inset 0 0 30px rgba(255, 215, 0, 0.2);
             backdrop-filter: blur(15px);
             display: none;
             animation: popup 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -194,7 +195,7 @@
             position: absolute;
             width: 32px;
             height: 32px;
-            fill: #d4af37;
+            fill: #ffd700;
         }
         .top-left { top: 6px; left: 6px; }
         .top-right { top: 6px; right: 6px; transform: scaleX(-1); }
@@ -209,7 +210,7 @@
         .card-title {
             font-family: 'Cinzel', serif;
             font-size: 24px;
-            color: #80deea;
+            color: #00f2fe;
             margin-bottom: 20px;
             letter-spacing: 2px;
             text-shadow: 0 0 15px rgba(0, 242, 254, 0.7);
@@ -225,7 +226,7 @@
 
         .swipe-hint {
             font-size: 12px;
-            color: #80deea;
+            color: #ffd700;
             margin-top: 15px;
             letter-spacing: 1.5px;
             font-family: 'Cinzel', serif;
@@ -234,14 +235,13 @@
         .btn-custom {
             background: linear-gradient(45deg, #00c6ff, #0072ff);
             color: white;
-            border: 1px solid #e0f7fa;
+            border: 1px solid #ffffff;
             padding: 12px 30px;
             font-size: 15px;
             font-family: 'Cinzel', serif;
             border-radius: 30px;
             cursor: pointer;
             box-shadow: 0 0 25px rgba(0, 198, 255, 0.8);
-            transition: 0.3s;
         }
     </style>
 </head>
@@ -274,7 +274,7 @@
     <!-- Floating Circular Tap Button -->
     <div id="rightTapBtn" class="right-tap-btn" onclick="nextSequenceStep()">TAP</div>
 
-    <!-- Decorated Vintage Glass Card -->
+    <!-- Decorated Mirror Glass Card -->
     <div id="mainCard" class="card-container">
         <svg class="corner-ornament top-left" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
         <svg class="corner-ornament top-right" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
@@ -317,18 +317,18 @@
             initMatrixColumns();
         }
 
-        // Vertical Matrix Rain Logic
+        // True Vertical Rain Matrix Effect
         const matrixWords = ['100 WEEKS', '700 DAYS', 'AYESHA + SADIK', 'AHUBATI + AHUBI', 'LOVE YOU'];
         let columns = 0;
         let drops = [];
         let colWords = [];
 
         function initMatrixColumns() {
-            columns = Math.floor(window.innerWidth / 70);
+            columns = Math.floor(window.innerWidth / 45);
             drops = [];
             colWords = [];
             for (let i = 0; i < columns; i++) {
-                drops[i] = Math.random() * -20;
+                drops[i] = Math.floor(Math.random() * -30);
                 colWords[i] = matrixWords[Math.floor(Math.random() * matrixWords.length)];
             }
         }
@@ -338,32 +338,32 @@
         let matrixInterval;
         function startMatrixRain() {
             if (matrixInterval) clearInterval(matrixInterval);
-            matrixInterval = setInterval(drawMatrixBG, 50);
+            matrixInterval = setInterval(drawMatrixBG, 55);
         }
 
         function drawMatrixBG() {
-            mCtx.fillStyle = 'rgba(2, 9, 18, 0.15)';
+            mCtx.fillStyle = 'rgba(3, 8, 20, 0.2)';
             mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            mCtx.font = 'bold 16px monospace';
+            mCtx.font = 'bold 15px monospace';
 
             for (let i = 0; i < drops.length; i++) {
                 const word = colWords[i];
-                const x = i * 70 + 15;
+                const x = i * 45 + 5;
                 const y = drops[i] * 22;
 
-                // Vertical Character Dropping
                 for (let j = 0; j < word.length; j++) {
                     const char = word[j];
-                    const charY = y - (j * 20);
+                    const charY = y - (j * 18);
                     if (charY > 0 && charY < matrixCanvas.height) {
-                        mCtx.fillStyle = (j === 0) ? '#ffffff' : 'rgba(0, 242, 254, 0.45)';
+                        // Soft Glow Colors for Falling Rain
+                        mCtx.fillStyle = (j === 0) ? '#ffffff' : 'rgba(0, 242, 254, 0.35)';
                         mCtx.shadowColor = '#00f2fe';
-                        mCtx.shadowBlur = (j === 0) ? 10 : 0;
+                        mCtx.shadowBlur = (j === 0) ? 8 : 0;
                         mCtx.fillText(char, x, charY);
                     }
                 }
 
-                if (y - (word.length * 20) > matrixCanvas.height && Math.random() > 0.95) {
+                if (y - (word.length * 18) > matrixCanvas.height && Math.random() > 0.94) {
                     drops[i] = 0;
                     colWords[i] = matrixWords[Math.floor(Math.random() * matrixWords.length)];
                 }
@@ -371,9 +371,9 @@
             }
         }
 
-        // Pull Cord Drag Mechanics
+        // Cord Mechanics
         let startY = 0, currentDrag = 0;
-        const maxDrag = 180;
+        const maxDrag = 170;
 
         cordWrapper.addEventListener('touchstart', (e) => startY = e.touches[0].clientY);
         cordWrapper.addEventListener('touchmove', (e) => {
@@ -389,7 +389,7 @@
             bgMusic.play().catch(()=>{});
             pullScreen.style.opacity = '0';
 
-            // Start Matrix Vertical Rain BEFORE Welcome Text
+            // Rain Matrix Starts BEFORE Welcome
             startMatrixRain();
 
             setTimeout(() => {
@@ -397,8 +397,7 @@
                 welcomeScreen.style.display = 'flex';
                 startFireworks();
 
-                // Smooth Welcome Fade-in Sequence with Sparkles
-                setTimeout(() => { welRow1.classList.add('show'); createFirework(window.innerWidth/2, window.innerHeight*0.38); }, 500);
+                setTimeout(() => { welRow1.classList.add('show'); createFirework(window.innerWidth/2, window.innerHeight*0.38); }, 400);
                 setTimeout(() => { welRow2.classList.add('show'); createFirework(window.innerWidth/2, window.innerHeight*0.58); }, 2200);
 
                 setTimeout(() => {
@@ -412,32 +411,36 @@
             }, 800);
         }
 
-        // Fireworks Engine
+        // Slow & Colorful Fireworks Engine
         let fwInterval, particles = [];
         function startFireworks() {
-            fwInterval = setInterval(() => { createFirework(Math.random() * fwCanvas.width, Math.random() * fwCanvas.height * 0.5); }, 450);
+            fwInterval = setInterval(() => { createFirework(Math.random() * fwCanvas.width, Math.random() * fwCanvas.height * 0.5); }, 800);
             animateFireworks();
         }
         function createFirework(x, y) {
-            const count = 35;
+            const count = 30;
+            // Mixed Colors: Gold, Pink, Purple
+            const colors = ['#ffd700', '#ff007f', '#a855f7', '#00f2fe', '#ffffff'];
+            const chosenColor = colors[Math.floor(Math.random() * colors.length)];
+
             for (let i = 0; i < count; i++) {
                 const angle = (Math.PI * 2 / count) * i;
-                const speed = Math.random() * 4 + 2;
+                const speed = Math.random() * 2.5 + 1.2; // Slower velocity
                 particles.push({ 
                     x: x, y: y, 
                     vx: Math.cos(angle) * speed, 
                     vy: Math.sin(angle) * speed, 
                     alpha: 1, 
-                    color: `hsl(${Math.random() * 40 + 180}, 100%, 70%)` 
+                    color: chosenColor 
                 });
             }
         }
         function animateFireworks() {
-            fwCtx.fillStyle = 'rgba(2, 9, 18, 0.2)';
+            fwCtx.fillStyle = 'rgba(3, 8, 20, 0.15)';
             fwCtx.fillRect(0, 0, fwCanvas.width, fwCanvas.height);
             particles.forEach((p, index) => {
-                p.x += p.vx; p.y += p.vy; p.alpha -= 0.018;
-                fwCtx.beginPath(); fwCtx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
+                p.x += p.vx; p.y += p.vy; p.alpha -= 0.012; // Slow fade
+                fwCtx.beginPath(); fwCtx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
                 fwCtx.fillStyle = p.color; fwCtx.globalAlpha = p.alpha; fwCtx.fill();
                 if (p.alpha <= 0) particles.splice(index, 1);
             });
@@ -446,7 +449,7 @@
         }
         function stopFireworks() { clearInterval(fwInterval); fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height); }
 
-        // Solid Pixel Text Canvas (Cyan & Soft White Glow)
+        // Solid Pixel Text Canvas
         function renderTextPixel(text) {
             tCtx.clearRect(0, 0, textCanvas.width, textCanvas.height);
             if (!text) return;
@@ -471,7 +474,7 @@
             const pixelSize = 5;
             tCtx.fillStyle = '#00f2fe';
             tCtx.shadowColor = '#ffffff';
-            tCtx.shadowBlur = 15;
+            tCtx.shadowBlur = 12;
 
             for (let y = 0; y < tempCanvas.height; y += pixelSize) {
                 for (let x = 0; x < tempCanvas.width; x += pixelSize) {
@@ -483,8 +486,7 @@
             }
         }
 
-        // Sequences
-        const countdownSeq = ["3", "2", "1"];
+        // Fixed Countdown & Main Sequence Logic
         const mainSequence = [
             "100 WEEKS",
             "700 DAYS",
@@ -496,21 +498,26 @@
         let seqIndex = 0;
 
         function startCountdownSequence() {
-            if (seqIndex < countdownSeq.length) {
-                renderTextPixel(countdownSeq[seqIndex]);
-                seqIndex++;
-                setTimeout(startCountdownSequence, 700);
-            } else {
-                seqIndex = 0;
-                playNextMainSequence();
-            }
+            rightTapBtn.style.display = 'none'; // Lock TAP during 3-2-1
+            
+            renderTextPixel("3");
+            setTimeout(() => {
+                renderTextPixel("2");
+                setTimeout(() => {
+                    renderTextPixel("1");
+                    setTimeout(() => {
+                        seqIndex = 0;
+                        rightTapBtn.style.display = 'flex'; // Unlock TAP for Main Sequence
+                        playNextMainSequence();
+                    }, 800);
+                }, 800);
+            }, 800);
         }
 
         function playNextMainSequence() {
             if (seqIndex < mainSequence.length) {
                 renderTextPixel(mainSequence[seqIndex]);
                 createFirework(window.innerWidth / 2, window.innerHeight / 2);
-                rightTapBtn.style.display = 'flex';
             } else {
                 renderTextPixel("");
                 rightTapBtn.style.display = 'none';
@@ -523,7 +530,7 @@
             playNextMainSequence();
         }
 
-        // Slide Dialogs
+        // Slide Dialogue System
         let currentSlide = 0;
         const slides = [
             { 
@@ -577,7 +584,7 @@
             }
         }
 
-        // Swipe Left Gesture
+        // Touch Swipe Left Gesture
         let touchStartX = 0;
         cardEl.addEventListener('touchstart', (e) => touchStartX = e.touches[0].clientX);
         cardEl.addEventListener('touchend', (e) => {
