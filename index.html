@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Ayesha + Sadik ❤️</title>
     <style>
-        /* Google Fonts: Stylish yet perfectly readable */
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@1,700&family=Poppins:wght@300;400;600&display=swap');
+        /* Google Font: Clean, elegant & easily readable */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
         * {
             margin: 0;
@@ -14,18 +14,17 @@
             box-sizing: border-box;
         }
 
-        html,
-        body {
+        html, body {
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: #000000;
+            background: #050508;
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             user-select: none;
-            -webkit-user-select: none;
+            color: #ffffff;
         }
 
         /* ---------- PULL SCREEN ---------- */
@@ -35,7 +34,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(5, 5, 8, 0.92);
             z-index: 9000;
             display: flex;
             flex-direction: column;
@@ -51,46 +50,39 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 55px;
+            margin-top: 40px;
         }
 
         .cord-line {
             width: 4px;
-            height: 260px;
-            background: linear-gradient(to bottom, #ffd700, #00f2fe, #ff2a85);
-            box-shadow: 0 0 20px #00f2fe, 0 0 40px #ffd700;
+            height: 240px;
+            background: linear-gradient(to bottom, #ffd700, #ff2a85);
+            box-shadow: 0 0 15px #ff2a85;
             transition: height 0.08s ease;
         }
 
         .cord-handle {
-            width: 52px;
-            height: 52px;
-            background: radial-gradient(circle, #ffffff, #00f2fe);
+            width: 48px;
+            height: 48px;
+            background: radial-gradient(circle, #ffffff, #ff2a85);
             border-radius: 50%;
-            box-shadow: 0 0 30px #00f2fe, 0 0 50px #ffffff;
-            border: 3px solid #ffd700;
+            box-shadow: 0 0 25px #ff2a85;
+            border: 2px solid #ffd700;
         }
 
         .pull-hint {
             color: #ffd700;
-            margin-top: 40px;
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-            letter-spacing: 3px;
+            margin-top: 35px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 2px;
             text-align: center;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
             animation: pulseGlow 1.8s infinite alternate ease-in-out;
         }
 
         @keyframes pulseGlow {
-            0% {
-                opacity: 0.6;
-                transform: scale(0.96);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.04);
-            }
+            0% { opacity: 0.6; transform: scale(0.96); }
+            100% { opacity: 1; transform: scale(1.04); }
         }
 
         /* ---------- WELCOME SCREEN ---------- */
@@ -100,44 +92,40 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #000000;
+            background: #050508;
             z-index: 8000;
             display: none;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            opacity: 1;
-            transition: opacity 1.5s ease-in-out;
+            transition: opacity 1.2s ease-in-out;
             text-align: center;
         }
 
         .welcome-content {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 1.5s ease, transform 1.5s ease;
+            transition: opacity 1.2s ease, transform 1.2s ease;
         }
+
         .welcome-content.show {
             opacity: 1;
             transform: translateY(0);
         }
 
         .welcome-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 48px;
+            font-size: 36px;
+            font-weight: 700;
             color: #ffffff;
-            letter-spacing: 2px;
-            text-shadow: 0 0 25px #00f2fe, 0 0 50px #ff2a85;
-            line-height: 1.4;
+            text-shadow: 0 0 20px #ff2a85;
+            margin-bottom: 10px;
         }
 
         .welcome-subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 17px;
+            font-size: 16px;
             color: #ffd700;
-            margin-top: 20px;
-            letter-spacing: 3px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+            letter-spacing: 2px;
         }
 
         /* ---------- CANVASES ---------- */
@@ -148,148 +136,102 @@
             width: 100%;
             height: 100%;
         }
-        #matrixCanvas {
-            z-index: 10;
-            background: #000000;
-        }
-        #textCanvas {
-            z-index: 20;
-            pointer-events: none;
-        }
-        #fireworksCanvas {
-            z-index: 30;
-            pointer-events: none;
-        }
-        #heartsCanvas {
-            z-index: 15;
-            pointer-events: none;
-        }
+        #matrixCanvas { z-index: 10; background: #050508; }
+        #textCanvas { z-index: 20; pointer-events: none; }
+        #fireworksCanvas { z-index: 30; pointer-events: none; }
+        #heartsCanvas { z-index: 15; pointer-events: none; }
 
-        /* ---------- RIGHT TAP BUTTON ---------- */
+        /* ---------- TAP BUTTON ---------- */
         .right-tap-btn {
             position: fixed;
-            right: 22px;
-            bottom: 38%;
-            width: 72px;
-            height: 72px;
-            background: radial-gradient(circle, #00f2fe, #007799);
-            border: 3px solid #ffd700;
+            right: 20px;
+            bottom: 35%;
+            width: 65px;
+            height: 65px;
+            background: radial-gradient(circle, #ff2a85, #b30047);
+            border: 2px solid #ffd700;
             border-radius: 50%;
             color: #fff;
             display: none;
             justify-content: center;
             align-items: center;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            font-size: 14px;
-            letter-spacing: 1.5px;
-            box-shadow: 0 0 40px rgba(0, 242, 254, 0.9), inset 0 0 15px #fff;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 0 25px rgba(255, 42, 133, 0.8);
             cursor: pointer;
             z-index: 500;
             animation: floatBtn 2s infinite alternate ease-in-out;
             text-align: center;
-            line-height: 1.2;
         }
 
         @keyframes floatBtn {
             0% { transform: translateY(0px); }
-            100% { transform: translateY(-15px); }
+            100% { transform: translateY(-12px); }
         }
 
         /* ---------- CARD CONTAINER ---------- */
         .card-container {
             position: relative;
             z-index: 600;
-            background: rgba(6, 10, 20, 0.95);
-            border: 3px solid #00f2fe;
-            box-shadow: 0 0 35px rgba(0, 242, 254, 0.6), inset 0 0 30px rgba(0, 242, 254, 0.15);
-            outline: 3px solid #ffd700;
-            outline-offset: -12px;
-            border-radius: 20px;
-            padding: 38px 28px 32px;
+            background: rgba(15, 15, 25, 0.92);
+            border: 2px solid rgba(255, 42, 133, 0.5);
+            box-shadow: 0 0 30px rgba(255, 42, 133, 0.3);
+            border-radius: 16px;
+            padding: 30px 24px;
             width: 90%;
-            max-width: 520px;
+            max-width: 480px;
             text-align: center;
-            backdrop-filter: blur(18px);
+            backdrop-filter: blur(12px);
             display: none;
             cursor: pointer;
-            animation: popup 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: popup 0.6s ease forwards;
         }
-
-        .corner-ornament {
-            position: absolute;
-            width: 38px;
-            height: 38px;
-            fill: #ffd700;
-            filter: drop-shadow(0 0 8px #ffd700);
-        }
-        .top-left { top: 8px; left: 8px; }
-        .top-right { top: 8px; right: 8px; transform: scaleX(-1); }
-        .bottom-left { bottom: 8px; left: 8px; transform: scaleY(-1); }
-        .bottom-right { bottom: 8px; right: 8px; transform: scale(-1); }
 
         @keyframes popup {
-            from { opacity: 0; transform: scale(0.8); }
+            from { opacity: 0; transform: scale(0.85); }
             to { opacity: 1; transform: scale(1); }
         }
 
         .card-title {
-            font-family: 'Cinzel', serif;
-            font-size: 24px;
-            color: #00f2fe;
-            margin-bottom: 16px;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(0, 242, 254, 0.8);
-            min-height: 50px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #ff2a85;
+            margin-bottom: 12px;
+            min-height: 35px;
         }
 
         .marry-me-title {
-            font-family: 'Great Vibes', cursive !important;
-            font-size: 42px !important;
+            font-size: 30px !important;
             color: #ffd700 !important;
-            text-shadow: 0 0 30px #ffd700, 0 0 45px #ff2a85 !important;
+            text-shadow: 0 0 20px #ff2a85 !important;
         }
 
         .card-desc {
-            font-family: 'Poppins', sans-serif;
-            font-size: 16px;
-            color: #e0f7fa;
-            line-height: 1.8;
-            margin-bottom: 18px;
+            font-size: 15px;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 15px;
             font-weight: 400;
-            min-height: 60px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
         /* ----- Image Slide inside Card ----- */
         .card-image-wrap {
             width: 100%;
-            border-radius: 14px;
+            border-radius: 12px;
             overflow: hidden;
-            margin: 14px 0 18px;
-            border: 3px solid #ffd700;
-            box-shadow: 0 0 35px rgba(0, 242, 254, 0.4);
+            margin: 12px 0 15px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
             position: relative;
             background: #111;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .card-image-wrap:hover {
-            transform: scale(1.01);
-            box-shadow: 0 0 50px rgba(0, 242, 254, 0.6);
         }
 
         .card-image-wrap img {
             width: 100%;
             height: auto;
-            max-height: 280px;
+            max-height: 250px;
             object-fit: cover;
             display: block;
-            transition: transform 0.6s ease;
-        }
-
-        .card-image-wrap img:hover {
-            transform: scale(1.03);
         }
 
         .img-caption {
@@ -298,21 +240,18 @@
             left: 0;
             right: 0;
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-            padding: 24px 12px 14px;
+            padding: 15px 10px 10px;
             color: #fff;
-            font-size: 16px;
-            font-family: 'Great Vibes', cursive;
-            letter-spacing: 1px;
-            text-shadow: 0 0 15px #000;
+            font-size: 14px;
         }
 
-        /* ----- 3D HEART ANIMATION ----- */
+        /* ----- REAL 3D HEART SHAPE ANIMATION ----- */
         #heartContainer {
             width: 100%;
-            height: 250px;
+            height: 240px;
             position: relative;
             display: none;
-            perspective: 600px;
+            perspective: 800px;
             margin: 10px 0;
         }
 
@@ -321,111 +260,74 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
-            animation: spinHeart 16s infinite linear;
+            animation: rotateHeart 14s infinite linear;
         }
 
-        @keyframes spinHeart {
+        @keyframes rotateHeart {
             0% { transform: rotateY(0deg) rotateX(10deg); }
             100% { transform: rotateY(360deg) rotateX(10deg); }
         }
 
-        .love {
+        .love-item {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform-style: preserve-3d;
-            transform: rotateY(calc(var(--i) * (360deg / var(--total)))) translateZ(140px);
-            width: 120px;
-            height: 40px;
-            margin-left: -60px;
-            margin-top: -20px;
-            pointer-events: none;
-        }
-
-        .love_horizontal { transform: rotateX(25deg); transform-style: preserve-3d; }
-        .love_vertical { transform: rotateY(15deg); transform-style: preserve-3d; }
-
-        .love_word {
             color: #ff2a85;
-            font-size: 18px;
-            font-weight: bold;
-            font-family: 'Great Vibes', cursive;
-            text-shadow: 0 0 15px #ff2a85, 0 0 30px #00f2fe;
+            font-size: 12px;
+            font-weight: 600;
             white-space: nowrap;
-            letter-spacing: 2px;
-            text-align: center;
-            width: 100%;
-            transform: translateX(-50%);
+            text-shadow: 0 0 8px #ff2a85, 0 0 15px #ffd700;
+            transform-origin: center center;
         }
 
         .tap-card-hint {
-            font-size: 14px;
+            font-size: 13px;
             color: #ffd700;
-            margin-top: 14px;
-            letter-spacing: 2px;
-            font-family: 'Cinzel', serif;
+            margin-top: 12px;
+            letter-spacing: 1px;
             animation: pulseGlow 1.5s infinite alternate;
         }
 
         .btn-group {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
             flex-wrap: wrap;
         }
 
         .btn-yes {
-            background: linear-gradient(45deg, #00f2fe, #ffd700);
+            background: linear-gradient(45deg, #ff2a85, #ffd700);
             color: #000;
             border: none;
-            padding: 16px 38px;
-            font-size: 18px;
-            font-family: 'Cinzel', serif;
-            font-weight: 900;
-            border-radius: 40px;
+            padding: 12px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 0 35px rgba(0, 242, 254, 0.9);
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
-        .btn-yes:active {
-            transform: scale(0.92);
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
+            box-shadow: 0 0 25px rgba(255, 42, 133, 0.8);
         }
 
         .btn-action {
             background: linear-gradient(45deg, #00f2fe, #4facfe);
             color: #000;
             border: none;
-            padding: 12px 28px;
-            font-size: 15px;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            border-radius: 30px;
+            padding: 10px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 20px;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.7);
-            transition: transform 0.2s;
         }
-        .btn-action:active { transform: scale(0.94); }
         .btn-exit { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: #fff; }
 
-        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 480px) {
-            .welcome-title { font-size: 36px; }
-            .card-title { font-size: 20px; }
-            .marry-me-title { font-size: 32px !important; }
-            .card-desc { font-size: 14px; }
-            .right-tap-btn { width: 62px; height: 62px; font-size: 12px; right: 12px; }
-            .cord-line { height: 200px; }
-            .pull-hint { font-size: 15px; margin-top: 30px; }
-            .card-container { padding: 28px 16px 24px; }
-            .corner-ornament { width: 28px; height: 28px; }
-            .love {
-                transform: rotateY(calc(var(--i) * (360deg / var(--total)))) translateZ(100px);
-                width: 80px; height: 30px; margin-left: -40px; margin-top: -15px;
-            }
-            .love_word { font-size: 15px; }
-            #heartContainer { height: 180px; }
+            .welcome-title { font-size: 28px; }
+            .card-title { font-size: 19px; }
+            .marry-me-title { font-size: 25px !important; }
+            .card-desc { font-size: 13.5px; }
+            .right-tap-btn { width: 55px; height: 55px; font-size: 11px; }
+            #heartContainer { height: 200px; }
+            .love-item { font-size: 10px; }
         }
     </style>
 </head>
@@ -461,12 +363,6 @@
 
     <!-- ===== MAIN CARD ===== -->
     <div id="mainCard" class="card-container" onclick="handleCardClick()">
-        <!-- Corner ornaments -->
-        <svg class="corner-ornament top-left" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
-        <svg class="corner-ornament top-right" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
-        <svg class="corner-ornament bottom-left" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
-        <svg class="corner-ornament bottom-right" viewBox="0 0 100 100"><path d="M10,10 L90,10 L90,30 L30,30 L30,90 L10,90 Z"/></svg>
-
         <h2 id="cardTitle" class="card-title"></h2>
 
         <!-- Image placeholder -->
@@ -475,7 +371,7 @@
             <div class="img-caption" id="imgCaption">💕</div>
         </div>
 
-        <!-- 3D Heart Container -->
+        <!-- Real 3D Heart Container -->
         <div id="heartContainer">
             <div class="heart-scene" id="heartScene"></div>
         </div>
@@ -494,17 +390,15 @@
 
     <script>
         // ============================================================
-        //  1. কাস্টম ছবির লিংক পরিবর্তন (এখান থেকে পরিবর্তন করুন)
+        // 1. আপনার নিজস্ব ছবির লিংক এখানে বসান:
         // ============================================================
-        // আপনার নিজের ছবি ব্যবহারের জন্য লিংকগুলো পরিবর্তন করুন:
         const IMAGE_1 = 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop';
         const IMAGE_2 = 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=600&fit=crop';
         const IMAGE_3 = 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&h=600&fit=crop';
         const IMAGE_4 = 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop';
-        const IMAGE_5 = 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&h=600&fit=crop';
 
         // ============================================================
-        //  2. স্লাইড তালিকা (এখানে ইচ্ছামতো নতুন ছক/স্লাইড বানাতে পারবেন)
+        // 2. স্লাইড তালিকা (পরিষ্কার ও সুন্দর নরমাল টেক্সট)
         // ============================================================
         const slides = [
             {
@@ -518,44 +412,36 @@
                 hasImage: false
             },
             {
-                title: '🌸 Our Beautiful Moments 🌸',
-                desc: 'তোমার সাথে কাটানো প্রতিটি মুহূর্ত আমার কাছে অমূল্য। 💕',
+                title: '🌸 Memory 01 🌸',
+                desc: 'তোমার সাথে কাটানো প্রতিটি মুহূর্ত আমার কাছে দারুণ স্পেশাল। 💕',
                 hasImage: true,
                 imgSrc: IMAGE_1,
-                imgCaption: '💕 তোমার হাসি আমার পৃথিবী 💕'
+                imgCaption: '💕 তোমার সাথে কাটানো মুহূর্ত 💕'
             },
             {
-                title: '🌅 Forever Together 🌅',
-                desc: 'জীবনের পথে তুমি আমার সবচেয়ে সুন্দর গন্তব্য।',
+                title: '🌅 Memory 02 🌅',
+                desc: 'জীবনের প্রতিটি পদক্ষেপে তোমাকে পাশে চাই।',
                 hasImage: true,
                 imgSrc: IMAGE_2,
-                imgCaption: '🌹 চিরকাল তোমার সাথেই 🌹'
+                imgCaption: '🌹 চিরকাল তোমার সাথে 🌹'
             },
             {
-                title: '💫 Stars in Your Eyes 💫',
-                desc: 'তোমার চোখে আমি আমার পুরো আকাশ দেখতে পাই। ✨',
+                title: '💫 Memory 03 💫',
+                desc: 'তুমি আমার জীবনের সবচেয়ে সুন্দর উপহার। ✨',
                 hasImage: true,
                 imgSrc: IMAGE_3,
-                imgCaption: '🌟 তুমি আমার নক্ষত্র 🌟'
+                imgCaption: '🌟 তুমি আমার সব 🌟'
             },
             {
-                title: '🌹 My One and Only 🌹',
-                desc: 'এই পৃথিবীতে তুমিই আমার সবচেয়ে প্রিয় মানুষ। ❤️',
+                title: '🌹 Memory 04 🌹',
+                desc: 'এই পৃথিবীতে তুমিই আমার একমাত্র প্রিয় মানুষ। ❤️',
                 hasImage: true,
                 imgSrc: IMAGE_4,
                 imgCaption: '💍 শুধু তুমিই 💍'
             },
             {
-                // কাস্টম স্লাইড ৪/৫/৬ এর ছবি ও লেখার ছক
-                title: '💖 Memory Container 💖',
-                desc: 'এখানে আপনার ইচ্ছেমতো নতুন টেক্সট ও ছবি যোগ করতে পারেন।',
-                hasImage: true,
-                imgSrc: IMAGE_5,
-                imgCaption: '✨ আমাদের বাঁধন ✨'
-            },
-            {
-                // ৩D Heart এনিমেশন স্লাইড
-                title: 'S + A ❤️',
+                // স্ক্রিনশট ১ এর মতো আসল হার্ট শেপ এনিমেশন
+                title: 'I Love You Ayesha ❤️',
                 desc: '', 
                 hasHeartAnimation: true
             },
@@ -568,7 +454,7 @@
         ];
 
         // ============================================================
-        //  3. CANVAS & SYSTEM SETUP
+        // 3. CANVAS & SYSTEM SETUP
         // ============================================================
         const matrixCanvas = document.getElementById('matrixCanvas');
         const mCtx = matrixCanvas.getContext('2d');
@@ -600,10 +486,10 @@
         window.addEventListener('resize', resizeAll);
 
         // ============================================================
-        //  4. MATRIX RAIN
+        // 4. MATRIX RAIN
         // ============================================================
         const rainPhrases = ["100 WEEKS ", "700 DAYS ", "AYESHA ", "AHUBATI ", "I LOVE YOU ", "SADIK "];
-        let fontSize = 16, columns = 0, drops = [];
+        let fontSize = 15, columns = 0, drops = [];
 
         function initMatrixColumns() {
             columns = Math.floor(W / fontSize);
@@ -621,9 +507,9 @@
         resizeAll();
 
         function drawMatrixBG() {
-            mCtx.fillStyle = '#000000';
+            mCtx.fillStyle = '#050508';
             mCtx.fillRect(0, 0, W, H);
-            mCtx.font = 'bold 15px monospace';
+            mCtx.font = 'bold 14px monospace';
 
             for (let i = 0; i < drops.length; i++) {
                 const drop = drops[i];
@@ -635,7 +521,7 @@
                     const char = drop.phrase[idx];
                     if (j === 0) {
                         mCtx.fillStyle = '#ffffff';
-                        mCtx.shadowColor = '#00f2fe';
+                        mCtx.shadowColor = '#ff2a85';
                         mCtx.shadowBlur = 8;
                     } else {
                         const alpha = 1 - (j / trailLen);
@@ -655,7 +541,7 @@
         setInterval(drawMatrixBG, 40);
 
         // ============================================================
-        //  5. FLOATING HEARTS & FIREWORKS
+        // 5. FIREWORKS & HEARTS
         // ============================================================
         let heartParticles = [], particles = [];
 
@@ -666,10 +552,10 @@
                 heartParticles.push({
                     x: cx, y: cy,
                     vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed - 1.5,
-                    size: 12 + Math.random() * 20,
+                    vy: Math.sin(angle) * speed - 1.2,
+                    size: 12 + Math.random() * 16,
                     alpha: 0.9, life: 1,
-                    decay: 0.005 + Math.random() * 0.008,
+                    decay: 0.006 + Math.random() * 0.008,
                     color: `hsl(${330 + Math.random() * 40}, 90%, 60%)`
                 });
             }
@@ -685,32 +571,29 @@
                 hCtx.globalAlpha = p.alpha;
                 hCtx.font = `${p.size}px serif`;
                 hCtx.textAlign = 'center';
-                hCtx.textBaseline = 'middle';
                 hCtx.fillStyle = p.color || '#ff2a85';
-                hCtx.shadowColor = '#ff2a85';
-                hCtx.shadowBlur = 20;
                 hCtx.fillText('♥', p.x, p.y);
             }
-            hCtx.globalAlpha = 1; hCtx.shadowBlur = 0;
+            hCtx.globalAlpha = 1;
             if (heartParticles.length > 0) requestAnimationFrame(drawHeartsCanvas);
         }
 
         function triggerHeartBurst(x, y) {
-            spawnHeartBurst(x || W / 2, y || H / 2, 30);
+            spawnHeartBurst(x || W / 2, y || H / 2, 25);
             if (heartParticles.length > 0) drawHeartsCanvas();
         }
 
         function triggerBurstFireworks(cx, cy) {
             const centerX = cx || W / 2, centerY = cy || H * 0.4;
-            const colors = ['#ffd700', '#00f2fe', '#ff2a85', '#ffffff', '#ff6b6b'];
-            for (let i = 0; i < 55; i++) {
-                const angle = (Math.PI * 2 / 55) * i + Math.random() * 0.2;
-                const speed = Math.random() * 5 + 3;
+            const colors = ['#ffd700', '#00f2fe', '#ff2a85', '#ffffff'];
+            for (let i = 0; i < 45; i++) {
+                const angle = (Math.PI * 2 / 45) * i;
+                const speed = Math.random() * 4 + 2;
                 particles.push({
                     x: centerX, y: centerY,
                     vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
                     alpha: 1, color: colors[Math.floor(Math.random() * colors.length)],
-                    size: 2 + Math.random() * 3.5
+                    size: 2 + Math.random() * 3
                 });
             }
             animateFireworks();
@@ -720,33 +603,31 @@
             if (particles.length === 0) return;
             fwCtx.clearRect(0, 0, W, H);
             particles.forEach((p, idx) => {
-                p.x += p.vx; p.y += p.vy; p.vy += 0.03; p.alpha -= 0.018;
+                p.x += p.vx; p.y += p.vy; p.vy += 0.03; p.alpha -= 0.02;
                 fwCtx.beginPath();
                 fwCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 fwCtx.fillStyle = p.color;
                 fwCtx.globalAlpha = p.alpha;
-                fwCtx.shadowColor = p.color;
-                fwCtx.shadowBlur = 14;
                 fwCtx.fill();
                 if (p.alpha <= 0) particles.splice(idx, 1);
             });
-            fwCtx.globalAlpha = 1; fwCtx.shadowBlur = 0;
+            fwCtx.globalAlpha = 1;
             if (particles.length > 0) requestAnimationFrame(animateFireworks);
         }
 
         // ============================================================
-        //  6. PULL & SYSTEM LOGIC
+        // 6. PULL & START
         // ============================================================
-        let startY = 0, currentDrag = 0, maxDrag = 170, isStarted = false;
+        let startY = 0, currentDrag = 0, maxDrag = 150, isStarted = false;
 
         cordWrapper.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; });
         cordWrapper.addEventListener('touchmove', (e) => {
             const y = e.touches[0].clientY;
             currentDrag = Math.max(0, Math.min(maxDrag, y - startY));
-            cordLine.style.height = (260 + currentDrag) + 'px';
+            cordLine.style.height = (240 + currentDrag) + 'px';
             if (currentDrag >= maxDrag) triggerSystemStart();
         });
-        cordWrapper.addEventListener('touchend', () => { if (currentDrag < maxDrag) cordLine.style.height = '260px'; });
+        cordWrapper.addEventListener('touchend', () => { if (currentDrag < maxDrag) cordLine.style.height = '240px'; });
         cordWrapper.addEventListener('click', () => triggerSystemStart());
 
         function triggerSystemStart() {
@@ -760,16 +641,16 @@
                 triggerBurstFireworks();
                 triggerHeartBurst(W / 2, H * 0.5);
                 setTimeout(() => { welRow1.classList.add('show'); triggerBurstFireworks(); }, 400);
-                setTimeout(() => { welRow2.classList.add('show'); triggerBurstFireworks(); }, 2000);
+                setTimeout(() => { welRow2.classList.add('show'); triggerBurstFireworks(); }, 1800);
                 setTimeout(() => {
                     welcomeScreen.style.opacity = '0';
-                    setTimeout(() => { welcomeScreen.style.display = 'none'; startCountdownSequence(); }, 1500);
-                }, 5200);
+                    setTimeout(() => { welcomeScreen.style.display = 'none'; startCountdownSequence(); }, 1200);
+                }, 4800);
             }, 800);
         }
 
         // ============================================================
-        //  7. PIXEL TEXT RENDERING
+        // 7. PIXEL TEXT RENDERING
         // ============================================================
         function renderTextPixel(text) {
             tCtx.clearRect(0, 0, W, H);
@@ -777,19 +658,17 @@
             const tempCanvas = document.createElement('canvas');
             const tempCtx = tempCanvas.getContext('2d');
             tempCanvas.width = W; tempCanvas.height = H;
-            let dynSize = Math.min(W / (text.length * 0.65), H * 0.22);
-            if (dynSize > 85) dynSize = 85;
-            if (dynSize < 24) dynSize = 24;
+            let dynSize = Math.min(W / (text.length * 0.7), H * 0.2);
+            if (dynSize > 75) dynSize = 75;
+            if (dynSize < 22) dynSize = 22;
             tempCtx.fillStyle = '#fff';
-            tempCtx.font = `900 ${dynSize}px sans-serif`;
+            tempCtx.font = `700 ${dynSize}px Poppins, sans-serif`;
             tempCtx.textAlign = 'center';
             tempCtx.textBaseline = 'middle';
             tempCtx.fillText(text, W / 2, H / 2);
             const imgData = tempCtx.getImageData(0, 0, W, H).data;
-            const dotGap = 7, dotRadius = 2.8;
-            tCtx.fillStyle = '#00f2fe';
-            tCtx.shadowColor = '#00f2fe';
-            tCtx.shadowBlur = 18;
+            const dotGap = 6, dotRadius = 2.5;
+            tCtx.fillStyle = '#ff2a85';
             for (let y = 0; y < H; y += dotGap) {
                 for (let x = 0; x < W; x += dotGap) {
                     if (imgData[(y * W + x) * 4 + 3] > 128) {
@@ -799,7 +678,6 @@
                     }
                 }
             }
-            tCtx.shadowBlur = 0;
         }
 
         const mainSequence = ["100 WEEKS", "700 DAYS", "AYESHA + SADIK", "AHUBATI + AHUBI", "I LOVE YOU"];
@@ -816,9 +694,9 @@
                         seqIndex = 0;
                         rightTapBtn.style.display = 'flex';
                         playNextMainSequence();
-                    }, 850);
-                }, 850);
-            }, 850);
+                    }, 800);
+                }, 800);
+            }, 800);
         }
 
         function playNextMainSequence() {
@@ -835,7 +713,55 @@
         function nextSequenceStep() { seqIndex++; playNextMainSequence(); }
 
         // ============================================================
-        //  8. CARD MANAGEMENT & SLIDES
+        // 8. ACCURATE 3D HEART PARAMETRIC MATH (১ম ছবির কোড অনুযায়ী)
+        // ============================================================
+        const heartContainer = document.getElementById('heartContainer');
+        const heartScene = document.getElementById('heartScene');
+        let heartCreated = false;
+
+        function generateMathematicalHeart() {
+            if (heartCreated) return;
+            heartScene.innerHTML = '';
+            
+            const totalItems = 75; // হৃদপিণ্ডের আকৃতির পয়েন্ট সংখ্যা
+            const isMobile = window.innerWidth < 480;
+            const scale = isMobile ? 6.5 : 9.5; 
+
+            for (let i = 0; i < totalItems; i++) {
+                // parametric t angle
+                const t = (i / totalItems) * Math.PI * 2;
+                
+                // Real Mathematical Heart Equation:
+                // x = 16 * sin^3(t)
+                // y = 13 * cos(t) - 5 * cos(2t) - 2 * cos(3t) - cos(4t)
+                const x = 16 * Math.pow(Math.sin(t), 3);
+                const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+
+                const posX = x * scale;
+                const posY = y * scale;
+
+                const item = document.createElement('div');
+                item.className = 'love-item';
+                item.innerText = 'I love you';
+                
+                // Position in 3D space around the heart path
+                item.style.transform = `translate3d(${posX}px, ${posY}px, 0px)`;
+                heartScene.appendChild(item);
+            }
+            heartCreated = true;
+        }
+
+        function showHeartAnimation(show) {
+            if (show) {
+                heartContainer.style.display = 'block';
+                generateMathematicalHeart();
+            } else {
+                heartContainer.style.display = 'none';
+            }
+        }
+
+        // ============================================================
+        // 9. CARD MANAGEMENT & SLIDES
         // ============================================================
         let currentSlide = 0;
         const cardEl = document.getElementById('mainCard');
@@ -845,40 +771,6 @@
         const cardImageWrap = document.getElementById('cardImageWrap');
         const cardImage = document.getElementById('cardImage');
         const imgCaption = document.getElementById('imgCaption');
-        const heartContainer = document.getElementById('heartContainer');
-        const heartScene = document.getElementById('heartScene');
-
-        let heartsGenerated = false;
-
-        function generateHearts() {
-            if (heartsGenerated) return;
-            const total = 36;
-            heartScene.style.setProperty('--total', total);
-            for (let i = 1; i <= total; i++) {
-                const love = document.createElement('div');
-                love.className = 'love';
-                love.style.setProperty('--i', i);
-                love.innerHTML = `
-                    <div class="love_horizontal">
-                        <div class="love_vertical">
-                            <div class="love_word">I love you</div>
-                        </div>
-                    </div>
-                `;
-                heartScene.appendChild(love);
-            }
-            heartsGenerated = true;
-        }
-
-        function showHeartAnimation(show) {
-            if (show) {
-                heartContainer.style.display = 'block';
-                if (!heartsGenerated) generateHearts();
-                heartScene.style.display = 'block';
-            } else {
-                heartContainer.style.display = 'none';
-            }
-        }
 
         function showCard() {
             cardEl.style.display = 'block';
@@ -902,7 +794,6 @@
                 if (slide.hasImage && slide.imgSrc) {
                     cardImageWrap.style.display = 'block';
                     cardImage.src = slide.imgSrc;
-                    cardImage.alt = 'Ayesha & Sadik';
                     imgCaption.innerText = slide.imgCaption || '💕';
                 } else {
                     cardImageWrap.style.display = 'none';
@@ -958,7 +849,7 @@
             cardEl.style.display = 'none';
             pullScreen.style.display = 'flex';
             pullScreen.style.opacity = '1';
-            cordLine.style.height = '260px';
+            cordLine.style.height = '240px';
             welRow1.classList.remove('show');
             welRow2.classList.remove('show');
             isStarted = false; currentDrag = 0; seqIndex = 0;
@@ -970,23 +861,14 @@
             rightTapBtn.style.display = 'none';
             bgMusic.pause(); bgMusic.currentTime = 0;
             heartContainer.style.display = 'none';
-            heartsGenerated = false;
-            heartScene.innerHTML = '';
+            heartCreated = false;
         }
 
         function exitProject(e) {
             e.stopPropagation();
-            alert('Thank you for being in my life! ❤️ Stay forever blessed.');
+            alert('Thank you for being in my life! ❤️');
             window.close();
         }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                if (pullScreen.style.display !== 'none') triggerSystemStart();
-                else if (rightTapBtn.style.display === 'flex') nextSequenceStep();
-                else if (cardEl.style.display === 'block') handleCardClick();
-            }
-        });
     </script>
 </body>
 </html>
