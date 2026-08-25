@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Ayesha + Sadik ❤️</title>
     <style>
-        /* Google Font: Clean, elegant & easily readable */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
         * {
@@ -27,14 +26,14 @@
             color: #ffffff;
         }
 
-        /* ---------- PULL SCREEN ---------- */
+        /* ---------- CYAN GLOWING PULL CORD ---------- */
         #pull-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(5, 5, 8, 0.92);
+            background: rgba(5, 5, 8, 0.95);
             z-index: 9000;
             display: flex;
             flex-direction: column;
@@ -50,37 +49,38 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .cord-line {
             width: 4px;
             height: 240px;
-            background: linear-gradient(to bottom, #ffd700, #ff2a85);
-            box-shadow: 0 0 15px #ff2a85;
+            background: linear-gradient(to bottom, #00f2fe, #4facfe);
+            box-shadow: 0 0 15px #00f2fe, 0 0 25px #00f2fe;
             transition: height 0.08s ease;
         }
 
         .cord-handle {
-            width: 48px;
-            height: 48px;
-            background: radial-gradient(circle, #ffffff, #ff2a85);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #ffffff, #00f2fe);
             border-radius: 50%;
-            box-shadow: 0 0 25px #ff2a85;
-            border: 2px solid #ffd700;
+            box-shadow: 0 0 25px #00f2fe, 0 0 40px #00f2fe;
+            border: 2px solid #ffffff;
         }
 
         .pull-hint {
-            color: #ffd700;
+            color: #00f2fe;
             margin-top: 35px;
             font-size: 16px;
             font-weight: 500;
             letter-spacing: 2px;
             text-align: center;
-            animation: pulseGlow 1.8s infinite alternate ease-in-out;
+            text-shadow: 0 0 10px #00f2fe;
+            animation: pulseCyan 1.8s infinite alternate ease-in-out;
         }
 
-        @keyframes pulseGlow {
+        @keyframes pulseCyan {
             0% { opacity: 0.6; transform: scale(0.96); }
             100% { opacity: 1; transform: scale(1.04); }
         }
@@ -118,14 +118,15 @@
             font-size: 36px;
             font-weight: 700;
             color: #ffffff;
-            text-shadow: 0 0 20px #ff2a85;
+            text-shadow: 0 0 20px #00f2fe, 0 0 30px #4facfe;
             margin-bottom: 10px;
         }
 
         .welcome-subtitle {
             font-size: 16px;
-            color: #ffd700;
+            color: #00f2fe;
             letter-spacing: 2px;
+            text-shadow: 0 0 10px #00f2fe;
         }
 
         /* ---------- CANVASES ---------- */
@@ -148,8 +149,8 @@
             bottom: 35%;
             width: 65px;
             height: 65px;
-            background: radial-gradient(circle, #ff2a85, #b30047);
-            border: 2px solid #ffd700;
+            background: radial-gradient(circle, #00f2fe, #0080ff);
+            border: 2px solid #ffffff;
             border-radius: 50%;
             color: #fff;
             display: none;
@@ -157,7 +158,7 @@
             align-items: center;
             font-size: 13px;
             font-weight: 600;
-            box-shadow: 0 0 25px rgba(255, 42, 133, 0.8);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.8);
             cursor: pointer;
             z-index: 500;
             animation: floatBtn 2s infinite alternate ease-in-out;
@@ -174,11 +175,11 @@
             position: relative;
             z-index: 600;
             background: rgba(15, 15, 25, 0.92);
-            border: 2px solid rgba(255, 42, 133, 0.5);
-            box-shadow: 0 0 30px rgba(255, 42, 133, 0.3);
+            border: 2px solid rgba(0, 242, 254, 0.5);
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
             border-radius: 16px;
-            padding: 30px 24px;
-            width: 90%;
+            padding: 25px 20px;
+            width: 92%;
             max-width: 480px;
             text-align: center;
             backdrop-filter: blur(12px);
@@ -195,13 +196,13 @@
         .card-title {
             font-size: 22px;
             font-weight: 600;
-            color: #ff2a85;
+            color: #00f2fe;
+            text-shadow: 0 0 10px #00f2fe;
             margin-bottom: 12px;
-            min-height: 35px;
         }
 
         .marry-me-title {
-            font-size: 30px !important;
+            font-size: 28px !important;
             color: #ffd700 !important;
             text-shadow: 0 0 20px #ff2a85 !important;
         }
@@ -214,41 +215,10 @@
             font-weight: 400;
         }
 
-        /* ----- Image Slide inside Card ----- */
-        .card-image-wrap {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            margin: 12px 0 15px;
-            border: 2px solid #ffd700;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-            position: relative;
-            background: #111;
-        }
-
-        .card-image-wrap img {
-            width: 100%;
-            height: auto;
-            max-height: 250px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .img-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-            padding: 15px 10px 10px;
-            color: #fff;
-            font-size: 14px;
-        }
-
         /* ----- REAL 3D HEART SHAPE ANIMATION ----- */
         #heartContainer {
             width: 100%;
-            height: 240px;
+            height: 220px;
             position: relative;
             display: none;
             perspective: 800px;
@@ -273,19 +243,78 @@
             top: 50%;
             left: 50%;
             color: #ff2a85;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             white-space: nowrap;
             text-shadow: 0 0 8px #ff2a85, 0 0 15px #ffd700;
             transform-origin: center center;
         }
 
+        /* ----- ANIMATION SLIDE 1: HEART TREE WIDGET ----- */
+        #treeContainer {
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .tree-layout {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tree-text-box {
+            width: 50%;
+            text-align: left;
+            font-size: 11px;
+            line-height: 1.5;
+            color: #ffd700;
+        }
+
+        .tree-canvas-box {
+            width: 50%;
+            height: 180px;
+            position: relative;
+        }
+
+        #treeCanvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .clock-box {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #00f2fe;
+            background: rgba(0, 242, 254, 0.1);
+            padding: 6px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+        }
+
+        /* ----- ANIMATION SLIDE 2: NEON PARTICLE HEART ----- */
+        #neonHeartContainer {
+            width: 100%;
+            height: 220px;
+            display: none;
+            position: relative;
+            margin: 10px 0;
+        }
+
+        #neonCanvas {
+            width: 100%;
+            height: 100%;
+        }
+
         .tap-card-hint {
             font-size: 13px;
-            color: #ffd700;
+            color: #00f2fe;
             margin-top: 12px;
             letter-spacing: 1px;
-            animation: pulseGlow 1.5s infinite alternate;
+            animation: pulseCyan 1.5s infinite alternate;
         }
 
         .btn-group {
@@ -323,17 +352,15 @@
         @media (max-width: 480px) {
             .welcome-title { font-size: 28px; }
             .card-title { font-size: 19px; }
-            .marry-me-title { font-size: 25px !important; }
+            .marry-me-title { font-size: 24px !important; }
             .card-desc { font-size: 13.5px; }
             .right-tap-btn { width: 55px; height: 55px; font-size: 11px; }
-            #heartContainer { height: 200px; }
-            .love-item { font-size: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== PULL SCREEN ===== -->
+    <!-- ===== PULL SCREEN (GLOWING CYAN CORD) ===== -->
     <div id="pull-screen">
         <div class="cord-wrapper" id="cordWrapper">
             <div class="cord-line" id="cordLine"></div>
@@ -365,15 +392,32 @@
     <div id="mainCard" class="card-container" onclick="handleCardClick()">
         <h2 id="cardTitle" class="card-title"></h2>
 
-        <!-- Image placeholder -->
-        <div id="cardImageWrap" class="card-image-wrap" style="display:none;">
-            <img id="cardImage" src="" alt="Ayesha & Sadik" />
-            <div class="img-caption" id="imgCaption">💕</div>
-        </div>
-
-        <!-- Real 3D Heart Container -->
+        <!-- 3D Heart Rotation (১ম এনিমেশন) -->
         <div id="heartContainer">
             <div class="heart-scene" id="heartScene"></div>
+        </div>
+
+        <!-- Heart Tree Canvas (২য় এনিমেশন - ছবি ৩ অনুযায়ী) -->
+        <div id="treeContainer">
+            <div class="tree-layout">
+                <div class="tree-text-box">
+                    Hey Ayesha 💕<br/>
+                    Happy Moments ✨<br/>
+                    May God bless you 🤲<br/>
+                    Always stay happy 💕<br/>
+                    Sending love & vibes 💖<br/>
+                    Ayesha + Sadik Forever ❤️
+                </div>
+                <div class="tree-canvas-box">
+                    <canvas id="treeCanvas"></canvas>
+                </div>
+            </div>
+            <div class="clock-box" id="liveClock">Together for 700 Days ✨</div>
+        </div>
+
+        <!-- Neon Particle Heart Canvas (৩য় এনিমেশন - ছবি ৪ অনুযায়ী) -->
+        <div id="neonHeartContainer">
+            <canvas id="neonCanvas"></canvas>
         </div>
 
         <p id="cardDesc" class="card-desc"></p>
@@ -390,71 +434,41 @@
 
     <script>
         // ============================================================
-        // 1. আপনার নিজস্ব ছবির লিংক এখানে বসান:
-        // ============================================================
-        const IMAGE_1 = 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop';
-        const IMAGE_2 = 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=600&fit=crop';
-        const IMAGE_3 = 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&h=600&fit=crop';
-        const IMAGE_4 = 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop';
-
-        // ============================================================
-        // 2. স্লাইড তালিকা (পরিষ্কার ও সুন্দর নরমাল টেক্সট)
+        // 1. স্লাইড তালিকা (টেক্সট আপনার ইচ্ছামতো এডিট করতে পারবেন)
         // ============================================================
         const slides = [
             {
                 title: '✨ 100 Weeks & 700 Days ✨',
                 desc: 'আয়েশা (AHUBATI), ১০০ টি সপ্তাহ এবং ৭০০ টি দিন ধরে আমার পাশে থাকার জন্য অনেক ধন্যবাদ।',
-                hasImage: false
             },
             {
                 title: '💖 For My Special One 💖',
                 desc: 'You are my JAPAN without P! 🥰 (You are my JAAN ❤️)',
-                hasImage: false
             },
             {
-                title: '🌸 Memory 01 🌸',
-                desc: 'তোমার সাথে কাটানো প্রতিটি মুহূর্ত আমার কাছে দারুণ স্পেশাল। 💕',
-                hasImage: true,
-                imgSrc: IMAGE_1,
-                imgCaption: '💕 তোমার সাথে কাটানো মুহূর্ত 💕'
-            },
-            {
-                title: '🌅 Memory 02 🌅',
-                desc: 'জীবনের প্রতিটি পদক্ষেপে তোমাকে পাশে চাই।',
-                hasImage: true,
-                imgSrc: IMAGE_2,
-                imgCaption: '🌹 চিরকাল তোমার সাথে 🌹'
-            },
-            {
-                title: '💫 Memory 03 💫',
-                desc: 'তুমি আমার জীবনের সবচেয়ে সুন্দর উপহার। ✨',
-                hasImage: true,
-                imgSrc: IMAGE_3,
-                imgCaption: '🌟 তুমি আমার সব 🌟'
-            },
-            {
-                title: '🌹 Memory 04 🌹',
-                desc: 'এই পৃথিবীতে তুমিই আমার একমাত্র প্রিয় মানুষ। ❤️',
-                hasImage: true,
-                imgSrc: IMAGE_4,
-                imgCaption: '💍 শুধু তুমিই 💍'
-            },
-            {
-                // স্ক্রিনশট ১ এর মতো আসল হার্ট শেপ এনিমেশন
+                // এনিমেশন স্লাইড ১: Real 3D Rotational Heart
                 title: 'I Love You Ayesha ❤️',
-                desc: '', 
-                hasHeartAnimation: true
+                has3DHeart: true
+            },
+            {
+                // এনিমেশন স্লাইড ২: Heart Tree & Live Counter (কোড ৩ অনুযায়ী)
+                title: 'Ayesha + Sadik Tree 🌸',
+                hasHeartTree: true
+            },
+            {
+                // এনিমেশন স্লাইড ৩: Neon Particle Glow Heart (কোড ৪ অনুযায়ী)
+                title: 'Neon Glow Heart ✨',
+                hasNeonHeart: true
             },
             {
                 title: '💍 Will You Marry Me? 💍',
                 desc: 'আমার জীবনের বাকিটা সময় কি এভাবেই নিজের করে নিবে? Will you marry me, my love? ❤️',
-                hasImage: false,
                 isMarryPage: true
             }
         ];
 
         // ============================================================
-        // 3. CANVAS & SYSTEM SETUP
+        // 2. CANVAS & SYSTEM SETUP
         // ============================================================
         const matrixCanvas = document.getElementById('matrixCanvas');
         const mCtx = matrixCanvas.getContext('2d');
@@ -486,7 +500,7 @@
         window.addEventListener('resize', resizeAll);
 
         // ============================================================
-        // 4. MATRIX RAIN
+        // 3. MATRIX RAIN
         // ============================================================
         const rainPhrases = ["100 WEEKS ", "700 DAYS ", "AYESHA ", "AHUBATI ", "I LOVE YOU ", "SADIK "];
         let fontSize = 15, columns = 0, drops = [];
@@ -521,11 +535,11 @@
                     const char = drop.phrase[idx];
                     if (j === 0) {
                         mCtx.fillStyle = '#ffffff';
-                        mCtx.shadowColor = '#ff2a85';
+                        mCtx.shadowColor = '#00f2fe';
                         mCtx.shadowBlur = 8;
                     } else {
                         const alpha = 1 - (j / trailLen);
-                        mCtx.fillStyle = `rgba(255, 42, 133, ${alpha})`;
+                        mCtx.fillStyle = `rgba(0, 242, 254, ${alpha})`;
                         mCtx.shadowBlur = 0;
                     }
                     mCtx.fillText(char, i * fontSize, charY);
@@ -541,7 +555,7 @@
         setInterval(drawMatrixBG, 40);
 
         // ============================================================
-        // 5. FIREWORKS & HEARTS
+        // 4. FIREWORKS & HEARTS
         // ============================================================
         let heartParticles = [], particles = [];
 
@@ -556,7 +570,7 @@
                     size: 12 + Math.random() * 16,
                     alpha: 0.9, life: 1,
                     decay: 0.006 + Math.random() * 0.008,
-                    color: `hsl(${330 + Math.random() * 40}, 90%, 60%)`
+                    color: `hsl(${180 + Math.random() * 40}, 90%, 60%)`
                 });
             }
         }
@@ -571,7 +585,7 @@
                 hCtx.globalAlpha = p.alpha;
                 hCtx.font = `${p.size}px serif`;
                 hCtx.textAlign = 'center';
-                hCtx.fillStyle = p.color || '#ff2a85';
+                hCtx.fillStyle = p.color || '#00f2fe';
                 hCtx.fillText('♥', p.x, p.y);
             }
             hCtx.globalAlpha = 1;
@@ -585,7 +599,7 @@
 
         function triggerBurstFireworks(cx, cy) {
             const centerX = cx || W / 2, centerY = cy || H * 0.4;
-            const colors = ['#ffd700', '#00f2fe', '#ff2a85', '#ffffff'];
+            const colors = ['#00f2fe', '#ffd700', '#ff2a85', '#ffffff'];
             for (let i = 0; i < 45; i++) {
                 const angle = (Math.PI * 2 / 45) * i;
                 const speed = Math.random() * 4 + 2;
@@ -616,7 +630,7 @@
         }
 
         // ============================================================
-        // 6. PULL & START
+        // 5. CYAN CORD PULL ACTION
         // ============================================================
         let startY = 0, currentDrag = 0, maxDrag = 150, isStarted = false;
 
@@ -650,7 +664,7 @@
         }
 
         // ============================================================
-        // 7. PIXEL TEXT RENDERING
+        // 6. CYAN GLOWING TEXT PIXEL RENDERING
         // ============================================================
         function renderTextPixel(text) {
             tCtx.clearRect(0, 0, W, H);
@@ -668,7 +682,10 @@
             tempCtx.fillText(text, W / 2, H / 2);
             const imgData = tempCtx.getImageData(0, 0, W, H).data;
             const dotGap = 6, dotRadius = 2.5;
-            tCtx.fillStyle = '#ff2a85';
+
+            tCtx.fillStyle = '#00f2fe';
+            tCtx.shadowColor = '#00f2fe';
+            tCtx.shadowBlur = 10;
             for (let y = 0; y < H; y += dotGap) {
                 for (let x = 0; x < W; x += dotGap) {
                     if (imgData[(y * W + x) * 4 + 3] > 128) {
@@ -678,6 +695,7 @@
                     }
                 }
             }
+            tCtx.shadowBlur = 0;
         }
 
         const mainSequence = ["100 WEEKS", "700 DAYS", "AYESHA + SADIK", "AHUBATI + AHUBI", "I LOVE YOU"];
@@ -713,64 +731,117 @@
         function nextSequenceStep() { seqIndex++; playNextMainSequence(); }
 
         // ============================================================
-        // 8. ACCURATE 3D HEART PARAMETRIC MATH (১ম ছবির কোড অনুযায়ী)
+        // 7. ANIMATION 1: 3D PARAMETRIC HEART
         // ============================================================
         const heartContainer = document.getElementById('heartContainer');
         const heartScene = document.getElementById('heartScene');
         let heartCreated = false;
 
-        function generateMathematicalHeart() {
+        function generate3DHeart() {
             if (heartCreated) return;
             heartScene.innerHTML = '';
-            
-            const totalItems = 75; // হৃদপিণ্ডের আকৃতির পয়েন্ট সংখ্যা
+            const totalItems = 70;
             const isMobile = window.innerWidth < 480;
-            const scale = isMobile ? 6.5 : 9.5; 
+            const scale = isMobile ? 6 : 9;
 
             for (let i = 0; i < totalItems; i++) {
-                // parametric t angle
                 const t = (i / totalItems) * Math.PI * 2;
-                
-                // Real Mathematical Heart Equation:
-                // x = 16 * sin^3(t)
-                // y = 13 * cos(t) - 5 * cos(2t) - 2 * cos(3t) - cos(4t)
                 const x = 16 * Math.pow(Math.sin(t), 3);
                 const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-
-                const posX = x * scale;
-                const posY = y * scale;
-
                 const item = document.createElement('div');
                 item.className = 'love-item';
                 item.innerText = 'I love you';
-                
-                // Position in 3D space around the heart path
-                item.style.transform = `translate3d(${posX}px, ${posY}px, 0px)`;
+                item.style.transform = `translate3d(${x * scale}px, ${y * scale}px, 0px)`;
                 heartScene.appendChild(item);
             }
             heartCreated = true;
         }
 
-        function showHeartAnimation(show) {
-            if (show) {
-                heartContainer.style.display = 'block';
-                generateMathematicalHeart();
-            } else {
-                heartContainer.style.display = 'none';
+        // ============================================================
+        // 8. ANIMATION 2: HEART TREE (ছবি ৩ কোড অনুযায়ী)
+        // ============================================================
+        const treeContainer = document.getElementById('treeContainer');
+        const treeCanvas = document.getElementById('treeCanvas');
+        const treeCtx = treeCanvas.getContext('2d');
+        let treeAnimId = null;
+
+        function drawHeartTree() {
+            treeCanvas.width = treeCanvas.parentElement.clientWidth;
+            treeCanvas.height = treeCanvas.parentElement.clientHeight;
+            const tw = treeCanvas.width, th = treeCanvas.height;
+
+            treeCtx.clearRect(0, 0, tw, th);
+            // Trunk
+            treeCtx.fillStyle = '#d4a373';
+            treeCtx.fillRect(tw/2 - 6, th - 50, 12, 50);
+
+            // Leaves (Heart Cluster)
+            const leaves = 120;
+            for (let i = 0; i < leaves; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const r = Math.random() * 45;
+                const x = tw/2 + Math.cos(angle) * r;
+                const y = th - 80 + Math.sin(angle) * r * 0.8;
+                
+                treeCtx.font = `${8 + Math.random()*8}px serif`;
+                treeCtx.fillStyle = `hsl(${340 + Math.random()*30}, 90%, ${60 + Math.random()*20}%)`;
+                treeCtx.fillText('♥', x, y);
             }
         }
 
+        // Live Counter update
+        function updateClock() {
+            const startDate = new Date("2024-09-24T00:00:00"); 
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 700;
+            document.getElementById('liveClock').innerText = `Together for ${days} Days ✨`;
+        }
+        setInterval(updateClock, 1000);
+
         // ============================================================
-        // 9. CARD MANAGEMENT & SLIDES
+        // 9. ANIMATION 3: NEON PARTICLE HEART (ছবি ৪ কোড অনুযায়ী)
+        // ============================================================
+        const neonHeartContainer = document.getElementById('neonHeartContainer');
+        const neonCanvas = document.getElementById('neonCanvas');
+        const nCtx = neonCanvas.getContext('2d');
+        let neonAnimId = null, neonAngle = 0;
+
+        function drawNeonHeart() {
+            neonCanvas.width = neonHeartContainer.clientWidth;
+            neonCanvas.height = neonHeartContainer.clientHeight;
+            const nw = neonCanvas.width, nh = neonCanvas.height;
+
+            nCtx.clearRect(0, 0, nw, nh);
+            nCtx.save();
+            nCtx.translate(nw/2, nh/2 - 10);
+
+            nCtx.beginPath();
+            const scale = Math.min(nw, nh) / 38;
+            for (let t = 0; t <= Math.PI * 2; t += 0.02) {
+                const x = 16 * Math.pow(Math.sin(t), 3) * scale;
+                const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)) * scale;
+                if (t === 0) nCtx.moveTo(x, y);
+                else nCtx.lineTo(x, y);
+            }
+            nCtx.strokeStyle = '#ff2a85';
+            nCtx.lineWidth = 3;
+            nCtx.shadowColor = '#00f2fe';
+            nCtx.shadowBlur = 18;
+            nCtx.stroke();
+            nCtx.restore();
+
+            neonAnimId = requestAnimationFrame(drawNeonHeart);
+        }
+
+        // ============================================================
+        // 10. CARD MANAGEMENT & SLIDES
         // ============================================================
         let currentSlide = 0;
         const cardEl = document.getElementById('mainCard');
         const titleEl = document.getElementById('cardTitle');
         const descEl = document.getElementById('cardDesc');
         const actionArea = document.getElementById('actionArea');
-        const cardImageWrap = document.getElementById('cardImageWrap');
-        const cardImage = document.getElementById('cardImage');
-        const imgCaption = document.getElementById('imgCaption');
 
         function showCard() {
             cardEl.style.display = 'block';
@@ -779,25 +850,29 @@
             triggerBurstFireworks();
         }
 
+        function hideAllAnimations() {
+            heartContainer.style.display = 'none';
+            treeContainer.style.display = 'none';
+            neonHeartContainer.style.display = 'none';
+            if (neonAnimId) cancelAnimationFrame(neonAnimId);
+        }
+
         function updateCard() {
+            hideAllAnimations();
             const slide = slides[currentSlide];
             titleEl.innerText = slide.title;
             descEl.innerText = slide.desc || '';
+            descEl.style.display = slide.desc ? 'block' : 'none';
 
-            if (slide.hasHeartAnimation) {
-                cardImageWrap.style.display = 'none';
-                showHeartAnimation(true);
-                descEl.style.display = 'none';
-            } else {
-                showHeartAnimation(false);
-                descEl.style.display = 'block';
-                if (slide.hasImage && slide.imgSrc) {
-                    cardImageWrap.style.display = 'block';
-                    cardImage.src = slide.imgSrc;
-                    imgCaption.innerText = slide.imgCaption || '💕';
-                } else {
-                    cardImageWrap.style.display = 'none';
-                }
+            if (slide.has3DHeart) {
+                heartContainer.style.display = 'block';
+                generate3DHeart();
+            } else if (slide.hasHeartTree) {
+                treeContainer.style.display = 'flex';
+                drawHeartTree();
+            } else if (slide.hasNeonHeart) {
+                neonHeartContainer.style.display = 'block';
+                drawNeonHeart();
             }
 
             if (slide.isMarryPage) {
@@ -827,10 +902,9 @@
 
         function handleYesClick(e) {
             e.stopPropagation();
+            hideAllAnimations();
             titleEl.innerText = '🎉 FOREVER & ALWAYS 🎉';
             descEl.innerText = 'I Love You So Much Ayesha! ❤️ আপনার সাথে সারা জীবন কাটানোর জন্য অপেক্ষায় রইলাম।';
-            cardImageWrap.style.display = 'none';
-            showHeartAnimation(false);
             descEl.style.display = 'block';
             titleEl.classList.add('marry-me-title');
             triggerBurstFireworks();
@@ -846,6 +920,7 @@
 
         function replayProject(e) {
             e.stopPropagation();
+            hideAllAnimations();
             cardEl.style.display = 'none';
             pullScreen.style.display = 'flex';
             pullScreen.style.opacity = '1';
@@ -860,7 +935,6 @@
             hCtx.clearRect(0, 0, W, H);
             rightTapBtn.style.display = 'none';
             bgMusic.pause(); bgMusic.currentTime = 0;
-            heartContainer.style.display = 'none';
             heartCreated = false;
         }
 
