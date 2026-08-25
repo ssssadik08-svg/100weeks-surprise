@@ -33,7 +33,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(5, 5, 8, 0.95);
+            background: rgba(5, 5, 8, 0.96);
             z-index: 9000;
             display: flex;
             flex-direction: column;
@@ -52,22 +52,21 @@
             margin-top: 20px;
         }
 
-        /* Multi-color mixed gradient line */
         .cord-line {
-            width: 5px;
+            width: 6px;
             height: 240px;
             background: linear-gradient(to bottom, #00f2fe, #ffd700, #ff2a85, #00f2fe);
-            box-shadow: 0 0 15px #00f2fe, 0 0 20px #ff2a85;
+            box-shadow: 0 0 15px #00f2fe, 0 0 25px #ff2a85;
             transition: height 0.08s ease;
+            border-radius: 3px;
         }
 
-        /* Cyan glowing handle ball */
         .cord-handle {
-            width: 52px;
-            height: 52px;
+            width: 56px;
+            height: 56px;
             background: radial-gradient(circle, #ffffff 10%, #00f2fe 70%, #0080ff 100%);
             border-radius: 50%;
-            box-shadow: 0 0 25px #00f2fe, 0 0 45px #00f2fe, 0 0 60px rgba(0, 242, 254, 0.8);
+            box-shadow: 0 0 25px #00f2fe, 0 0 45px #00f2fe, 0 0 65px rgba(0, 242, 254, 0.9);
             border: 2px solid #ffffff;
         }
 
@@ -75,7 +74,7 @@
             color: #00f2fe;
             margin-top: 35px;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 2px;
             text-align: center;
             text-shadow: 0 0 12px #00f2fe;
@@ -120,15 +119,16 @@
             font-size: 36px;
             font-weight: 700;
             color: #ffffff;
-            text-shadow: 0 0 20px #00f2fe, 0 0 30px #4facfe;
-            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00f2fe, 0 0 30px #ff2a85;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
         }
 
         .welcome-subtitle {
             font-size: 16px;
             color: #00f2fe;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px #00f2fe;
+            text-shadow: 0 0 12px #00f2fe;
         }
 
         /* ---------- CANVASES ---------- */
@@ -176,15 +176,15 @@
         .card-container {
             position: relative;
             z-index: 600;
-            background: rgba(15, 15, 25, 0.92);
+            background: rgba(15, 15, 25, 0.94);
             border: 2px solid rgba(0, 242, 254, 0.5);
-            box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.4);
             border-radius: 16px;
             padding: 25px 20px;
             width: 92%;
             max-width: 480px;
             text-align: center;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
             display: none;
             cursor: pointer;
             animation: popup 0.6s ease forwards;
@@ -283,7 +283,7 @@
             transform-origin: center center;
         }
 
-        /* ANIMATION SLIDE 2: HEART TREE WIDGET */
+        /* Heart Tree Widget */
         #treeContainer {
             width: 100%;
             display: none;
@@ -328,7 +328,7 @@
             border: 1px solid rgba(0, 242, 254, 0.3);
         }
 
-        /* ANIMATION SLIDE 3: NEON PARTICLE HEART */
+        /* Neon Particle Heart */
         #neonHeartContainer {
             width: 100%;
             height: 220px;
@@ -383,7 +383,7 @@
         .btn-home { background: linear-gradient(45deg, #ffd700, #ff8800); color: #000; }
 
         @media (max-width: 480px) {
-            .welcome-title { font-size: 28px; }
+            .welcome-title { font-size: 26px; }
             .card-title { font-size: 19px; }
             .marry-me-title { font-size: 24px !important; }
             .card-desc { font-size: 13.5px; }
@@ -393,7 +393,7 @@
 </head>
 <body>
 
-    <!-- ===== PULL SCREEN (MIXED LINE + CYAN GLOWING BALL) ===== -->
+    <!-- ===== PULL SCREEN ===== -->
     <div id="pull-screen">
         <div class="cord-wrapper" id="cordWrapper">
             <div class="cord-line" id="cordLine"></div>
@@ -405,7 +405,7 @@
     <!-- ===== WELCOME SCREEN ===== -->
     <div id="welcome-screen">
         <div class="welcome-content" id="welRow1">
-            <div class="welcome-title">Hey Ayesha, My Love ❤️</div>
+            <div class="welcome-title">Hey ᴀʏᴇꜱʜᴀ, My Love ❤️</div>
         </div>
         <div class="welcome-content" id="welRow2">
             <div class="welcome-subtitle">✨ WELCOME, THIS IS FOR YOU ✨</div>
@@ -425,27 +425,24 @@
     <div id="mainCard" class="card-container" onclick="handleCardClick()">
         <h2 id="cardTitle" class="card-title"></h2>
 
-        <!-- Image Slide Box -->
         <div id="cardImageWrap" class="card-image-wrap" style="display:none;">
             <img id="cardImage" src="" alt="Ayesha & Sadik" />
             <div class="img-caption" id="imgCaption">💕</div>
         </div>
 
-        <!-- 3D Heart Rotation (এনিমেশন ১) -->
         <div id="heartContainer">
             <div class="heart-scene" id="heartScene"></div>
         </div>
 
-        <!-- Heart Tree Canvas (এনিমেশন ২) -->
         <div id="treeContainer">
             <div class="tree-layout">
                 <div class="tree-text-box">
-                    Hey Ayesha 💕<br/>
+                    Hey ᴀʏᴇꜱʜᴀ 💕<br/>
                     Happy Moments ✨<br/>
                     May God bless you 🤲<br/>
                     Always stay happy 💕<br/>
                     Sending love & vibes 💖<br/>
-                    Ayesha + Sadik Forever ❤️
+                    ᴀʏᴇꜱʜᴀ + ꜱᴀᴅɪᴋ Forever ❤️
                 </div>
                 <div class="tree-canvas-box">
                     <canvas id="treeCanvas"></canvas>
@@ -454,7 +451,6 @@
             <div class="clock-box" id="liveClock">Together for 700 Days ✨</div>
         </div>
 
-        <!-- Neon Particle Heart Canvas (এনিমেশন ৩) -->
         <div id="neonHeartContainer">
             <canvas id="neonCanvas"></canvas>
         </div>
@@ -473,7 +469,7 @@
 
     <script>
         // ============================================================
-        // 1. ছবির লিংক (এখানে আপনার লিংকগুলো দিতে পারবেন)
+        // 1. ছবির লিংকসমূহ
         // ============================================================
         const IMAGE_1 = 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop';
         const IMAGE_2 = 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=600&fit=crop';
@@ -481,7 +477,7 @@
         const IMAGE_4 = 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop';
 
         // ============================================================
-        // 2. সম্পূর্ণ স্লাইড ও রোমান্টিক ডায়ালগ তালিকা
+        // 2. স্লাইড তালিকা (Stylized Font সহ)
         // ============================================================
         const slides = [
             {
@@ -523,17 +519,14 @@
                 imgCaption: '💍 শুধু তুমিই 💍'
             },
             {
-                // এনিমেশন স্লাইড ১
-                title: 'I Love You Ayesha ❤️',
+                title: 'I Love You ᴀʏᴇꜱʜᴀ ❤️',
                 has3DHeart: true
             },
             {
-                // এনিমেশন স্লাইড ২
-                title: 'Ayesha + Sadik Tree 🌸',
+                title: 'ᴀʏᴇꜱʜᴀ + ꜱᴀᴅɪᴋ Tree 🌸',
                 hasHeartTree: true
             },
             {
-                // এনিমেশন স্লাইড ৩
                 title: 'Neon Glow Heart ✨',
                 hasNeonHeart: true
             },
@@ -580,7 +573,7 @@
         // ============================================================
         // 4. MATRIX RAIN
         // ============================================================
-        const rainPhrases = ["100 WEEKS ", "700 DAYS ", "AYESHA ", "AHUBATI ", "I LOVE YOU ", "SADIK "];
+        const rainPhrases = ["100 WEEKS ", "700 DAYS ", "ᴀʏᴇꜱʜᴀ ", "AHUBATI ", "I LOVE YOU ", "ꜱᴀᴅɪᴋ "];
         let fontSize = 15, columns = 0, drops = [];
 
         function initMatrixColumns() {
@@ -633,7 +626,7 @@
         setInterval(drawMatrixBG, 40);
 
         // ============================================================
-        // 5. ENHANCED FIREWORKS & FOUR-CORNER BURST
+        // 5. FIREWORKS & HEART BURSTS
         // ============================================================
         let heartParticles = [], particles = [];
 
@@ -691,7 +684,6 @@
             animateFireworks();
         }
 
-        // চার পাশ দিয়ে ব্যাপক আতশবাজি ফোটানোর ফাংশন
         function triggerGrandCelebration() {
             const corners = [
                 {x: W * 0.15, y: H * 0.2},
@@ -725,7 +717,7 @@
         }
 
         // ============================================================
-        // 6. CYAN CORD PULL ACTION
+        // 6. CYAN CORD PULL & FLOW LOGIC
         // ============================================================
         let startY = 0, currentDrag = 0, maxDrag = 150, isStarted = false;
 
@@ -739,6 +731,7 @@
         cordWrapper.addEventListener('touchend', () => { if (currentDrag < maxDrag) cordLine.style.height = '240px'; });
         cordWrapper.addEventListener('click', () => triggerSystemStart());
 
+        // ১. পুল কর্ড টানার পর শুরুতেই কাউন্টডাউন (3..2..1)
         function triggerSystemStart() {
             if (isStarted) return;
             isStarted = true;
@@ -746,16 +739,42 @@
             pullScreen.style.opacity = '0';
             setTimeout(() => {
                 pullScreen.style.display = 'none';
-                welcomeScreen.style.display = 'flex';
-                triggerBurstFireworks();
-                triggerHeartBurst(W / 2, H * 0.5);
-                setTimeout(() => { welRow1.classList.add('show'); triggerBurstFireworks(); }, 400);
-                setTimeout(() => { welRow2.classList.add('show'); triggerBurstFireworks(); }, 1800);
-                setTimeout(() => {
-                    welcomeScreen.style.opacity = '0';
-                    setTimeout(() => { welcomeScreen.style.display = 'none'; startCountdownSequence(); }, 1200);
-                }, 4800);
+                startInitialCountdown();
             }, 800);
+        }
+
+        // ২. ৩..২..১ কাউন্টডাউন ফাংশন
+        function startInitialCountdown() {
+            renderTextPixel('3'); triggerBurstFireworks();
+            setTimeout(() => {
+                renderTextPixel('2'); triggerBurstFireworks();
+                setTimeout(() => {
+                    renderTextPixel('1'); triggerBurstFireworks();
+                    setTimeout(() => {
+                        renderTextPixel('');
+                        showWelcomeScreen();
+                    }, 800);
+                }, 800);
+            }, 800);
+        }
+
+        // ৩. কাউন্টডাউন শেষে Welcome স্ক্রিন প্রর্দশন
+        function showWelcomeScreen() {
+            welcomeScreen.style.display = 'flex';
+            welcomeScreen.style.opacity = '1';
+            triggerBurstFireworks();
+            triggerHeartBurst(W / 2, H * 0.5);
+
+            setTimeout(() => { welRow1.classList.add('show'); triggerBurstFireworks(); }, 400);
+            setTimeout(() => { welRow2.classList.add('show'); triggerBurstFireworks(); }, 1600);
+
+            setTimeout(() => {
+                welcomeScreen.style.opacity = '0';
+                setTimeout(() => {
+                    welcomeScreen.style.display = 'none';
+                    startMainSequence();
+                }, 1200);
+            }, 4200);
         }
 
         // ============================================================
@@ -793,23 +812,13 @@
             tCtx.shadowBlur = 0;
         }
 
-        const mainSequence = ["100 WEEKS", "700 DAYS", "AYESHA + SADIK", "AHUBATI + AHUBI", "I LOVE YOU"];
+        const mainSequence = ["100 WEEKS", "700 DAYS", "ᴀʏᴇꜱʜᴀ + ꜱᴀᴅɪᴋ", "AHUBATI + AHUBI", "I LOVE YOU"];
         let seqIndex = 0;
 
-        function startCountdownSequence() {
-            rightTapBtn.style.display = 'none';
-            renderTextPixel('3'); triggerBurstFireworks();
-            setTimeout(() => {
-                renderTextPixel('2'); triggerBurstFireworks();
-                setTimeout(() => {
-                    renderTextPixel('1'); triggerBurstFireworks();
-                    setTimeout(() => {
-                        seqIndex = 0;
-                        rightTapBtn.style.display = 'flex';
-                        playNextMainSequence();
-                    }, 800);
-                }, 800);
-            }, 800);
+        function startMainSequence() {
+            seqIndex = 0;
+            rightTapBtn.style.display = 'flex';
+            playNextMainSequence();
         }
 
         function playNextMainSequence() {
@@ -926,7 +935,7 @@
         }
 
         // ============================================================
-        // 11. CARD MANAGEMENT & SLIDES
+        // 11. CARD MANAGEMENT
         // ============================================================
         let currentSlide = 0;
         const cardEl = document.getElementById('mainCard');
@@ -999,16 +1008,14 @@
             }
         }
 
-        // YES, I WILL বাটন চাপলে বিশেষ চারপাশের আতশবাজি
         function handleYesClick(e) {
             e.stopPropagation();
             hideAllAnimations();
             titleEl.innerText = '🎉 FOREVER & ALWAYS 🎉';
-            descEl.innerText = 'I Love You So Much Ayesha! ❤️ আপনার সাথে সারা জীবন কাটানোর জন্য অপেক্ষায় রইলাম।';
+            descEl.innerText = 'I Love You So Much ᴀʏᴇꜱʜᴀ! ❤️ আপনার সাথে সারা জীবন কাটানোর জন্য অপেক্ষায় রইলাম।';
             descEl.style.display = 'block';
             titleEl.classList.add('marry-me-title');
             
-            // চার পাশ থেকে একাধিকবার ধামাকা আতশবাজি
             triggerGrandCelebration();
 
             actionArea.innerHTML = `
@@ -1019,7 +1026,6 @@
             `;
         }
 
-        // স্লাইড রিস্টার্ট
         function replaySlides(e) {
             e.stopPropagation();
             currentSlide = 0;
@@ -1027,7 +1033,6 @@
             triggerBurstFireworks();
         }
 
-        // একবারে হোম/স্টার্ট স্ক্রিনে নিয়ে যাওয়ার সুবিধা
         function goHome(e) {
             e.stopPropagation();
             hideAllAnimations();
