@@ -26,7 +26,7 @@
             color: #ffffff;
         }
 
-        /* ---------- CYAN GLOWING PULL CORD ---------- */
+        /* ---------- PULL CORD WITH MULTI-COLOR LINE & CYAN GLOWING BALL ---------- */
         #pull-screen {
             position: fixed;
             top: 0;
@@ -49,23 +49,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
+        /* Multi-color mixed gradient line */
         .cord-line {
-            width: 4px;
+            width: 5px;
             height: 240px;
-            background: linear-gradient(to bottom, #00f2fe, #4facfe);
-            box-shadow: 0 0 15px #00f2fe, 0 0 25px #00f2fe;
+            background: linear-gradient(to bottom, #00f2fe, #ffd700, #ff2a85, #00f2fe);
+            box-shadow: 0 0 15px #00f2fe, 0 0 20px #ff2a85;
             transition: height 0.08s ease;
         }
 
+        /* Cyan glowing handle ball */
         .cord-handle {
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle, #ffffff, #00f2fe);
+            width: 52px;
+            height: 52px;
+            background: radial-gradient(circle, #ffffff 10%, #00f2fe 70%, #0080ff 100%);
             border-radius: 50%;
-            box-shadow: 0 0 25px #00f2fe, 0 0 40px #00f2fe;
+            box-shadow: 0 0 25px #00f2fe, 0 0 45px #00f2fe, 0 0 60px rgba(0, 242, 254, 0.8);
             border: 2px solid #ffffff;
         }
 
@@ -76,7 +78,7 @@
             font-weight: 500;
             letter-spacing: 2px;
             text-align: center;
-            text-shadow: 0 0 10px #00f2fe;
+            text-shadow: 0 0 12px #00f2fe;
             animation: pulseCyan 1.8s infinite alternate ease-in-out;
         }
 
@@ -215,7 +217,38 @@
             font-weight: 400;
         }
 
-        /* ----- REAL 3D HEART SHAPE ANIMATION ----- */
+        /* Image Box */
+        .card-image-wrap {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 10px 0 15px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            position: relative;
+            background: #111;
+        }
+
+        .card-image-wrap img {
+            width: 100%;
+            height: auto;
+            max-height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .img-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+            padding: 12px 10px 8px;
+            color: #fff;
+            font-size: 13.5px;
+        }
+
+        /* 3D Heart Rotational Animation */
         #heartContainer {
             width: 100%;
             height: 220px;
@@ -250,7 +283,7 @@
             transform-origin: center center;
         }
 
-        /* ----- ANIMATION SLIDE 1: HEART TREE WIDGET ----- */
+        /* ANIMATION SLIDE 2: HEART TREE WIDGET */
         #treeContainer {
             width: 100%;
             display: none;
@@ -295,7 +328,7 @@
             border: 1px solid rgba(0, 242, 254, 0.3);
         }
 
-        /* ----- ANIMATION SLIDE 2: NEON PARTICLE HEART ----- */
+        /* ANIMATION SLIDE 3: NEON PARTICLE HEART */
         #neonHeartContainer {
             width: 100%;
             height: 220px;
@@ -347,7 +380,7 @@
             border-radius: 20px;
             cursor: pointer;
         }
-        .btn-exit { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: #fff; }
+        .btn-home { background: linear-gradient(45deg, #ffd700, #ff8800); color: #000; }
 
         @media (max-width: 480px) {
             .welcome-title { font-size: 28px; }
@@ -360,7 +393,7 @@
 </head>
 <body>
 
-    <!-- ===== PULL SCREEN (GLOWING CYAN CORD) ===== -->
+    <!-- ===== PULL SCREEN (MIXED LINE + CYAN GLOWING BALL) ===== -->
     <div id="pull-screen">
         <div class="cord-wrapper" id="cordWrapper">
             <div class="cord-line" id="cordLine"></div>
@@ -392,12 +425,18 @@
     <div id="mainCard" class="card-container" onclick="handleCardClick()">
         <h2 id="cardTitle" class="card-title"></h2>
 
-        <!-- 3D Heart Rotation (১ম এনিমেশন) -->
+        <!-- Image Slide Box -->
+        <div id="cardImageWrap" class="card-image-wrap" style="display:none;">
+            <img id="cardImage" src="" alt="Ayesha & Sadik" />
+            <div class="img-caption" id="imgCaption">💕</div>
+        </div>
+
+        <!-- 3D Heart Rotation (এনিমেশন ১) -->
         <div id="heartContainer">
             <div class="heart-scene" id="heartScene"></div>
         </div>
 
-        <!-- Heart Tree Canvas (২য় এনিমেশন - ছবি ৩ অনুযায়ী) -->
+        <!-- Heart Tree Canvas (এনিমেশন ২) -->
         <div id="treeContainer">
             <div class="tree-layout">
                 <div class="tree-text-box">
@@ -415,7 +454,7 @@
             <div class="clock-box" id="liveClock">Together for 700 Days ✨</div>
         </div>
 
-        <!-- Neon Particle Heart Canvas (৩য় এনিমেশন - ছবি ৪ অনুযায়ী) -->
+        <!-- Neon Particle Heart Canvas (এনিমেশন ৩) -->
         <div id="neonHeartContainer">
             <canvas id="neonCanvas"></canvas>
         </div>
@@ -434,41 +473,80 @@
 
     <script>
         // ============================================================
-        // 1. স্লাইড তালিকা (টেক্সট আপনার ইচ্ছামতো এডিট করতে পারবেন)
+        // 1. ছবির লিংক (এখানে আপনার লিংকগুলো দিতে পারবেন)
+        // ============================================================
+        const IMAGE_1 = 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop';
+        const IMAGE_2 = 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=600&fit=crop';
+        const IMAGE_3 = 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&h=600&fit=crop';
+        const IMAGE_4 = 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop';
+
+        // ============================================================
+        // 2. সম্পূর্ণ স্লাইড ও রোমান্টিক ডায়ালগ তালিকা
         // ============================================================
         const slides = [
             {
                 title: '✨ 100 Weeks & 700 Days ✨',
                 desc: 'আয়েশা (AHUBATI), ১০০ টি সপ্তাহ এবং ৭০০ টি দিন ধরে আমার পাশে থাকার জন্য অনেক ধন্যবাদ।',
+                hasImage: false
             },
             {
                 title: '💖 For My Special One 💖',
                 desc: 'You are my JAPAN without P! 🥰 (You are my JAAN ❤️)',
+                hasImage: false
             },
             {
-                // এনিমেশন স্লাইড ১: Real 3D Rotational Heart
+                title: '🌸 Memory 01 🌸',
+                desc: 'তোমার সাথে কাটানো প্রতিটি মুহূর্ত আমার কাছে দারুণ স্পেশাল। 💕',
+                hasImage: true,
+                imgSrc: IMAGE_1,
+                imgCaption: '💕 তোমার সাথে কাটানো মুহূর্ত 💕'
+            },
+            {
+                title: '🌅 Memory 02 🌅',
+                desc: 'জীবনের প্রতিটি পদক্ষেপে তোমাকে পাশে চাই।',
+                hasImage: true,
+                imgSrc: IMAGE_2,
+                imgCaption: '🌹 চিরকাল তোমার সাথে 🌹'
+            },
+            {
+                title: '💫 Memory 03 💫',
+                desc: 'তুমি আমার জীবনের সবচেয়ে সুন্দর উপহার। ✨',
+                hasImage: true,
+                imgSrc: IMAGE_3,
+                imgCaption: '🌟 তুমি আমার সব 🌟'
+            },
+            {
+                title: '🌹 Memory 04 🌹',
+                desc: 'এই পৃথিবীতে তুমিই আমার একমাত্র প্রিয় মানুষ। ❤️',
+                hasImage: true,
+                imgSrc: IMAGE_4,
+                imgCaption: '💍 শুধু তুমিই 💍'
+            },
+            {
+                // এনিমেশন স্লাইড ১
                 title: 'I Love You Ayesha ❤️',
                 has3DHeart: true
             },
             {
-                // এনিমেশন স্লাইড ২: Heart Tree & Live Counter (কোড ৩ অনুযায়ী)
+                // এনিমেশন স্লাইড ২
                 title: 'Ayesha + Sadik Tree 🌸',
                 hasHeartTree: true
             },
             {
-                // এনিমেশন স্লাইড ৩: Neon Particle Glow Heart (কোড ৪ অনুযায়ী)
+                // এনিমেশন স্লাইড ৩
                 title: 'Neon Glow Heart ✨',
                 hasNeonHeart: true
             },
             {
                 title: '💍 Will You Marry Me? 💍',
                 desc: 'আমার জীবনের বাকিটা সময় কি এভাবেই নিজের করে নিবে? Will you marry me, my love? ❤️',
+                hasImage: false,
                 isMarryPage: true
             }
         ];
 
         // ============================================================
-        // 2. CANVAS & SYSTEM SETUP
+        // 3. CANVAS & SYSTEM SETUP
         // ============================================================
         const matrixCanvas = document.getElementById('matrixCanvas');
         const mCtx = matrixCanvas.getContext('2d');
@@ -500,7 +578,7 @@
         window.addEventListener('resize', resizeAll);
 
         // ============================================================
-        // 3. MATRIX RAIN
+        // 4. MATRIX RAIN
         // ============================================================
         const rainPhrases = ["100 WEEKS ", "700 DAYS ", "AYESHA ", "AHUBATI ", "I LOVE YOU ", "SADIK "];
         let fontSize = 15, columns = 0, drops = [];
@@ -555,22 +633,22 @@
         setInterval(drawMatrixBG, 40);
 
         // ============================================================
-        // 4. FIREWORKS & HEARTS
+        // 5. ENHANCED FIREWORKS & FOUR-CORNER BURST
         // ============================================================
         let heartParticles = [], particles = [];
 
         function spawnHeartBurst(cx, cy, count) {
             for (let i = 0; i < count; i++) {
                 const angle = Math.random() * Math.PI * 2;
-                const speed = 1 + Math.random() * 3;
+                const speed = 1 + Math.random() * 4;
                 heartParticles.push({
                     x: cx, y: cy,
                     vx: Math.cos(angle) * speed,
                     vy: Math.sin(angle) * speed - 1.2,
-                    size: 12 + Math.random() * 16,
+                    size: 12 + Math.random() * 18,
                     alpha: 0.9, life: 1,
-                    decay: 0.006 + Math.random() * 0.008,
-                    color: `hsl(${180 + Math.random() * 40}, 90%, 60%)`
+                    decay: 0.005 + Math.random() * 0.008,
+                    color: `hsl(${180 + Math.random() * 160}, 90%, 60%)`
                 });
             }
         }
@@ -593,31 +671,48 @@
         }
 
         function triggerHeartBurst(x, y) {
-            spawnHeartBurst(x || W / 2, y || H / 2, 25);
+            spawnHeartBurst(x || W / 2, y || H / 2, 30);
             if (heartParticles.length > 0) drawHeartsCanvas();
         }
 
         function triggerBurstFireworks(cx, cy) {
             const centerX = cx || W / 2, centerY = cy || H * 0.4;
-            const colors = ['#00f2fe', '#ffd700', '#ff2a85', '#ffffff'];
-            for (let i = 0; i < 45; i++) {
-                const angle = (Math.PI * 2 / 45) * i;
-                const speed = Math.random() * 4 + 2;
+            const colors = ['#00f2fe', '#ffd700', '#ff2a85', '#ffffff', '#00ff88'];
+            for (let i = 0; i < 50; i++) {
+                const angle = (Math.PI * 2 / 50) * i;
+                const speed = Math.random() * 5 + 2;
                 particles.push({
                     x: centerX, y: centerY,
                     vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
                     alpha: 1, color: colors[Math.floor(Math.random() * colors.length)],
-                    size: 2 + Math.random() * 3
+                    size: 2.5 + Math.random() * 3.5
                 });
             }
             animateFireworks();
+        }
+
+        // চার পাশ দিয়ে ব্যাপক আতশবাজি ফোটানোর ফাংশন
+        function triggerGrandCelebration() {
+            const corners = [
+                {x: W * 0.15, y: H * 0.2},
+                {x: W * 0.85, y: H * 0.2},
+                {x: W * 0.15, y: H * 0.7},
+                {x: W * 0.85, y: H * 0.7},
+                {x: W * 0.5, y: H * 0.3}
+            ];
+            corners.forEach((c, idx) => {
+                setTimeout(() => {
+                    triggerBurstFireworks(c.x, c.y);
+                    triggerHeartBurst(c.x, c.y);
+                }, idx * 180);
+            });
         }
 
         function animateFireworks() {
             if (particles.length === 0) return;
             fwCtx.clearRect(0, 0, W, H);
             particles.forEach((p, idx) => {
-                p.x += p.vx; p.y += p.vy; p.vy += 0.03; p.alpha -= 0.02;
+                p.x += p.vx; p.y += p.vy; p.vy += 0.03; p.alpha -= 0.018;
                 fwCtx.beginPath();
                 fwCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 fwCtx.fillStyle = p.color;
@@ -630,7 +725,7 @@
         }
 
         // ============================================================
-        // 5. CYAN CORD PULL ACTION
+        // 6. CYAN CORD PULL ACTION
         // ============================================================
         let startY = 0, currentDrag = 0, maxDrag = 150, isStarted = false;
 
@@ -664,7 +759,7 @@
         }
 
         // ============================================================
-        // 6. CYAN GLOWING TEXT PIXEL RENDERING
+        // 7. CYAN GLOWING TEXT PIXEL RENDERING
         // ============================================================
         function renderTextPixel(text) {
             tCtx.clearRect(0, 0, W, H);
@@ -731,7 +826,7 @@
         function nextSequenceStep() { seqIndex++; playNextMainSequence(); }
 
         // ============================================================
-        // 7. ANIMATION 1: 3D PARAMETRIC HEART
+        // 8. ANIMATION 1: 3D PARAMETRIC HEART
         // ============================================================
         const heartContainer = document.getElementById('heartContainer');
         const heartScene = document.getElementById('heartScene');
@@ -758,12 +853,11 @@
         }
 
         // ============================================================
-        // 8. ANIMATION 2: HEART TREE (ছবি ৩ কোড অনুযায়ী)
+        // 9. ANIMATION 2: HEART TREE
         // ============================================================
         const treeContainer = document.getElementById('treeContainer');
         const treeCanvas = document.getElementById('treeCanvas');
         const treeCtx = treeCanvas.getContext('2d');
-        let treeAnimId = null;
 
         function drawHeartTree() {
             treeCanvas.width = treeCanvas.parentElement.clientWidth;
@@ -771,11 +865,9 @@
             const tw = treeCanvas.width, th = treeCanvas.height;
 
             treeCtx.clearRect(0, 0, tw, th);
-            // Trunk
             treeCtx.fillStyle = '#d4a373';
             treeCtx.fillRect(tw/2 - 6, th - 50, 12, 50);
 
-            // Leaves (Heart Cluster)
             const leaves = 120;
             for (let i = 0; i < leaves; i++) {
                 const angle = Math.random() * Math.PI * 2;
@@ -789,7 +881,6 @@
             }
         }
 
-        // Live Counter update
         function updateClock() {
             const startDate = new Date("2024-09-24T00:00:00"); 
             const now = new Date();
@@ -800,12 +891,12 @@
         setInterval(updateClock, 1000);
 
         // ============================================================
-        // 9. ANIMATION 3: NEON PARTICLE HEART (ছবি ৪ কোড অনুযায়ী)
+        // 10. ANIMATION 3: NEON PARTICLE HEART
         // ============================================================
         const neonHeartContainer = document.getElementById('neonHeartContainer');
         const neonCanvas = document.getElementById('neonCanvas');
         const nCtx = neonCanvas.getContext('2d');
-        let neonAnimId = null, neonAngle = 0;
+        let neonAnimId = null;
 
         function drawNeonHeart() {
             neonCanvas.width = neonHeartContainer.clientWidth;
@@ -835,13 +926,16 @@
         }
 
         // ============================================================
-        // 10. CARD MANAGEMENT & SLIDES
+        // 11. CARD MANAGEMENT & SLIDES
         // ============================================================
         let currentSlide = 0;
         const cardEl = document.getElementById('mainCard');
         const titleEl = document.getElementById('cardTitle');
         const descEl = document.getElementById('cardDesc');
         const actionArea = document.getElementById('actionArea');
+        const cardImageWrap = document.getElementById('cardImageWrap');
+        const cardImage = document.getElementById('cardImage');
+        const imgCaption = document.getElementById('imgCaption');
 
         function showCard() {
             cardEl.style.display = 'block';
@@ -854,6 +948,7 @@
             heartContainer.style.display = 'none';
             treeContainer.style.display = 'none';
             neonHeartContainer.style.display = 'none';
+            cardImageWrap.style.display = 'none';
             if (neonAnimId) cancelAnimationFrame(neonAnimId);
         }
 
@@ -864,7 +959,11 @@
             descEl.innerText = slide.desc || '';
             descEl.style.display = slide.desc ? 'block' : 'none';
 
-            if (slide.has3DHeart) {
+            if (slide.hasImage && slide.imgSrc) {
+                cardImageWrap.style.display = 'block';
+                cardImage.src = slide.imgSrc;
+                imgCaption.innerText = slide.imgCaption || '💕';
+            } else if (slide.has3DHeart) {
                 heartContainer.style.display = 'block';
                 generate3DHeart();
             } else if (slide.hasHeartTree) {
@@ -900,6 +999,7 @@
             }
         }
 
+        // YES, I WILL বাটন চাপলে বিশেষ চারপাশের আতশবাজি
         function handleYesClick(e) {
             e.stopPropagation();
             hideAllAnimations();
@@ -907,18 +1007,28 @@
             descEl.innerText = 'I Love You So Much Ayesha! ❤️ আপনার সাথে সারা জীবন কাটানোর জন্য অপেক্ষায় রইলাম।';
             descEl.style.display = 'block';
             titleEl.classList.add('marry-me-title');
-            triggerBurstFireworks();
-            triggerHeartBurst(W / 2, H / 2);
+            
+            // চার পাশ থেকে একাধিকবার ধামাকা আতশবাজি
+            triggerGrandCelebration();
 
             actionArea.innerHTML = `
                 <div class="btn-group">
-                    <button class="btn-action" onclick="replayProject(event)">REPLAY 🔄</button>
-                    <button class="btn-action btn-exit" onclick="exitProject(event)">EXIT ❌</button>
+                    <button class="btn-action" onclick="replaySlides(event)">REPLAY 🔄</button>
+                    <button class="btn-action btn-home" onclick="goHome(event)">HOME 🏠</button>
                 </div>
             `;
         }
 
-        function replayProject(e) {
+        // স্লাইড রিস্টার্ট
+        function replaySlides(e) {
+            e.stopPropagation();
+            currentSlide = 0;
+            updateCard();
+            triggerBurstFireworks();
+        }
+
+        // একবারে হোম/স্টার্ট স্ক্রিনে নিয়ে যাওয়ার সুবিধা
+        function goHome(e) {
             e.stopPropagation();
             hideAllAnimations();
             cardEl.style.display = 'none';
@@ -936,12 +1046,6 @@
             rightTapBtn.style.display = 'none';
             bgMusic.pause(); bgMusic.currentTime = 0;
             heartCreated = false;
-        }
-
-        function exitProject(e) {
-            e.stopPropagation();
-            alert('Thank you for being in my life! ❤️');
-            window.close();
         }
     </script>
 </body>
