@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Ayesha + Sadik ❤️</title>
+    <meta name="description" content="A special gift for Ayesha - Celebrating our love story" />
+    <meta name="theme-color" content="#050508" />
+    <title>Ayesha + Sadik ❤️ | Our Love Story</title>
+    
+    <!-- Google Fonts Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
+        /* ========================================
+           CSS RESET & BASE STYLES
+           ======================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html, body {
@@ -23,24 +33,27 @@
             justify-content: center;
             align-items: center;
             user-select: none;
+            -webkit-user-select: none;
             color: #ffffff;
         }
 
-        /* ---------- PULL CORD WITH MULTI-COLOR LINE & CYAN GLOWING BALL ---------- */
+        /* ========================================
+           PULL CORD SCREEN - ENHANCED
+           ======================================== */
         #pull-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(5, 5, 8, 0.96);
+            background: radial-gradient(ellipse at center, #0a0a12 0%, #050508 100%);
             z-index: 9000;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             touch-action: none;
-            transition: opacity 1s ease;
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .cord-wrapper {
@@ -49,182 +62,298 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px;
+            margin-top: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .cord-wrapper:active {
+            transform: scale(0.98);
         }
 
         .cord-line {
-            width: 6px;
+            width: 8px;
             height: 240px;
-            background: linear-gradient(to bottom, #00f2fe, #ffd700, #ff2a85, #00f2fe);
-            box-shadow: 0 0 15px #00f2fe, 0 0 25px #ff2a85;
-            transition: height 0.08s ease;
-            border-radius: 3px;
+            background: linear-gradient(180deg, 
+                #00f2fe 0%, 
+                #4facfe 25%, 
+                #ffd700 50%, 
+                #ff2a85 75%, 
+                #00f2fe 100%);
+            box-shadow: 
+                0 0 20px rgba(0, 242, 254, 0.8),
+                0 0 40px rgba(255, 42, 133, 0.6),
+                inset 0 0 10px rgba(255, 255, 255, 0.3);
+            transition: height 0.1s ease, box-shadow 0.3s ease;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cord-line::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(200%); }
         }
 
         .cord-handle {
-            width: 56px;
-            height: 56px;
-            background: radial-gradient(circle, #ffffff 10%, #00f2fe 70%, #0080ff 100%);
+            width: 64px;
+            height: 64px;
+            background: radial-gradient(circle at 30% 30%, 
+                #ffffff 0%, 
+                #00f2fe 40%, 
+                #0080ff 70%, 
+                #004080 100%);
             border-radius: 50%;
-            box-shadow: 0 0 25px #00f2fe, 0 0 45px #00f2fe, 0 0 65px rgba(0, 242, 254, 0.9);
-            border: 2px solid #ffffff;
+            box-shadow: 
+                0 0 30px rgba(0, 242, 254, 0.9),
+                0 0 60px rgba(0, 242, 254, 0.6),
+                0 0 90px rgba(0, 242, 254, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.5);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cord-handle::after {
+            content: '❤️';
+            font-size: 28px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
 
         .pull-hint {
             color: #00f2fe;
-            margin-top: 35px;
-            font-size: 16px;
+            margin-top: 40px;
+            font-size: 15px;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             text-align: center;
-            text-shadow: 0 0 12px #00f2fe;
-            animation: pulseCyan 1.8s infinite alternate ease-in-out;
+            text-shadow: 
+                0 0 15px rgba(0, 242, 254, 0.8),
+                0 0 30px rgba(0, 242, 254, 0.5);
+            animation: pulseCyan 2s infinite alternate ease-in-out;
+            padding: 0 20px;
         }
 
         @keyframes pulseCyan {
-            0% { opacity: 0.6; transform: scale(0.96); }
-            100% { opacity: 1; transform: scale(1.04); }
+            0% { 
+                opacity: 0.6; 
+                transform: scale(0.98) translateY(0);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1.02) translateY(-3px);
+            }
         }
 
-        /* ---------- WELCOME SCREEN ---------- */
+        /* ========================================
+           WELCOME SCREEN - ENHANCED
+           ======================================== */
         #welcome-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #050508;
+            background: radial-gradient(ellipse at center, #0a0a12 0%, #050508 100%);
             z-index: 8000;
             display: none;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            transition: opacity 1.2s ease-in-out;
+            transition: opacity 1.5s ease-in-out;
             text-align: center;
         }
 
         .welcome-content {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1.2s ease, transform 1.2s ease;
+            transform: translateY(30px) scale(0.95);
+            transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         .welcome-content.show {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         .welcome-title {
-            font-size: 36px;
-            font-weight: 700;
+            font-size: clamp(28px, 8vw, 42px);
+            font-weight: 800;
             color: #ffffff;
-            text-shadow: 0 0 20px #00f2fe, 0 0 30px #ff2a85;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
+            text-shadow: 
+                0 0 20px rgba(0, 242, 254, 0.8),
+                0 0 40px rgba(255, 42, 133, 0.6);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
 
         .welcome-subtitle {
-            font-size: 16px;
+            font-size: clamp(14px, 4vw, 18px);
             color: #00f2fe;
-            letter-spacing: 2px;
-            text-shadow: 0 0 12px #00f2fe;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.9);
+            font-weight: 600;
         }
 
-        /* ---------- CANVASES ---------- */
+        /* ========================================
+           CANVAS LAYERS
+           ======================================== */
         canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
         }
-        #matrixCanvas { z-index: 10; background: #050508; }
-        #textCanvas { z-index: 20; pointer-events: none; }
-        #fireworksCanvas { z-index: 30; pointer-events: none; }
-        #heartsCanvas { z-index: 15; pointer-events: none; }
+        #matrixCanvas { z-index: 10; }
+        #heartsCanvas { z-index: 15; }
+        #textCanvas { z-index: 20; }
+        #fireworksCanvas { z-index: 30; }
 
-        /* ---------- TAP BUTTON ---------- */
+        /* ========================================
+           FLOATING ACTION BUTTON
+           ======================================== */
         .right-tap-btn {
             position: fixed;
             right: 20px;
             bottom: 35%;
-            width: 65px;
-            height: 65px;
-            background: radial-gradient(circle, #00f2fe, #0080ff);
-            border: 2px solid #ffffff;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #00f2fe 0%, #0080ff 100%);
+            border: 3px solid #ffffff;
             border-radius: 50%;
             color: #fff;
             display: none;
             justify-content: center;
             align-items: center;
-            font-size: 13px;
-            font-weight: 600;
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.8);
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: 
+                0 0 30px rgba(0, 242, 254, 0.9),
+                0 8px 20px rgba(0, 0, 0, 0.4);
             cursor: pointer;
             z-index: 500;
-            animation: floatBtn 2s infinite alternate ease-in-out;
+            animation: floatBtn 2.5s infinite alternate ease-in-out;
             text-align: center;
+            line-height: 1.2;
         }
 
         @keyframes floatBtn {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-12px); }
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-15px) rotate(5deg); }
         }
 
-        /* ---------- CARD CONTAINER ---------- */
+        /* ========================================
+           MAIN CARD CONTAINER - REDESIGNED
+           ======================================== */
         .card-container {
             position: relative;
             z-index: 600;
-            background: rgba(15, 15, 25, 0.94);
-            border: 2px solid rgba(0, 242, 254, 0.5);
-            box-shadow: 0 0 35px rgba(0, 242, 254, 0.4);
-            border-radius: 16px;
-            padding: 25px 20px;
-            width: 92%;
-            max-width: 480px;
+            background: linear-gradient(135deg, 
+                rgba(15, 15, 25, 0.96) 0%, 
+                rgba(10, 10, 18, 0.98) 100%);
+            border: 2px solid rgba(0, 242, 254, 0.4);
+            box-shadow: 
+                0 0 40px rgba(0, 242, 254, 0.3),
+                0 0 80px rgba(0, 242, 254, 0.15);
+            border-radius: 20px;
+            padding: 30px 20px;
+            width: 94%;
+            max-width: 520px;
             text-align: center;
-            backdrop-filter: blur(14px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             display: none;
             cursor: pointer;
-            animation: popup 0.6s ease forwards;
+            animation: popup 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .card-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .card-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+        }
+
+        .card-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00f2fe, #0080ff);
+            border-radius: 3px;
         }
 
         @keyframes popup {
-            from { opacity: 0; transform: scale(0.85); }
-            to { opacity: 1; transform: scale(1); }
+            from { 
+                opacity: 0; 
+                transform: scale(0.8) translateY(30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1) translateY(0);
+            }
         }
 
         .card-title {
-            font-size: 22px;
-            font-weight: 600;
+            font-size: clamp(20px, 6vw, 26px);
+            font-weight: 700;
             color: #00f2fe;
-            text-shadow: 0 0 10px #00f2fe;
-            margin-bottom: 12px;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.8);
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
 
         .marry-me-title {
-            font-size: 28px !important;
+            font-size: clamp(24px, 7vw, 32px) !important;
             color: #ffd700 !important;
-            text-shadow: 0 0 20px #ff2a85 !important;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.9),
+                0 0 40px rgba(255, 42, 133, 0.7) !important;
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
+            100% { text-shadow: 0 0 40px rgba(255, 215, 0, 1); }
         }
 
         .card-desc {
-            font-size: 15px;
-            color: #e0e0e0;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-size: clamp(13px, 4vw, 16px);
+            color: #e8e8e8;
+            line-height: 1.7;
+            margin-bottom: 18px;
             font-weight: 400;
         }
 
-        /* Image Box */
+        /* ========================================
+           IMAGE GALLERY
+           ======================================== */
         .card-image-wrap {
             width: 100%;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            margin: 10px 0 15px;
-            border: 2px solid #ffd700;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            margin: 15px 0 20px;
+            border: 2px solid rgba(255, 215, 0, 0.6);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             position: relative;
             background: #111;
         }
@@ -232,7 +361,7 @@
         .card-image-wrap img {
             width: 100%;
             height: auto;
-            max-height: 240px;
+            max-height: 280px;
             object-fit: cover;
             display: block;
         }
@@ -242,20 +371,23 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-            padding: 12px 10px 8px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+            padding: 50px 15px 12px;
             color: #fff;
-            font-size: 13.5px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
-        /* 3D Heart Rotational Animation */
+        /* ========================================
+           3D HEART CONTAINER
+           ======================================== */
         #heartContainer {
             width: 100%;
-            height: 220px;
+            height: 240px;
             position: relative;
             display: none;
-            perspective: 800px;
-            margin: 10px 0;
+            perspective: 1000px;
+            margin: 15px 0;
         }
 
         .heart-scene {
@@ -263,12 +395,12 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
-            animation: rotateHeart 14s infinite linear;
+            animation: rotateHeart 16s infinite linear;
         }
 
         @keyframes rotateHeart {
-            0% { transform: rotateY(0deg) rotateX(10deg); }
-            100% { transform: rotateY(360deg) rotateX(10deg); }
+            0% { transform: rotateY(0deg) rotateX(8deg); }
+            100% { transform: rotateY(360deg) rotateX(8deg); }
         }
 
         .love-item {
@@ -276,20 +408,22 @@
             top: 50%;
             left: 50%;
             color: #ff2a85;
-            font-size: 11px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 700;
             white-space: nowrap;
-            text-shadow: 0 0 8px #ff2a85, 0 0 15px #ffd700;
+            text-shadow: 0 0 10px rgba(255, 42, 133, 0.9);
             transform-origin: center center;
         }
 
-        /* Heart Tree Widget */
+        /* ========================================
+           HEART TREE WIDGET
+           ======================================== */
         #treeContainer {
             width: 100%;
             display: none;
             flex-direction: column;
             align-items: center;
-            margin: 10px 0;
+            margin: 15px 0;
         }
 
         .tree-layout {
@@ -297,19 +431,21 @@
             width: 100%;
             align-items: center;
             justify-content: space-between;
+            gap: 15px;
         }
 
         .tree-text-box {
             width: 50%;
             text-align: left;
-            font-size: 11px;
-            line-height: 1.5;
+            font-size: 12px;
+            line-height: 1.8;
             color: #ffd700;
+            font-weight: 500;
         }
 
         .tree-canvas-box {
             width: 50%;
-            height: 180px;
+            height: 200px;
             position: relative;
         }
 
@@ -319,22 +455,25 @@
         }
 
         .clock-box {
-            margin-top: 10px;
-            font-size: 12px;
+            margin-top: 15px;
+            font-size: 14px;
             color: #00f2fe;
-            background: rgba(0, 242, 254, 0.1);
-            padding: 6px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 242, 254, 0.3);
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.15) 0%, rgba(0, 128, 255, 0.1) 100%);
+            padding: 10px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 242, 254, 0.4);
+            font-weight: 600;
         }
 
-        /* Neon Particle Heart */
+        /* ========================================
+           NEON HEART CONTAINER
+           ======================================== */
         #neonHeartContainer {
             width: 100%;
-            height: 220px;
+            height: 240px;
             display: none;
             position: relative;
-            margin: 10px 0;
+            margin: 15px 0;
         }
 
         #neonCanvas {
@@ -342,52 +481,178 @@
             height: 100%;
         }
 
+        /* ========================================
+           INTERACTIVE BUTTONS
+           ======================================== */
         .tap-card-hint {
-            font-size: 13px;
+            font-size: 14px;
             color: #00f2fe;
-            margin-top: 12px;
-            letter-spacing: 1px;
-            animation: pulseCyan 1.5s infinite alternate;
+            margin-top: 15px;
+            letter-spacing: 1.5px;
+            animation: pulseCyan 2s infinite alternate;
+            font-weight: 600;
         }
 
         .btn-group {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 15px;
+            gap: 15px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
 
         .btn-yes {
-            background: linear-gradient(45deg, #ff2a85, #ffd700);
+            background: linear-gradient(135deg, #ff2a85 0%, #ffd700 100%);
             color: #000;
             border: none;
-            padding: 12px 32px;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 30px;
+            padding: 14px 40px;
+            font-size: 17px;
+            font-weight: 800;
+            border-radius: 35px;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(255, 42, 133, 0.8);
+            box-shadow: 0 0 30px rgba(255, 42, 133, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .btn-yes:active {
+            transform: scale(0.95);
         }
 
         .btn-action {
-            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
             color: #000;
             border: none;
-            padding: 10px 22px;
-            font-size: 14px;
+            padding: 12px 28px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-action:active {
+            transform: scale(0.95);
+        }
+
+        .btn-home { 
+            background: linear-gradient(135deg, #ffd700 0%, #ff8800 100%);
+        }
+
+        /* ========================================
+           MUSIC PLAYER
+           ======================================== */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 700;
+            background: linear-gradient(135deg, rgba(15, 15, 25, 0.95) 0%, rgba(10, 10, 18, 0.98) 100%);
+            border: 1px solid rgba(0, 242, 254, 0.4);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: none;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .music-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00f2fe, #0080ff);
+            border: 2px solid #fff;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:active {
+            transform: scale(0.9);
+        }
+
+        .music-info {
+            color: #00f2fe;
+            font-size: 12px;
             font-weight: 600;
-            border-radius: 20px;
+            text-align: center;
+            max-width: 150px;
+        }
+
+        /* ========================================
+           PROGRESS INDICATOR
+           ======================================== */
+        .progress-dots {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 700;
+            display: none;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(0, 242, 254, 0.3);
+            border: 2px solid rgba(0, 242, 254, 0.5);
+            transition: all 0.3s ease;
             cursor: pointer;
         }
-        .btn-home { background: linear-gradient(45deg, #ffd700, #ff8800); color: #000; }
 
+        .dot.active {
+            background: #00f2fe;
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.9);
+            transform: scale(1.3);
+        }
+
+        /* ========================================
+           LOADING SPINNER
+           ======================================== */
+        .loading-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            display: none;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(0, 242, 254, 0.2);
+            border-top-color: #00f2fe;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
         @media (max-width: 480px) {
             .welcome-title { font-size: 26px; }
-            .card-title { font-size: 19px; }
-            .marry-me-title { font-size: 24px !important; }
-            .card-desc { font-size: 13.5px; }
-            .right-tap-btn { width: 55px; height: 55px; font-size: 11px; }
+            .card-title { font-size: 20px; }
+            .marry-me-title { font-size: 26px !important; }
+            .card-desc { font-size: 14px; }
+            .right-tap-btn { width: 60px; height: 60px; font-size: 11px; }
+            .card-container { padding: 25px 15px; width: 96%; }
+            .tree-layout { flex-direction: column; }
+            .tree-text-box, .tree-canvas-box { width: 100%; }
         }
     </style>
 </head>
@@ -395,7 +660,7 @@
 
     <!-- ===== PULL SCREEN ===== -->
     <div id="pull-screen">
-        <div class="cord-wrapper" id="cordWrapper">
+        <div class="cord-wrapper" id="cordWrapper" role="button" tabindex="0" aria-label="Pull down to begin">
             <div class="cord-line" id="cordLine"></div>
             <div class="cord-handle"></div>
         </div>
@@ -403,7 +668,7 @@
     </div>
 
     <!-- ===== WELCOME SCREEN ===== -->
-    <div id="welcome-screen">
+    <div id="welcome-screen" role="main">
         <div class="welcome-content" id="welRow1">
             <div class="welcome-title">Hey ᴀʏᴇꜱʜᴀ, My Love ❤️</div>
         </div>
@@ -419,14 +684,14 @@
     <canvas id="fireworksCanvas"></canvas>
 
     <!-- ===== TAP BUTTON ===== -->
-    <div id="rightTapBtn" class="right-tap-btn" onclick="nextSequenceStep()">TAP<br/>❤️</div>
+    <div id="rightTapBtn" class="right-tap-btn" onclick="nextSequenceStep()" role="button" tabindex="0">TAP<br/>❤️</div>
 
     <!-- ===== MAIN CARD ===== -->
-    <div id="mainCard" class="card-container" onclick="handleCardClick()">
+    <div id="mainCard" class="card-container" onclick="handleCardClick()" role="article">
         <h2 id="cardTitle" class="card-title"></h2>
 
         <div id="cardImageWrap" class="card-image-wrap" style="display:none;">
-            <img id="cardImage" src="" alt="Ayesha & Sadik" />
+            <img id="cardImage" src="" alt="Memory" loading="lazy" />
             <div class="img-caption" id="imgCaption">💕</div>
         </div>
 
@@ -462,27 +727,89 @@
         </div>
     </div>
 
+    <!-- ===== MUSIC PLAYER ===== -->
+    <div id="musicPlayer" class="music-player">
+        <button class="music-btn" id="playPauseBtn" onclick="toggleMusic()">⏸</button>
+        <div class="music-info" id="musicInfo">🎵 Loading...</div>
+    </div>
+
+    <!-- ===== PROGRESS DOTS ===== -->
+    <div id="progressDots" class="progress-dots"></div>
+
+    <!-- ===== LOADING SPINNER ===== -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
     <!-- ===== AUDIO ===== -->
     <audio id="bgMusic" loop preload="auto">
         <source src="song.mp3" type="audio/mpeg" />
     </audio>
 
     <script>
-        // ============================================================
-        // 1. ছবির লিংকসমূহ
-        // ============================================================
+        /**
+         * ============================================
+         * LOVE STORY APPLICATION - OPTIMIZED VERSION
+         * ============================================
+         * 
+         * Features:
+         * - Multi-canvas animations (Matrix, Hearts, Fireworks, Text)
+         * - Interactive pull-cord starter
+         * - 3D parametric heart rotation
+         * - Heart tree with live relationship counter
+         * - Neon particle heart animation
+         * - Music player with controls
+         * - Progress indicators
+         * - Comprehensive error handling
+         * - Mobile-responsive design
+         * 
+         * Author: Sadik
+         * For: Ayesha (AHUBATI)
+         * Date: September 2026
+         * ============================================
+         */
+
+        // ============================================
+        // 1. CONFIGURATION & CONSTANTS
+        // ============================================
+        
+        /** Image URLs for memory slides */
         const IMAGE_1 = 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop';
         const IMAGE_2 = 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=600&fit=crop';
         const IMAGE_3 = 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&h=600&fit=crop';
         const IMAGE_4 = 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop';
 
-        // ============================================================
-        // 2. স্লাইড তালিকা (Stylized Font সহ)
-        // ============================================================
+        /** Relationship start date for counter */
+        const RELATIONSHIP_START_DATE = new Date("2024-09-24T00:00:00");
+        const BASE_DAYS = 700;
+
+        /** Animation timing constants (milliseconds) */
+        const TIMINGS = {
+            pullFade: 800,
+            countdown: 800,
+            welcomeDelay: 4200,
+            welcomeFade: 1200
+        };
+
+        /** Performance settings */
+        const PERFORMANCE = {
+            matrixInterval: 40, // 25 FPS
+            particleLimit: 100,
+            heartParticlesLimit: 50
+        };
+
+        // ============================================
+        // 2. SLIDE CONTENT DATA
+        // ============================================
+        
+        /** Main sequence text animations */
+        const mainSequence = ["100 WEEKS", "700 DAYS", "ᴀʏᴇꜱʜᴀ + ꜱᴀᴅɪᴋ", "AHUBATI + AHUBI", "I LOVE YOU"];
+
+        /** Card slides with content */
         const slides = [
             {
                 title: '✨ 100 Weeks & 700 Days ✨',
-                desc: 'আয়েশা (AHUBATI), ১০০ টি সপ্তাহ এবং ৭০০ টি দিন ধরে আমার পাশে থাকার জন্য অনেক ধন্যবাদ।',
+                desc: 'আয়েশা (AHUBATI), ১০০ টি সপ্তাহ এবং ৭০০ টি দিন ধরে আমার পাশে থাকার জন্য অনেক ধন্যবাদ।',
                 hasImage: false
             },
             {
@@ -506,14 +833,14 @@
             },
             {
                 title: '💫 Memory 03 💫',
-                desc: 'তুমি আমার জীবনের সবচেয়ে সুন্দর উপহার। ✨',
+                desc: 'তুমি আমার জীবনের সবচেয়ে সুন্দর উপহার। ✨',
                 hasImage: true,
                 imgSrc: IMAGE_3,
                 imgCaption: '🌟 তুমি আমার সব 🌟'
             },
             {
                 title: '🌹 Memory 04 🌹',
-                desc: 'এই পৃথিবীতে তুমিই আমার একমাত্র প্রিয় মানুষ। ❤️',
+                desc: 'এই পৃথিবীতে তুমিই আমার একমাত্র প্রিয় মানুষ। ❤️',
                 hasImage: true,
                 imgSrc: IMAGE_4,
                 imgCaption: '💍 শুধু তুমিই 💍'
@@ -532,526 +859,819 @@
             },
             {
                 title: '💍 Will You Marry Me? 💍',
-                desc: 'আমার জীবনের বাকিটা সময় কি এভাবেই নিজের করে নিবে? Will you marry me, my love? ❤️',
+                desc: 'আমার জীবনের বাকিটা সময় কি এভাবেই নিজের করে নিবে? Will you marry me, my love? ❤️',
                 hasImage: false,
                 isMarryPage: true
             }
         ];
 
-        // ============================================================
-        // 3. CANVAS & SYSTEM SETUP
-        // ============================================================
-        const matrixCanvas = document.getElementById('matrixCanvas');
-        const mCtx = matrixCanvas.getContext('2d');
-        const textCanvas = document.getElementById('textCanvas');
-        const tCtx = textCanvas.getContext('2d');
-        const fwCanvas = document.getElementById('fireworksCanvas');
-        const fwCtx = fwCanvas.getContext('2d');
-        const heartsCanvas = document.getElementById('heartsCanvas');
-        const hCtx = heartsCanvas.getContext('2d');
+        // ============================================
+        // 3. CANVAS & DOM ELEMENTS
+        // ============================================
+        
+        /** Canvas elements and contexts */
+        const canvases = {
+            matrix: document.getElementById('matrixCanvas'),
+            text: document.getElementById('textCanvas'),
+            fireworks: document.getElementById('fireworksCanvas'),
+            hearts: document.getElementById('heartsCanvas'),
+            tree: document.getElementById('treeCanvas'),
+            neon: document.getElementById('neonCanvas')
+        };
 
-        const pullScreen = document.getElementById('pull-screen');
-        const cordWrapper = document.getElementById('cordWrapper');
-        const cordLine = document.getElementById('cordLine');
-        const welcomeScreen = document.getElementById('welcome-screen');
-        const welRow1 = document.getElementById('welRow1');
-        const welRow2 = document.getElementById('welRow2');
-        const bgMusic = document.getElementById('bgMusic');
-        const rightTapBtn = document.getElementById('rightTapBtn');
+        const ctx = {
+            matrix: canvases.matrix.getContext('2d'),
+            text: canvases.text.getContext('2d'),
+            fireworks: canvases.fireworks.getContext('2d'),
+            hearts: canvases.hearts.getContext('2d'),
+            tree: canvases.tree.getContext('2d'),
+            neon: canvases.neon.getContext('2d')
+        };
 
-        let W, H;
+        /** DOM element references */
+        const el = {
+            pullScreen: document.getElementById('pull-screen'),
+            cordWrapper: document.getElementById('cordWrapper'),
+            cordLine: document.getElementById('cordLine'),
+            welcomeScreen: document.getElementById('welcome-screen'),
+            welRow1: document.getElementById('welRow1'),
+            welRow2: document.getElementById('welRow2'),
+            bgMusic: document.getElementById('bgMusic'),
+            rightTapBtn: document.getElementById('rightTapBtn'),
+            mainCard: document.getElementById('mainCard'),
+            cardTitle: document.getElementById('cardTitle'),
+            cardDesc: document.getElementById('cardDesc'),
+            actionArea: document.getElementById('actionArea'),
+            cardImageWrap: document.getElementById('cardImageWrap'),
+            cardImage: document.getElementById('cardImage'),
+            imgCaption: document.getElementById('imgCaption'),
+            heartContainer: document.getElementById('heartContainer'),
+            heartScene: document.getElementById('heartScene'),
+            treeContainer: document.getElementById('treeContainer'),
+            neonHeartContainer: document.getElementById('neonHeartContainer'),
+            liveClock: document.getElementById('liveClock'),
+            musicPlayer: document.getElementById('musicPlayer'),
+            musicInfo: document.getElementById('musicInfo'),
+            playPauseBtn: document.getElementById('playPauseBtn'),
+            progressDots: document.getElementById('progressDots'),
+            loadingSpinner: document.getElementById('loadingSpinner')
+        };
 
-        function resizeAll() {
+        /** Window dimensions cache */
+        let W = window.innerWidth, H = window.innerHeight;
+
+        // ============================================
+        // 4. INITIALIZATION
+        // ============================================
+        
+        /** Initialize all systems */
+        function init() {
+            try {
+                setupCanvasSizes();
+                initMatrixColumns();
+                setupEventListeners();
+                startRelationshipClock();
+                showLoading(false);
+                console.log('✅ App initialized');
+            } catch (err) {
+                console.error('❌ Init error:', err);
+                showLoading(false);
+            }
+        }
+
+        /** Setup canvas sizes */
+        function setupCanvasSizes() {
             W = window.innerWidth;
             H = window.innerHeight;
-            matrixCanvas.width = textCanvas.width = fwCanvas.width = heartsCanvas.width = W;
-            matrixCanvas.height = textCanvas.height = fwCanvas.height = heartsCanvas.height = H;
-            initMatrixColumns();
+            Object.values(canvases).forEach(c => { if(c) { c.width = W; c.height = H; } });
         }
-        window.addEventListener('resize', resizeAll);
 
-        // ============================================================
-        // 4. MATRIX RAIN
-        // ============================================================
+        /** Setup event listeners */
+        function setupEventListeners() {
+            // Resize with debounce
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    setupCanvasSizes();
+                    initMatrixColumns();
+                    if (el.treeContainer.style.display !== 'none') drawHeartTree();
+                    if (el.neonHeartContainer.style.display !== 'none') drawNeonHeart();
+                }, 150);
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    if (el.rightTapBtn.style.display !== 'none') nextSequenceStep();
+                    else if (el.mainCard.style.display !== 'none') handleCardClick();
+                }
+            });
+
+            // Cord interaction
+            setupCord();
+
+            // Image error handling
+            el.cardImage.addEventListener('error', () => {
+                el.cardImage.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect fill="%23111" width="800" height="600"/><text fill="%2300f2fe" font-family="Poppins" font-size="24" x="50%" y="50%" text-anchor="middle">💕</text></svg>';
+            });
+        }
+
+        /** Show/hide loading */
+        function showLoading(show) {
+            el.loadingSpinner.style.display = show ? 'block' : 'none';
+        }
+
+        // ============================================
+        // 5. MATRIX RAIN ANIMATION
+        // ============================================
+        
         const rainPhrases = ["100 WEEKS ", "700 DAYS ", "ᴀʏᴇꜱʜᴀ ", "AHUBATI ", "I LOVE YOU ", "ꜱᴀᴅɪᴋ "];
-        let fontSize = 15, columns = 0, drops = [];
+        let matrixState = { fontSize: 15, columns: 0, drops: [] };
 
+        /** Initialize matrix columns */
         function initMatrixColumns() {
-            columns = Math.floor(W / fontSize);
-            drops = [];
-            for (let i = 0; i < columns; i++) {
-                const phrase = rainPhrases[i % rainPhrases.length];
-                drops[i] = {
-                    y: Math.random() * -60,
-                    speed: 0.20 + Math.random() * 0.25,
-                    phrase: phrase,
-                    charIndex: Math.floor(Math.random() * phrase.length)
-                };
-            }
+            try {
+                matrixState.columns = Math.floor(W / matrixState.fontSize);
+                matrixState.drops = [];
+                for (let i = 0; i < matrixState.columns; i++) {
+                    const phrase = rainPhrases[i % rainPhrases.length];
+                    matrixState.drops[i] = {
+                        y: Math.random() * -60,
+                        speed: 0.20 + Math.random() * 0.25,
+                        phrase: phrase,
+                        charIndex: Math.floor(Math.random() * phrase.length)
+                    };
+                }
+            } catch (err) { console.error('Matrix init error:', err); }
         }
-        resizeAll();
 
-        function drawMatrixBG() {
-            mCtx.fillStyle = '#050508';
-            mCtx.fillRect(0, 0, W, H);
-            mCtx.font = 'bold 14px monospace';
+        /** Draw matrix rain */
+        function drawMatrix() {
+            try {
+                ctx.matrix.fillStyle = '#050508';
+                ctx.matrix.fillRect(0, 0, W, H);
+                ctx.matrix.font = 'bold 14px monospace';
 
-            for (let i = 0; i < drops.length; i++) {
-                const drop = drops[i];
-                const trailLen = 8;
-                for (let j = 0; j < trailLen; j++) {
-                    const charY = (drop.y - j) * fontSize;
-                    if (charY < 0 || charY > H) continue;
-                    const idx = (drop.charIndex - j + drop.phrase.length * 100) % drop.phrase.length;
-                    const char = drop.phrase[idx];
-                    if (j === 0) {
-                        mCtx.fillStyle = '#ffffff';
-                        mCtx.shadowColor = '#00f2fe';
-                        mCtx.shadowBlur = 8;
-                    } else {
-                        const alpha = 1 - (j / trailLen);
-                        mCtx.fillStyle = `rgba(0, 242, 254, ${alpha})`;
-                        mCtx.shadowBlur = 0;
+                for (let i = 0; i < matrixState.drops.length; i++) {
+                    const drop = matrixState.drops[i];
+                    for (let j = 0; j < 8; j++) {
+                        const y = (drop.y - j) * matrixState.fontSize;
+                        if (y < 0 || y > H) continue;
+                        const idx = (drop.charIndex - j + drop.phrase.length * 100) % drop.phrase.length;
+                        
+                        if (j === 0) {
+                            ctx.matrix.fillStyle = '#ffffff';
+                            ctx.matrix.shadowColor = '#00f2fe';
+                            ctx.matrix.shadowBlur = 8;
+                        } else {
+                            ctx.matrix.fillStyle = `rgba(0, 242, 254, ${1 - j/8})`;
+                            ctx.matrix.shadowBlur = 0;
+                        }
+                        ctx.matrix.fillText(drop.phrase[idx], i * matrixState.fontSize, y);
                     }
-                    mCtx.fillText(char, i * fontSize, charY);
+                    drop.y += drop.speed;
+                    drop.charIndex++;
+                    if (drop.y * matrixState.fontSize > H + 150) {
+                        drop.y = Math.random() * -20;
+                        drop.speed = 0.20 + Math.random() * 0.25;
+                    }
                 }
-                drop.y += drop.speed;
-                drop.charIndex++;
-                if (drop.y * fontSize > H + 150) {
-                    drop.y = Math.random() * -20;
-                    drop.speed = 0.20 + Math.random() * 0.25;
+            } catch (err) { console.error('Matrix draw error:', err); }
+        }
+
+        setInterval(drawMatrix, PERFORMANCE.matrixInterval);
+
+        // ============================================
+        // 6. PARTICLE SYSTEMS
+        // ============================================
+        
+        let heartParticles = [], fwParticles = [];
+
+        /** Spawn heart burst */
+        function spawnHearts(x, y, count) {
+            try {
+                const safeCount = Math.min(count, PERFORMANCE.heartParticlesLimit);
+                for (let i = 0; i < safeCount; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = 1 + Math.random() * 4;
+                    heartParticles.push({
+                        x, y,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed - 1.2,
+                        size: 12 + Math.random() * 18,
+                        alpha: 0.9, life: 1,
+                        decay: 0.005 + Math.random() * 0.008,
+                        color: `hsl(${180 + Math.random() * 160}, 90%, 60%)`
+                    });
                 }
-            }
-        }
-        setInterval(drawMatrixBG, 40);
-
-        // ============================================================
-        // 5. FIREWORKS & HEART BURSTS
-        // ============================================================
-        let heartParticles = [], particles = [];
-
-        function spawnHeartBurst(cx, cy, count) {
-            for (let i = 0; i < count; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = 1 + Math.random() * 4;
-                heartParticles.push({
-                    x: cx, y: cy,
-                    vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed - 1.2,
-                    size: 12 + Math.random() * 18,
-                    alpha: 0.9, life: 1,
-                    decay: 0.005 + Math.random() * 0.008,
-                    color: `hsl(${180 + Math.random() * 160}, 90%, 60%)`
-                });
-            }
+            } catch (err) { console.error('Heart spawn error:', err); }
         }
 
-        function drawHeartsCanvas() {
-            hCtx.clearRect(0, 0, W, H);
-            for (let i = heartParticles.length - 1; i >= 0; i--) {
-                const p = heartParticles[i];
-                p.x += p.vx; p.y += p.vy; p.vy += 0.04;
-                p.life -= p.decay; p.alpha = p.life * 0.9;
-                if (p.life <= 0) { heartParticles.splice(i, 1); continue; }
-                hCtx.globalAlpha = p.alpha;
-                hCtx.font = `${p.size}px serif`;
-                hCtx.textAlign = 'center';
-                hCtx.fillStyle = p.color || '#00f2fe';
-                hCtx.fillText('♥', p.x, p.y);
-            }
-            hCtx.globalAlpha = 1;
-            if (heartParticles.length > 0) requestAnimationFrame(drawHeartsCanvas);
+        /** Draw hearts */
+        function drawHearts() {
+            try {
+                if (heartParticles.length === 0) return;
+                ctx.hearts.clearRect(0, 0, W, H);
+                
+                for (let i = heartParticles.length - 1; i >= 0; i--) {
+                    const p = heartParticles[i];
+                    p.x += p.vx; p.y += p.vy; p.vy += 0.04;
+                    p.life -= p.decay; p.alpha = p.life * 0.9;
+                    
+                    if (p.life <= 0) { heartParticles.splice(i, 1); continue; }
+                    
+                    ctx.hearts.globalAlpha = p.alpha;
+                    ctx.hearts.font = `${p.size}px serif`;
+                    ctx.hearts.textAlign = 'center';
+                    ctx.hearts.fillStyle = p.color || '#00f2fe';
+                    ctx.hearts.fillText('♥', p.x, p.y);
+                }
+                ctx.hearts.globalAlpha = 1;
+                requestAnimationFrame(drawHearts);
+            } catch (err) { console.error('Hearts draw error:', err); }
         }
 
-        function triggerHeartBurst(x, y) {
-            spawnHeartBurst(x || W / 2, y || H / 2, 30);
-            if (heartParticles.length > 0) drawHeartsCanvas();
+        /** Trigger heart burst */
+        function triggerHearts(x, y) {
+            spawnHearts(x || W/2, y || H/2, 30);
+            if (heartParticles.length > 0) drawHearts();
         }
 
-        function triggerBurstFireworks(cx, cy) {
-            const centerX = cx || W / 2, centerY = cy || H * 0.4;
-            const colors = ['#00f2fe', '#ffd700', '#ff2a85', '#ffffff', '#00ff88'];
-            for (let i = 0; i < 50; i++) {
-                const angle = (Math.PI * 2 / 50) * i;
-                const speed = Math.random() * 5 + 2;
-                particles.push({
-                    x: centerX, y: centerY,
-                    vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
-                    alpha: 1, color: colors[Math.floor(Math.random() * colors.length)],
-                    size: 2.5 + Math.random() * 3.5
-                });
-            }
-            animateFireworks();
+        /** Trigger fireworks */
+        function triggerFireworks(x, y) {
+            try {
+                const cx = x || W/2, cy = y || H*0.4;
+                const colors = ['#00f2fe', '#ffd700', '#ff2a85', '#ffffff', '#00ff88'];
+                
+                for (let i = 0; i < 50; i++) {
+                    const angle = (Math.PI * 2 / 50) * i;
+                    const speed = Math.random() * 5 + 2;
+                    fwParticles.push({
+                        x: cx, y: cy,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed,
+                        alpha: 1,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        size: 2.5 + Math.random() * 3.5
+                    });
+                }
+                animateFireworks();
+            } catch (err) { console.error('Fireworks error:', err); }
         }
 
+        /** Animate fireworks */
+        function animateFireworks() {
+            try {
+                if (fwParticles.length === 0) return;
+                ctx.fireworks.clearRect(0, 0, W, H);
+                
+                for (let i = fwParticles.length - 1; i >= 0; i--) {
+                    const p = fwParticles[i];
+                    p.x += p.vx; p.y += p.vy; p.vy += 0.03; p.alpha -= 0.018;
+                    
+                    ctx.fireworks.beginPath();
+                    ctx.fireworks.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fireworks.fillStyle = p.color;
+                    ctx.fireworks.globalAlpha = p.alpha;
+                    ctx.fireworks.fill();
+                    
+                    if (p.alpha <= 0) fwParticles.splice(i, 1);
+                }
+                ctx.fireworks.globalAlpha = 1;
+                requestAnimationFrame(animateFireworks);
+            } catch (err) { console.error('Fireworks animate error:', err); }
+        }
+
+        /** Grand celebration */
         function triggerGrandCelebration() {
             const corners = [
-                {x: W * 0.15, y: H * 0.2},
-                {x: W * 0.85, y: H * 0.2},
-                {x: W * 0.15, y: H * 0.7},
-                {x: W * 0.85, y: H * 0.7},
-                {x: W * 0.5, y: H * 0.3}
+                {x: W*0.15, y: H*0.2}, {x: W*0.85, y: H*0.2},
+                {x: W*0.15, y: H*0.7}, {x: W*0.85, y: H*0.7},
+                {x: W*0.5, y: H*0.3}
             ];
-            corners.forEach((c, idx) => {
-                setTimeout(() => {
-                    triggerBurstFireworks(c.x, c.y);
-                    triggerHeartBurst(c.x, c.y);
-                }, idx * 180);
+            corners.forEach((c, i) => {
+                setTimeout(() => { triggerFireworks(c.x, c.y); triggerHearts(c.x, c.y); }, i * 180);
             });
         }
 
-        function animateFireworks() {
-            if (particles.length === 0) return;
-            fwCtx.clearRect(0, 0, W, H);
-            particles.forEach((p, idx) => {
-                p.x += p.vx; p.y += p.vy; p.vy += 0.03; p.alpha -= 0.018;
-                fwCtx.beginPath();
-                fwCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                fwCtx.fillStyle = p.color;
-                fwCtx.globalAlpha = p.alpha;
-                fwCtx.fill();
-                if (p.alpha <= 0) particles.splice(idx, 1);
-            });
-            fwCtx.globalAlpha = 1;
-            if (particles.length > 0) requestAnimationFrame(animateFireworks);
+        // ============================================
+        // 7. PULL CORD
+        // ============================================
+        
+        let cordState = { startY: 0, drag: 0, maxDrag: 150, started: false };
+
+        /** Setup cord interaction */
+        function setupCord() {
+            try {
+                el.cordWrapper.addEventListener('touchstart', (e) => {
+                    cordState.startY = e.touches[0].clientY;
+                }, { passive: true });
+
+                el.cordWrapper.addEventListener('touchmove', (e) => {
+                    const y = e.touches[0].clientY;
+                    cordState.drag = Math.max(0, Math.min(cordState.maxDrag, y - cordState.startY));
+                    el.cordLine.style.height = (240 + cordState.drag) + 'px';
+                    if (cordState.drag >= cordState.maxDrag) startSystem();
+                }, { passive: true });
+
+                el.cordWrapper.addEventListener('touchend', () => {
+                    if (cordState.drag < cordState.maxDrag) el.cordLine.style.height = '240px';
+                });
+
+                el.cordWrapper.addEventListener('click', startSystem);
+            } catch (err) { console.error('Cord setup error:', err); }
         }
 
-        // ============================================================
-        // 6. CYAN CORD PULL & FLOW LOGIC
-        // ============================================================
-        let startY = 0, currentDrag = 0, maxDrag = 150, isStarted = false;
-
-        cordWrapper.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; });
-        cordWrapper.addEventListener('touchmove', (e) => {
-            const y = e.touches[0].clientY;
-            currentDrag = Math.max(0, Math.min(maxDrag, y - startY));
-            cordLine.style.height = (240 + currentDrag) + 'px';
-            if (currentDrag >= maxDrag) triggerSystemStart();
-        });
-        cordWrapper.addEventListener('touchend', () => { if (currentDrag < maxDrag) cordLine.style.height = '240px'; });
-        cordWrapper.addEventListener('click', () => triggerSystemStart());
-
-        // ১. পুল কর্ড টানার পর শুরুতেই কাউন্টডাউন (3..2..1)
-        function triggerSystemStart() {
-            if (isStarted) return;
-            isStarted = true;
-            bgMusic.play().catch(() => {});
-            pullScreen.style.opacity = '0';
-            setTimeout(() => {
-                pullScreen.style.display = 'none';
-                startInitialCountdown();
-            }, 800);
-        }
-
-        // ২. ৩..২..১ কাউন্টডাউন ফাংশন
-        function startInitialCountdown() {
-            renderTextPixel('3'); triggerBurstFireworks();
-            setTimeout(() => {
-                renderTextPixel('2'); triggerBurstFireworks();
+        /** Start system */
+        function startSystem() {
+            try {
+                if (cordState.started) return;
+                cordState.started = true;
+                playMusic();
+                el.pullScreen.style.opacity = '0';
                 setTimeout(() => {
-                    renderTextPixel('1'); triggerBurstFireworks();
+                    el.pullScreen.style.display = 'none';
+                    startCountdown();
+                }, TIMINGS.pullFade);
+            } catch (err) {
+                console.error('Start error:', err);
+                el.pullScreen.style.opacity = '0';
+                setTimeout(() => {
+                    el.pullScreen.style.display = 'none';
+                    startCountdown();
+                }, TIMINGS.pullFade);
+            }
+        }
+
+        // ============================================
+        // 8. COUNTDOWN & WELCOME
+        // ============================================
+        
+        /** 3-2-1 countdown */
+        function startCountdown() {
+            try {
+                renderText('3'); triggerFireworks();
+                setTimeout(() => {
+                    renderText('2'); triggerFireworks();
                     setTimeout(() => {
-                        renderTextPixel('');
-                        showWelcomeScreen();
-                    }, 800);
-                }, 800);
-            }, 800);
+                        renderText('1'); triggerFireworks();
+                        setTimeout(() => {
+                            renderText('');
+                            showWelcome();
+                        }, TIMINGS.countdown);
+                    }, TIMINGS.countdown);
+                }, TIMINGS.countdown);
+            } catch (err) { console.error('Countdown error:', err); showWelcome(); }
         }
 
-        // ৩. কাউন্টডাউন শেষে Welcome স্ক্রিন প্রর্দশন
-        function showWelcomeScreen() {
-            welcomeScreen.style.display = 'flex';
-            welcomeScreen.style.opacity = '1';
-            triggerBurstFireworks();
-            triggerHeartBurst(W / 2, H * 0.5);
+        /** Show welcome screen */
+        function showWelcome() {
+            try {
+                el.welcomeScreen.style.display = 'flex';
+                el.welcomeScreen.style.opacity = '1';
+                triggerFireworks(); triggerHearts(W/2, H/2);
 
-            setTimeout(() => { welRow1.classList.add('show'); triggerBurstFireworks(); }, 400);
-            setTimeout(() => { welRow2.classList.add('show'); triggerBurstFireworks(); }, 1600);
+                setTimeout(() => { el.welRow1.classList.add('show'); triggerFireworks(); }, 400);
+                setTimeout(() => { el.welRow2.classList.add('show'); triggerFireworks(); }, 1600);
 
-            setTimeout(() => {
-                welcomeScreen.style.opacity = '0';
                 setTimeout(() => {
-                    welcomeScreen.style.display = 'none';
-                    startMainSequence();
-                }, 1200);
-            }, 4200);
+                    el.welcomeScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        el.welcomeScreen.style.display = 'none';
+                        startMainSequence();
+                    }, TIMINGS.welcomeFade);
+                }, TIMINGS.welcomeDelay);
+            } catch (err) { console.error('Welcome error:', err); startMainSequence(); }
         }
 
-        // ============================================================
-        // 7. CYAN GLOWING TEXT PIXEL RENDERING
-        // ============================================================
-        function renderTextPixel(text) {
-            tCtx.clearRect(0, 0, W, H);
-            if (!text) return;
-            const tempCanvas = document.createElement('canvas');
-            const tempCtx = tempCanvas.getContext('2d');
-            tempCanvas.width = W; tempCanvas.height = H;
-            let dynSize = Math.min(W / (text.length * 0.7), H * 0.2);
-            if (dynSize > 75) dynSize = 75;
-            if (dynSize < 22) dynSize = 22;
-            tempCtx.fillStyle = '#fff';
-            tempCtx.font = `700 ${dynSize}px Poppins, sans-serif`;
-            tempCtx.textAlign = 'center';
-            tempCtx.textBaseline = 'middle';
-            tempCtx.fillText(text, W / 2, H / 2);
-            const imgData = tempCtx.getImageData(0, 0, W, H).data;
-            const dotGap = 6, dotRadius = 2.5;
+        // ============================================
+        // 9. PIXEL TEXT RENDERING
+        // ============================================
+        
+        /** Render text as pixels */
+        function renderText(text) {
+            try {
+                ctx.text.clearRect(0, 0, W, H);
+                if (!text) return;
 
-            tCtx.fillStyle = '#00f2fe';
-            tCtx.shadowColor = '#00f2fe';
-            tCtx.shadowBlur = 10;
-            for (let y = 0; y < H; y += dotGap) {
-                for (let x = 0; x < W; x += dotGap) {
-                    if (imgData[(y * W + x) * 4 + 3] > 128) {
-                        tCtx.beginPath();
-                        tCtx.arc(x, y, dotRadius, 0, Math.PI * 2);
-                        tCtx.fill();
+                const temp = document.createElement('canvas');
+                const tCtx = temp.getContext('2d');
+                temp.width = W; temp.height = H;
+                
+                let size = Math.min(W / (text.length * 0.7), H * 0.2);
+                size = Math.max(22, Math.min(75, size));
+                
+                tCtx.fillStyle = '#fff';
+                tCtx.font = `700 ${size}px Poppins`;
+                tCtx.textAlign = 'center';
+                tCtx.textBaseline = 'middle';
+                tCtx.fillText(text, W/2, H/2);
+                
+                const data = tCtx.getImageData(0, 0, W, H).data;
+                const gap = 6, radius = 2.5;
+
+                ctx.text.fillStyle = '#00f2fe';
+                ctx.text.shadowColor = '#00f2fe';
+                ctx.text.shadowBlur = 10;
+                
+                for (let y = 0; y < H; y += gap) {
+                    for (let x = 0; x < W; x += gap) {
+                        if (data[(y * W + x) * 4 + 3] > 128) {
+                            ctx.text.beginPath();
+                            ctx.text.arc(x, y, radius, 0, Math.PI * 2);
+                            ctx.text.fill();
+                        }
                     }
                 }
-            }
-            tCtx.shadowBlur = 0;
+                ctx.text.shadowBlur = 0;
+            } catch (err) { console.error('Text render error:', err); }
         }
 
-        const mainSequence = ["100 WEEKS", "700 DAYS", "ᴀʏᴇꜱʜᴀ + ꜱᴀᴅɪᴋ", "AHUBATI + AHUBI", "I LOVE YOU"];
+        // ============================================
+        // 10. MAIN SEQUENCE
+        // ============================================
+        
         let seqIndex = 0;
 
+        /** Start main sequence */
         function startMainSequence() {
-            seqIndex = 0;
-            rightTapBtn.style.display = 'flex';
-            playNextMainSequence();
+            try {
+                seqIndex = 0;
+                el.rightTapBtn.style.display = 'flex';
+                createProgressDots();
+                playSequence();
+            } catch (err) { console.error('Sequence start error:', err); showCard(); }
         }
 
-        function playNextMainSequence() {
-            if (seqIndex < mainSequence.length) {
-                renderTextPixel(mainSequence[seqIndex]);
-                triggerBurstFireworks();
-            } else {
-                renderTextPixel('');
-                rightTapBtn.style.display = 'none';
-                showCard();
-            }
+        /** Create progress dots */
+        function createProgressDots() {
+            try {
+                el.progressDots.innerHTML = '';
+                el.progressDots.style.display = 'flex';
+                
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    dot.onclick = () => goToSlide(i);
+                    el.progressDots.appendChild(dot);
+                });
+            } catch (err) { console.error('Dots error:', err); }
         }
 
-        function nextSequenceStep() { seqIndex++; playNextMainSequence(); }
+        /** Update progress dots */
+        function updateDots(index) {
+            el.progressDots.querySelectorAll('.dot').forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
+        }
 
-        // ============================================================
-        // 8. ANIMATION 1: 3D PARAMETRIC HEART
-        // ============================================================
-        const heartContainer = document.getElementById('heartContainer');
-        const heartScene = document.getElementById('heartScene');
+        /** Play sequence */
+        function playSequence() {
+            try {
+                if (seqIndex < mainSequence.length) {
+                    renderText(mainSequence[seqIndex]);
+                    triggerFireworks();
+                    updateDots(seqIndex);
+                } else {
+                    renderText('');
+                    el.rightTapBtn.style.display = 'none';
+                    el.progressDots.style.display = 'none';
+                    showCard();
+                }
+            } catch (err) { console.error('Play error:', err); showCard(); }
+        }
+
+        /** Next step */
+        function nextSequenceStep() { seqIndex++; playSequence(); }
+
+        // ============================================
+        // 11. 3D HEART
+        // ============================================
+        
         let heartCreated = false;
 
+        /** Generate 3D heart */
         function generate3DHeart() {
-            if (heartCreated) return;
-            heartScene.innerHTML = '';
-            const totalItems = 70;
-            const isMobile = window.innerWidth < 480;
-            const scale = isMobile ? 6 : 9;
-
-            for (let i = 0; i < totalItems; i++) {
-                const t = (i / totalItems) * Math.PI * 2;
-                const x = 16 * Math.pow(Math.sin(t), 3);
-                const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-                const item = document.createElement('div');
-                item.className = 'love-item';
-                item.innerText = 'I love you';
-                item.style.transform = `translate3d(${x * scale}px, ${y * scale}px, 0px)`;
-                heartScene.appendChild(item);
-            }
-            heartCreated = true;
-        }
-
-        // ============================================================
-        // 9. ANIMATION 2: HEART TREE
-        // ============================================================
-        const treeContainer = document.getElementById('treeContainer');
-        const treeCanvas = document.getElementById('treeCanvas');
-        const treeCtx = treeCanvas.getContext('2d');
-
-        function drawHeartTree() {
-            treeCanvas.width = treeCanvas.parentElement.clientWidth;
-            treeCanvas.height = treeCanvas.parentElement.clientHeight;
-            const tw = treeCanvas.width, th = treeCanvas.height;
-
-            treeCtx.clearRect(0, 0, tw, th);
-            treeCtx.fillStyle = '#d4a373';
-            treeCtx.fillRect(tw/2 - 6, th - 50, 12, 50);
-
-            const leaves = 120;
-            for (let i = 0; i < leaves; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const r = Math.random() * 45;
-                const x = tw/2 + Math.cos(angle) * r;
-                const y = th - 80 + Math.sin(angle) * r * 0.8;
+            try {
+                if (heartCreated) return;
+                el.heartScene.innerHTML = '';
                 
-                treeCtx.font = `${8 + Math.random()*8}px serif`;
-                treeCtx.fillStyle = `hsl(${340 + Math.random()*30}, 90%, ${60 + Math.random()*20}%)`;
-                treeCtx.fillText('♥', x, y);
-            }
+                const total = 70;
+                const scale = W < 480 ? 6 : 9;
+
+                for (let i = 0; i < total; i++) {
+                    const t = (i / total) * Math.PI * 2;
+                    const x = 16 * Math.pow(Math.sin(t), 3);
+                    const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+                    
+                    const item = document.createElement('div');
+                    item.className = 'love-item';
+                    item.innerText = 'I love you';
+                    item.style.transform = `translate3d(${x * scale}px, ${y * scale}px, 0)`;
+                    el.heartScene.appendChild(item);
+                }
+                heartCreated = true;
+            } catch (err) { console.error('3D heart error:', err); }
         }
 
-        function updateClock() {
-            const startDate = new Date("2024-09-24T00:00:00"); 
-            const now = new Date();
-            const diff = now - startDate;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 700;
-            document.getElementById('liveClock').innerText = `Together for ${days} Days ✨`;
-        }
-        setInterval(updateClock, 1000);
+        // ============================================
+        // 12. HEART TREE
+        // ============================================
+        
+        /** Draw heart tree */
+        function drawHeartTree() {
+            try {
+                const c = canvases.tree;
+                c.width = c.parentElement.clientWidth;
+                c.height = c.parentElement.clientHeight;
+                
+                ctx.tree.clearRect(0, 0, c.width, c.height);
+                ctx.tree.fillStyle = '#d4a373';
+                ctx.tree.fillRect(c.width/2 - 6, c.height - 50, 12, 50);
 
-        // ============================================================
-        // 10. ANIMATION 3: NEON PARTICLE HEART
-        // ============================================================
-        const neonHeartContainer = document.getElementById('neonHeartContainer');
-        const neonCanvas = document.getElementById('neonCanvas');
-        const nCtx = neonCanvas.getContext('2d');
+                for (let i = 0; i < 120; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const r = Math.random() * 45;
+                    const x = c.width/2 + Math.cos(angle) * r;
+                    const y = c.height - 80 + Math.sin(angle) * r * 0.8;
+                    
+                    ctx.tree.font = `${8 + Math.random()*8}px serif`;
+                    ctx.tree.fillStyle = `hsl(${340 + Math.random()*30}, 90%, ${60 + Math.random()*20}%)`;
+                    ctx.tree.fillText('♥', x, y);
+                }
+            } catch (err) { console.error('Tree error:', err); }
+        }
+
+        // ============================================
+        // 13. NEON HEART
+        // ============================================
+        
         let neonAnimId = null;
 
+        /** Draw neon heart */
         function drawNeonHeart() {
-            neonCanvas.width = neonHeartContainer.clientWidth;
-            neonCanvas.height = neonHeartContainer.clientHeight;
-            const nw = neonCanvas.width, nh = neonCanvas.height;
+            try {
+                const c = canvases.neon;
+                c.width = el.neonHeartContainer.clientWidth;
+                c.height = el.neonHeartContainer.clientHeight;
+                
+                ctx.neon.clearRect(0, 0, c.width, c.height);
+                ctx.neon.save();
+                ctx.neon.translate(c.width/2, c.height/2 - 10);
 
-            nCtx.clearRect(0, 0, nw, nh);
-            nCtx.save();
-            nCtx.translate(nw/2, nh/2 - 10);
+                ctx.neon.beginPath();
+                const scale = Math.min(c.width, c.height) / 38;
+                
+                for (let t = 0; t <= Math.PI * 2; t += 0.02) {
+                    const x = 16 * Math.pow(Math.sin(t), 3) * scale;
+                    const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)) * scale;
+                    if (t === 0) ctx.neon.moveTo(x, y);
+                    else ctx.neon.lineTo(x, y);
+                }
+                
+                ctx.neon.strokeStyle = '#ff2a85';
+                ctx.neon.lineWidth = 3;
+                ctx.neon.shadowColor = '#00f2fe';
+                ctx.neon.shadowBlur = 18;
+                ctx.neon.stroke();
+                ctx.neon.restore();
 
-            nCtx.beginPath();
-            const scale = Math.min(nw, nh) / 38;
-            for (let t = 0; t <= Math.PI * 2; t += 0.02) {
-                const x = 16 * Math.pow(Math.sin(t), 3) * scale;
-                const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)) * scale;
-                if (t === 0) nCtx.moveTo(x, y);
-                else nCtx.lineTo(x, y);
-            }
-            nCtx.strokeStyle = '#ff2a85';
-            nCtx.lineWidth = 3;
-            nCtx.shadowColor = '#00f2fe';
-            nCtx.shadowBlur = 18;
-            nCtx.stroke();
-            nCtx.restore();
-
-            neonAnimId = requestAnimationFrame(drawNeonHeart);
+                neonAnimId = requestAnimationFrame(drawNeonHeart);
+            } catch (err) { console.error('Neon error:', err); }
         }
 
-        // ============================================================
-        // 11. CARD MANAGEMENT
-        // ============================================================
-        let currentSlide = 0;
-        const cardEl = document.getElementById('mainCard');
-        const titleEl = document.getElementById('cardTitle');
-        const descEl = document.getElementById('cardDesc');
-        const actionArea = document.getElementById('actionArea');
-        const cardImageWrap = document.getElementById('cardImageWrap');
-        const cardImage = document.getElementById('cardImage');
-        const imgCaption = document.getElementById('imgCaption');
+        // ============================================
+        // 14. RELATIONSHIP CLOCK
+        // ============================================
+        
+        /** Start clock */
+        function startRelationshipClock() {
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
 
+        /** Update clock */
+        function updateClock() {
+            try {
+                const now = new Date();
+                const diff = now - RELATIONSHIP_START_DATE;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24)) + BASE_DAYS;
+                el.liveClock.innerText = `Together for ${days} Days ✨`;
+            } catch (err) { console.error('Clock error:', err); }
+        }
+
+        // ============================================
+        // 15. MUSIC PLAYER
+        // ============================================
+        
+        let isMusicPlaying = false;
+
+        /** Play music */
+        function playMusic() {
+            try {
+                el.bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    updateMusicUI();
+                    el.musicPlayer.style.display = 'flex';
+                    el.musicInfo.textContent = '🎵 Now Playing...';
+                }).catch(() => {
+                    isMusicPlaying = false;
+                    updateMusicUI();
+                    el.musicPlayer.style.display = 'flex';
+                    el.musicInfo.textContent = '🎵 Click play ▶';
+                });
+            } catch (err) {
+                console.error('Music play error:', err);
+                isMusicPlaying = false;
+                updateMusicUI();
+            }
+        }
+
+        /** Toggle music */
+        function toggleMusic() {
+            try {
+                if (isMusicPlaying) {
+                    el.bgMusic.pause();
+                    isMusicPlaying = false;
+                } else {
+                    el.bgMusic.play();
+                    isMusicPlaying = true;
+                }
+                updateMusicUI();
+            } catch (err) { console.error('Toggle error:', err); }
+        }
+
+        /** Update music UI */
+        function updateMusicUI() {
+            el.playPauseBtn.textContent = isMusicPlaying ? '⏸' : '▶';
+        }
+
+        // ============================================
+        // 16. CARD SYSTEM
+        // ============================================
+        
+        let currentSlide = 0;
+
+        /** Show card */
         function showCard() {
-            cardEl.style.display = 'block';
+            el.mainCard.style.display = 'block';
             currentSlide = 0;
             updateCard();
-            triggerBurstFireworks();
+            triggerFireworks();
         }
 
-        function hideAllAnimations() {
-            heartContainer.style.display = 'none';
-            treeContainer.style.display = 'none';
-            neonHeartContainer.style.display = 'none';
-            cardImageWrap.style.display = 'none';
-            if (neonAnimId) cancelAnimationFrame(neonAnimId);
+        /** Hide animations */
+        function hideAnimations() {
+            el.heartContainer.style.display = 'none';
+            el.treeContainer.style.display = 'none';
+            el.neonHeartContainer.style.display = 'none';
+            el.cardImageWrap.style.display = 'none';
+            if (neonAnimId) { cancelAnimationFrame(neonAnimId); neonAnimId = null; }
         }
 
+        /** Update card */
         function updateCard() {
-            hideAllAnimations();
-            const slide = slides[currentSlide];
-            titleEl.innerText = slide.title;
-            descEl.innerText = slide.desc || '';
-            descEl.style.display = slide.desc ? 'block' : 'none';
+            try {
+                hideAnimations();
+                const slide = slides[currentSlide];
+                
+                el.cardTitle.innerText = slide.title;
+                el.cardDesc.innerText = slide.desc || '';
+                el.cardDesc.style.display = slide.desc ? 'block' : 'none';
 
-            if (slide.hasImage && slide.imgSrc) {
-                cardImageWrap.style.display = 'block';
-                cardImage.src = slide.imgSrc;
-                imgCaption.innerText = slide.imgCaption || '💕';
-            } else if (slide.has3DHeart) {
-                heartContainer.style.display = 'block';
-                generate3DHeart();
-            } else if (slide.hasHeartTree) {
-                treeContainer.style.display = 'flex';
-                drawHeartTree();
-            } else if (slide.hasNeonHeart) {
-                neonHeartContainer.style.display = 'block';
-                drawNeonHeart();
-            }
-
-            if (slide.isMarryPage) {
-                titleEl.classList.add('marry-me-title');
-                actionArea.innerHTML = `
-                    <div class="btn-group">
-                        <button class="btn-yes" onclick="handleYesClick(event)">Yes, I Will! 💍💖</button>
-                    </div>
-                `;
-                setTimeout(() => triggerBurstFireworks(), 300);
-            } else {
-                titleEl.classList.remove('marry-me-title');
-                actionArea.innerHTML = `<div class="tap-card-hint">👉 TAP ANYWHERE TO CONTINUE</div>`;
-            }
-            triggerHeartBurst(W / 2, H / 2);
-        }
-
-        function handleCardClick() {
-            if (!slides[currentSlide].isMarryPage) {
-                if (currentSlide < slides.length - 1) {
-                    currentSlide++;
-                    updateCard();
-                    triggerBurstFireworks();
+                if (slide.hasImage && slide.imgSrc) {
+                    el.cardImageWrap.style.display = 'block';
+                    el.cardImage.src = slide.imgSrc;
+                    el.imgCaption.innerText = slide.imgCaption || '💕';
+                } else if (slide.has3DHeart) {
+                    el.heartContainer.style.display = 'block';
+                    generate3DHeart();
+                } else if (slide.hasHeartTree) {
+                    el.treeContainer.style.display = 'flex';
+                    drawHeartTree();
+                } else if (slide.hasNeonHeart) {
+                    el.neonHeartContainer.style.display = 'block';
+                    drawNeonHeart();
                 }
+
+                if (slide.isMarryPage) {
+                    el.cardTitle.classList.add('marry-me-title');
+                    el.actionArea.innerHTML = `<div class="btn-group"><button class="btn-yes" onclick="handleYes(event)">Yes, I Will! 💍💖</button></div>`;
+                    setTimeout(() => triggerFireworks(), 300);
+                } else {
+                    el.cardTitle.classList.remove('marry-me-title');
+                    el.actionArea.innerHTML = `<div class="tap-card-hint">👉 TAP ANYWHERE TO CONTINUE</div>`;
+                }
+                
+                updateDots(currentSlide);
+                triggerHearts(W/2, H/2);
+            } catch (err) { console.error('Update card error:', err); }
+        }
+
+        /** Handle card click */
+        function handleCardClick() {
+            if (!slides[currentSlide].isMarryPage && currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateCard();
+                triggerFireworks();
             }
         }
 
-        function handleYesClick(e) {
+        /** Go to slide */
+        function goToSlide(index) {
+            if (index >= 0 && index < slides.length) {
+                currentSlide = index;
+                updateCard();
+                triggerFireworks();
+            }
+        }
+
+        // ============================================
+        // 17. MARRIAGE RESPONSE
+        // ============================================
+        
+        /** Handle yes */
+        function handleYes(e) {
             e.stopPropagation();
-            hideAllAnimations();
-            titleEl.innerText = '🎉 FOREVER & ALWAYS 🎉';
-            descEl.innerText = 'I Love You So Much ᴀʏᴇꜱʜᴀ! ❤️ আপনার সাথে সারা জীবন কাটানোর জন্য অপেক্ষায় রইলাম।';
-            descEl.style.display = 'block';
-            titleEl.classList.add('marry-me-title');
+            hideAnimations();
+            
+            el.cardTitle.innerText = '🎉 FOREVER & ALWAYS 🎉';
+            el.cardDesc.innerText = 'I Love You So Much ᴀʏᴇꜱʜᴀ! ❤️ আপনার সাথে সারা জীবন কাটানোর জন্য অপেক্ষায় রইলাম।';
+            el.cardDesc.style.display = 'block';
+            el.cardTitle.classList.add('marry-me-title');
             
             triggerGrandCelebration();
 
-            actionArea.innerHTML = `
+            el.actionArea.innerHTML = `
                 <div class="btn-group">
-                    <button class="btn-action" onclick="replaySlides(event)">REPLAY 🔄</button>
+                    <button class="btn-action" onclick="replay(event)">REPLAY 🔄</button>
                     <button class="btn-action btn-home" onclick="goHome(event)">HOME 🏠</button>
                 </div>
             `;
         }
 
-        function replaySlides(e) {
+        /** Replay */
+        function replay(e) {
             e.stopPropagation();
             currentSlide = 0;
             updateCard();
-            triggerBurstFireworks();
+            triggerFireworks();
         }
 
+        /** Go home */
         function goHome(e) {
             e.stopPropagation();
-            hideAllAnimations();
-            cardEl.style.display = 'none';
-            pullScreen.style.display = 'flex';
-            pullScreen.style.opacity = '1';
-            cordLine.style.height = '240px';
-            welRow1.classList.remove('show');
-            welRow2.classList.remove('show');
-            isStarted = false; currentDrag = 0; seqIndex = 0;
-            heartParticles = []; particles = [];
-            initMatrixColumns();
-            tCtx.clearRect(0, 0, W, H);
-            fwCtx.clearRect(0, 0, W, H);
-            hCtx.clearRect(0, 0, W, H);
-            rightTapBtn.style.display = 'none';
-            bgMusic.pause(); bgMusic.currentTime = 0;
+            hideAnimations();
+            
+            el.mainCard.style.display = 'none';
+            el.pullScreen.style.display = 'flex';
+            el.pullScreen.style.opacity = '1';
+            el.cordLine.style.height = '240px';
+            
+            el.welRow1.classList.remove('show');
+            el.welRow2.classList.remove('show');
+            
+            cordState.started = false;
+            cordState.drag = 0;
+            seqIndex = 0;
+            currentSlide = 0;
+            heartParticles = [];
+            fwParticles = [];
             heartCreated = false;
+            
+            initMatrixColumns();
+            ctx.text.clearRect(0, 0, W, H);
+            ctx.fireworks.clearRect(0, 0, W, H);
+            ctx.hearts.clearRect(0, 0, W, H);
+            
+            el.rightTapBtn.style.display = 'none';
+            el.progressDots.style.display = 'none';
+            
+            el.bgMusic.pause();
+            el.bgMusic.currentTime = 0;
+            isMusicPlaying = false;
+            updateMusicUI();
+            el.musicPlayer.style.display = 'none';
         }
+
+        // ============================================
+        // 18. APP STARTUP
+        // ============================================
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        console.log(`
+╔════════════════════════════════════════╗
+║   💖 Ayesha + Sadik Love Story 💖     ║
+║   Optimized & Enhanced Version        ║
+║   Made with ❤️ for AHUBATI            ║
+╚════════════════════════════════════════╝
+        `);
     </script>
 </body>
 </html>
